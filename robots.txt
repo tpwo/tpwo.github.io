@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tpwo.github.io/sitemap.xml
