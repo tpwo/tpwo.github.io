@@ -4,77 +4,77 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2024-06-19T20:43:59-00:00</lastmod>
+<loc>https://tpwo.github.io/</loc>
+<lastmod>2024-06-19T23:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/tags.html</loc>
-<lastmod>2024-06-19T20:43:59-00:00</lastmod>
+<loc>https://tpwo.github.io/tags.html</loc>
+<lastmod>2024-06-19T23:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/categories.html</loc>
-<lastmod>2024-06-19T20:43:59-00:00</lastmod>
+<loc>https://tpwo.github.io/categories.html</loc>
+<lastmod>2024-06-19T23:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/authors.html</loc>
-<lastmod>2024-06-19T20:43:59-00:00</lastmod>
+<loc>https://tpwo.github.io/authors.html</loc>
+<lastmod>2024-06-19T23:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2024-06-19T20:43:59-00:00</lastmod>
+<loc>https://tpwo.github.io/archives.html</loc>
+<lastmod>2024-06-19T23:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/extract-ze-files.html</loc>
+<loc>https://tpwo.github.io/extract-ze-files.html</loc>
 <lastmod>2024-06-19T19:45:00+02:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>/hello-world.html</loc>
+<loc>https://tpwo.github.io/hello-world.html</loc>
 <lastmod>2024-06-05T23:53:00+02:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>/category/posts.html</loc>
+<loc>https://tpwo.github.io/category/posts.html</loc>
 <lastmod>2024-06-05T23:53:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/category/tech.html</loc>
+<loc>https://tpwo.github.io/category/tech.html</loc>
 <lastmod>2024-06-19T19:45:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/tag/tips.html</loc>
+<loc>https://tpwo.github.io/tag/tips.html</loc>
 <lastmod>2024-06-19T19:45:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/author/tpwo.html</loc>
+<loc>https://tpwo.github.io/author/tpwo.html</loc>
 <lastmod>2024-06-19T19:45:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
