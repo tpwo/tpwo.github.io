@@ -5,41 +5,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/</loc>
-<lastmod>2024-06-20T23:55:12-00:00</lastmod>
+<lastmod>2024-06-21T00:32:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/tags.html</loc>
-<lastmod>2024-06-20T23:55:12-00:00</lastmod>
+<lastmod>2024-06-21T00:32:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/categories.html</loc>
-<lastmod>2024-06-20T23:55:12-00:00</lastmod>
+<lastmod>2024-06-21T00:32:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/authors.html</loc>
-<lastmod>2024-06-20T23:55:12-00:00</lastmod>
+<lastmod>2024-06-21T00:32:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/archives.html</loc>
-<lastmod>2024-06-20T23:55:12-00:00</lastmod>
+<lastmod>2024-06-21T00:32:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/blog/2024/06/19/extract-ze-files</loc>
+<loc>https://tpwo.github.io/blog/2024/06/19/xtract-ze-files</loc>
 <lastmod>2024-06-19T19:45:00+02:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
