@@ -4,9 +4,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>tpwo.github.io - tips</title>
+        <title>Python debugging 101: pdb</title>
         <link rel="stylesheet" href="https://tpwo.github.io/theme/css/main.css" />
         <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+        <meta name="description" content="Overviewpdb is a simple debugger that comes by default with Python. There are many more advanced alternatives like pudb or ipdb, but pdb is always..." />
 </head>
 
 <body id="index" class="home">
@@ -14,13 +15,18 @@
                 <h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1>
                 <nav><ul>
                     <li><a href="https://tpwo.github.io/category/posts.html">posts</a></li>
-                    <li><a href="https://tpwo.github.io/category/tech.html">tech</a></li>
+                    <li class="active"><a href="https://tpwo.github.io/category/tech.html">tech</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb" rel="bookmark"
+           title="Permalink to Python debugging 101: pdb">Python debugging 101: pdb</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb">Python debugging 101: pdb</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2024-06-19T20:12:00+02:00">
                 Published: Wednesday, 2024-06-19
@@ -35,7 +41,7 @@
         </address>
 <p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
 <p>tags: <a href="https://tpwo.github.io/tag/python.html">python</a> <a href="https://tpwo.github.io/tag/tips.html">tips</a> <a href="https://tpwo.github.io/tag/cli.html">cli</a> </p>
-</footer><!-- /.post-info --><section class="doc-section level-1"><h2 id="_overview">Overview</h2><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
+</footer><!-- /.post-info -->      <section class="doc-section level-1"><h2 id="_overview">Overview</h2><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
 <p><code>breakpoint()</code> was introduced in Python 3.7. Before that, import of <code>pdb</code> and calling a function that creates a breakpoint is required.</p></section>
 <section class="doc-section level-1"><h2 id="_pdb_commands"><code>pdb</code> commands</h2><div class="ulist"><ul><li><code>h</code> / <code>help</code>&#8201;&#8211;&#8201;display available commands</li><li><code>c</code> / <code>continue</code>&#8201;&#8211;&#8201;continue running the code until the end</li><li><code>q</code> / <code>quit</code>&#8201;&#8211;&#8201;quit program by raising <code>BdbQuit</code> exception</li></ul></div>
 <section class="doc-section level-2"><h3 id="_l_list"><code>l</code> / <code>list</code></h3><p>Prints lines of code around the line that is <strong>about to be run</strong> (marked with an arrow).  Pressing enter will list even more file. <code>list .</code> will reset the view to the original (i.e. some lines before and after a line with arrow).</p></section>
@@ -50,37 +56,11 @@
 <section class="doc-section level-2"><h3 id="_r_return"><code>r</code> / <code>return</code></h3><p>Goes directly to the return statement of the current function. Useful to quickly exit functions that we are not interested in debugging.</p></section></section>
 <section class="doc-section level-1"><h2 id="_summary">Summary</h2><p>There are a lot of more features that can be used, e.g. creating breakpoints from <code>pdb</code>, but above I described the basics that should be useful most of the time.</p>
 <p>For conditional breakpoints you can use Python <code>if</code> and hide breakpoint under a certain condition.</p>
-<p>I really recommend <a href="https://youtu.be/0LPuG825eAk">this video from Anthony Sottile</a> if you want to learn more and see how to use <code>pdb</code> in practice.</p></section>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>I really recommend <a href="https://youtu.be/0LPuG825eAk">this video from Anthony Sottile</a> if you want to learn more and see how to use <code>pdb</code> in practice.</p></section>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files" rel="bookmark"
-                           title="Permalink to Xtract Ze Files!">Xtract Ze Files!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-06-19T19:45:00+02:00">
-                Published: Wednesday, 2024-06-19
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-        </address>
-<p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
-<p>tags: <a href="https://tpwo.github.io/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info -->                <p>It&#8217;s a neat way to remember <code>tar</code> flags. <mark>X</mark>tract <mark>Z</mark>e <mark>F</mark>iles!</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nb">tar</span> <span class="nt">-xzf</span> &lt;myarchive&gt;.tar.gz</code></pre></div>
-                <a class="readmore" href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
