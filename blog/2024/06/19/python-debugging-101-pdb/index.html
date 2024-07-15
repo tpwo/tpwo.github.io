@@ -7,7 +7,7 @@
         <title>Python debugging 101: pdb</title>
         <link rel="stylesheet" href="https://tpwo.github.io/theme/css/main.css" />
         <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
-        <meta name="description" content="Overviewpdb is a simple debugger that comes by default with Python. There are many more advanced alternatives like pudb or ipdb, but pdb is always..." />
+        <meta name="description" content="pdb is a simple debugger that comes by default with Python. There are many more advanced alternatives like pudb or ipdb, but pdb is always..." />
 </head>
 
 <body id="index" class="home">
@@ -41,7 +41,7 @@
         </address>
 <p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
 <p>tags: <a href="https://tpwo.github.io/tag/python.html">python</a> <a href="https://tpwo.github.io/tag/tips.html">tips</a> <a href="https://tpwo.github.io/tag/cli.html">cli</a> </p>
-</footer><!-- /.post-info -->      <section class="doc-section level-1"><h2 id="_overview">Overview</h2><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
+</footer><!-- /.post-info -->      <section id="preamble" aria-label="Preamble"><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
 <p><code>breakpoint()</code> was introduced in Python 3.7. Before that, import of <code>pdb</code> and calling a function that creates a breakpoint is required.</p></section>
 <section class="doc-section level-1"><h2 id="_pdb_commands"><code>pdb</code> commands</h2><div class="ulist"><ul><li><code>h</code> / <code>help</code>&#8201;&#8211;&#8201;display available commands</li><li><code>c</code> / <code>continue</code>&#8201;&#8211;&#8201;continue running the code until the end</li><li><code>q</code> / <code>quit</code>&#8201;&#8211;&#8201;quit program by raising <code>BdbQuit</code> exception</li></ul></div>
 <section class="doc-section level-2"><h3 id="_l_list"><code>l</code> / <code>list</code></h3><p>Prints lines of code around the line that is <strong>about to be run</strong> (marked with an arrow).  Pressing enter will list even more file. <code>list .</code> will reset the view to the original (i.e. some lines before and after a line with arrow).</p></section>
