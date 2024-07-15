@@ -4,9 +4,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>tpwo.github.io - tech</title>
+        <title>Python integration tests with pytest and docker compose</title>
         <link rel="stylesheet" href="https://tpwo.github.io/theme/css/main.css" />
         <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+        <meta name="description" content="I really like pytest. It’s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite..." />
 </head>
 
 <body id="index" class="home">
@@ -17,10 +18,15 @@
                     <li class="active"><a href="https://tpwo.github.io/category/tech.html">tech</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose" rel="bookmark"
+           title="Permalink to Python integration tests with pytest and docker compose">Python integration tests with pytest and docker compose</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose">Python integration tests with pytest and docker compose</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2024-07-15T22:48:00+02:00">
                 Published: Monday, 2024-07-15
@@ -31,7 +37,7 @@
         </address>
 <p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
 <p>tags: <a href="https://tpwo.github.io/tag/python.html">python</a> <a href="https://tpwo.github.io/tag/docker.html">docker</a> <a href="https://tpwo.github.io/tag/testing.html">testing</a> </p>
-</footer><!-- /.post-info --><section id="preamble" aria-label="Preamble"><p>I really like <a href="https://docs.pytest.org/">pytest</a>. It&#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.</p>
+</footer><!-- /.post-info -->      <section id="preamble" aria-label="Preamble"><p>I really like <a href="https://docs.pytest.org/">pytest</a>. It&#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.</p>
 <p>Recently, I experimented with using pytest fixture to create a simple integration test skeleton which integrates docker.</p></section>
 <section class="doc-section level-1"><h2 id="_fixtures">Fixtures</h2><p>Fixtures in pytest are a way to request for something in the test code. There are two basic types of fixtures.<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a></p>
 <div class="ulist"><ul><li><code>return</code> fixtures which provide a certain value or object<ul><li>This means we execute some code before requesting a fixture</li></ul></li><li><code>yield</code> fixtures which provide a certain state<ul><li>This means we execute some code before <strong>and after</strong> requesting a fixture</li></ul></li></ul></div>
@@ -76,37 +82,11 @@
 <p>I chose to rename the file with integration tests to <code>integration.py</code> which I put in <code>tests</code> folder along with other test files. This works fine on a small-scale project. In a bigger project, I&#8217;d probably create a separate folder in <code>tests</code> or maybe create a new top level folder like <code>integration_tests</code>.</p>
 <p>With the simple approach running these tests is a simple <code>pytest tests/integration.py</code>, which I put under <code>Makefile</code> target <code>integration-tests</code>. This way I can type <code>make i</code> and let tab-completion do the rest for me.</p>
 <p>In CI, I&#8217;m running them in the same job as unit tests, directly after them, as I assume that it doesn&#8217;t make sense to run costly integration tests if any of my unit tests is failing (even if GitHub pays for my CI 😛).</p>
-<p>You can see the actual implementation in my <a href="https://github.com/tpwo/event-scrapper-srt/blob/1de160463e0c02c49efb6a932213cf75ea112a5e/tests/integration.py">event-scrapper-srt</a> project.</p></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">To understand how they work <a href="https://youtu.be/ScEQRKwUePI">here&#8217;s a great video from Anthony Sottile about it</a> <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>You can see the actual implementation in my <a href="https://github.com/tpwo/event-scrapper-srt/blob/1de160463e0c02c49efb6a932213cf75ea112a5e/tests/integration.py">event-scrapper-srt</a> project.</p></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">To understand how they work <a href="https://youtu.be/ScEQRKwUePI">here&#8217;s a great video from Anthony Sottile about it</a> <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files" rel="bookmark"
-                           title="Permalink to Xtract Ze Files!">Xtract Ze Files!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-06-19T19:45:00+02:00">
-                Published: Wednesday, 2024-06-19
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-        </address>
-<p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
-<p>tags: <a href="https://tpwo.github.io/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info -->                <p>It&#8217;s a neat way to remember <code>tar</code> flags. <mark>X</mark>tract <mark>Z</mark>e <mark>F</mark>iles!</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nb">tar</span> <span class="nt">-xzf</span> &lt;myarchive&gt;.tar.gz</code></pre></div>
-                <a class="readmore" href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

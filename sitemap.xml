@@ -5,37 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/</loc>
-<lastmod>2024-06-21T01:02:52-00:00</lastmod>
+<lastmod>2024-07-15T22:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/tags.html</loc>
-<lastmod>2024-06-21T01:02:52-00:00</lastmod>
+<lastmod>2024-07-15T22:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/categories.html</loc>
-<lastmod>2024-06-21T01:02:52-00:00</lastmod>
+<lastmod>2024-07-15T22:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/authors.html</loc>
-<lastmod>2024-06-21T01:02:52-00:00</lastmod>
+<lastmod>2024-07-15T22:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/archives.html</loc>
-<lastmod>2024-06-21T01:02:52-00:00</lastmod>
+<lastmod>2024-07-15T22:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose</loc>
+<lastmod>2024-07-15T22:48:00+02:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -47,21 +54,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/blog/2024/06/05/hello-world</loc>
-<lastmod>2024-06-05T23:53:00+02:00</lastmod>
+<lastmod>2024-07-15T22:51:00+02:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/category/posts.html</loc>
-<lastmod>2024-06-05T23:53:00+01:24</lastmod>
+<lastmod>2024-07-15T22:51:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/category/tech.html</loc>
-<lastmod>2024-06-19T19:45:00+01:24</lastmod>
+<lastmod>2024-07-15T22:48:00+01:24</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/tag/python.html</loc>
+<lastmod>2024-07-15T22:48:00+01:24</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/tag/docker.html</loc>
+<lastmod>2024-07-15T22:48:00+01:24</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/tag/testing.html</loc>
+<lastmod>2024-07-15T22:48:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
@@ -75,7 +103,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/author/tpwo.html</loc>
-<lastmod>2024-06-19T19:45:00+01:24</lastmod>
+<lastmod>2024-07-15T22:51:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
