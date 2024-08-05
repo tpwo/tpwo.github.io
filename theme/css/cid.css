@@ -246,6 +246,16 @@ body iframe {
   display: block;
 }
 
+img.left, figure.left, div.figure.align-left {
+  float: left;
+  margin: 0 2em 2em 0;
+}
+
+img.right, figure.right, div.figure.align-right {
+  float: left;
+  margin: 0 2em 2em 0;
+}
+
 .disclaimer {
   text-align: center;
   font-size: 0.8em;
