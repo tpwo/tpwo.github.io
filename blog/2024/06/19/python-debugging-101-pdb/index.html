@@ -1,40 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-          <title>tpwo.github.io - Python debugging 101: pdb</title>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A personal blog" />
-        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Full Atom Feed" />
-        <link href="https://tpwo.github.io/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Categories Atom Feed" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Python debugging 101: pdb
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 
+            <div class="container">
 
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p> A personal blog </p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+    </nav>
+</header>
 
+    <div class="post">
 
-    <meta name="tags" content="python" />
-    <meta name="tags" content="tips" />
-    <meta name="tags" content="cli" />
-
-</head>
-
-<body>
         <header>
-              <hgroup><h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1><p>A personal blog</p></hgroup>
-        <nav><ul>
-            <li><a href="https://tpwo.github.io/category/posts.html" >posts</a></li>
-            <li><a href="https://tpwo.github.io/category/tech.html"  aria-current="page" >tech</a></li>
-        </ul></nav>
+            <h1>Python debugging 101: pdb</h1>
+            <p class="date">Written on <time datetime="2024-06-19T20:12:00+02:00">Jun 19, 2024</time></p>
         </header>
-        <main>
-<article>
-  <header>
-    <h2>
-      <a href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb" rel="bookmark"
-         title="Permalink to Python debugging 101: pdb">Python debugging 101: pdb</a></h2>
- 
-  </header>
-  <section id="preamble" aria-label="Preamble"><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
+
+        <article>
+            <section id="preamble" aria-label="Preamble"><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
 <p><code>breakpoint()</code> was introduced in Python 3.7. Before that, import of <code>pdb</code> and calling a function that creates a breakpoint is required.</p></section>
 <section class="doc-section level-1"><h2 id="_pdb_commands"><code>pdb</code> commands</h2><div class="ulist"><ul><li><code>h</code> / <code>help</code>&#8201;&#8211;&#8201;display available commands</li><li><code>c</code> / <code>continue</code>&#8201;&#8211;&#8201;continue running the code until the end</li><li><code>q</code> / <code>quit</code>&#8201;&#8211;&#8201;quit program by raising <code>BdbQuit</code> exception</li></ul></div>
 <section class="doc-section level-2"><h3 id="_l_list"><code>l</code> / <code>list</code></h3><p>Prints lines of code around the line that is <strong>about to be run</strong> (marked with an arrow).  Pressing enter will list even more file. <code>list .</code> will reset the view to the original (i.e. some lines before and after a line with arrow).</p></section>
@@ -50,33 +53,41 @@
 <section class="doc-section level-1"><h2 id="_summary">Summary</h2><p>There are a lot of more features that can be used, e.g. creating breakpoints from <code>pdb</code>, but above I described the basics that should be useful most of the time.</p>
 <p>For conditional breakpoints you can use Python <code>if</code> and hide breakpoint under a certain condition.</p>
 <p>I really recommend <a href="https://youtu.be/0LPuG825eAk">this video from Anthony Sottile</a> if you want to learn more and see how to use <code>pdb</code> in practice.</p></section>
-  <footer>
-    <p>Published: <time datetime="2024-06-19T20:12:00+02:00">
-      Wednesday, 2024-06-19
-    </time></p>
-    <p>Last updated: <time datetime="2024-07-15T23:50:00+02:00">
-      Monday, 2024-07-15
-    </time></p>
-    <address>
-      By           <a href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-    </address>
-    <p>
-        Category: <a href="https://tpwo.github.io/category/tech.html">tech</a>
-    </p>
-    <p>
-        Tags:
-            <a href="https://tpwo.github.io/tag/python.html">python</a>
-            <a href="https://tpwo.github.io/tag/tips.html">tips</a>
-            <a href="https://tpwo.github.io/tag/cli.html">cli</a>
-    </p>
-  </footer>
-  </article>
-        </main>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
         <footer>
-                <address>
-                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
-                </address>
+            <p>This entry is posted in <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
         </footer>
-</body>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2024
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
 </html>

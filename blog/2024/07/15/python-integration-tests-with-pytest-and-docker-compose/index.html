@@ -1,40 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-          <title>tpwo.github.io - Python integration tests with pytest and docker compose</title>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A personal blog" />
-        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Full Atom Feed" />
-        <link href="https://tpwo.github.io/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Categories Atom Feed" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Python integration tests with pytest and docker compose
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 
+            <div class="container">
 
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p> A personal blog </p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+    </nav>
+</header>
 
+    <div class="post">
 
-    <meta name="tags" content="python" />
-    <meta name="tags" content="docker" />
-    <meta name="tags" content="testing" />
-
-</head>
-
-<body>
         <header>
-              <hgroup><h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1><p>A personal blog</p></hgroup>
-        <nav><ul>
-            <li><a href="https://tpwo.github.io/category/posts.html" >posts</a></li>
-            <li><a href="https://tpwo.github.io/category/tech.html"  aria-current="page" >tech</a></li>
-        </ul></nav>
+            <h1>Python integration tests with pytest and docker compose</h1>
+            <p class="date">Written on <time datetime="2024-07-15T22:48:00+02:00">Jul 15, 2024</time></p>
         </header>
-        <main>
-<article>
-  <header>
-    <h2>
-      <a href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose" rel="bookmark"
-         title="Permalink to Python integration tests with pytest and docker compose">Python integration tests with pytest and docker compose</a></h2>
- 
-  </header>
-  <section id="preamble" aria-label="Preamble"><p>I really like <a href="https://docs.pytest.org/">pytest</a>. It&#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.</p>
+
+        <article>
+            <section id="preamble" aria-label="Preamble"><p>I really like <a href="https://docs.pytest.org/">pytest</a>. It&#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.</p>
 <p>Recently, I experimented with using pytest fixture to create a simple integration test skeleton which integrates docker.</p></section>
 <section class="doc-section level-1"><h2 id="_fixtures">Fixtures</h2><p>Fixtures in pytest are a way to request for something in the test code. There are two basic types of fixtures.<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a></p>
 <div class="ulist"><ul><li><code>return</code> fixtures which provide a certain value or object<ul><li>This means we execute some code before requesting a fixture</li></ul></li><li><code>yield</code> fixtures which provide a certain state<ul><li>This means we execute some code before <strong>and after</strong> requesting a fixture</li></ul></li></ul></div>
@@ -80,30 +83,41 @@
 <p>With the simple approach running these tests is a simple <code>pytest tests/integration.py</code>, which I put under <code>Makefile</code> target <code>integration-tests</code>. This way I can type <code>make i</code> and let tab-completion do the rest for me.</p>
 <p>In CI, I&#8217;m running them in the same job as unit tests, directly after them, as I assume that it doesn&#8217;t make sense to run costly integration tests if any of my unit tests is failing (even if GitHub pays for my CI 😛).</p>
 <p>You can see the actual implementation in my <a href="https://github.com/tpwo/event-scrapper-srt/blob/1de160463e0c02c49efb6a932213cf75ea112a5e/tests/integration.py">event-scrapper-srt</a> project.</p></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">To understand how they work <a href="https://youtu.be/ScEQRKwUePI">here&#8217;s a great video from Anthony Sottile about it</a> <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
-  <footer>
-    <p>Published: <time datetime="2024-07-15T22:48:00+02:00">
-      Monday, 2024-07-15
-    </time></p>
-    <address>
-      By           <a href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-    </address>
-    <p>
-        Category: <a href="https://tpwo.github.io/category/tech.html">tech</a>
-    </p>
-    <p>
-        Tags:
-            <a href="https://tpwo.github.io/tag/python.html">python</a>
-            <a href="https://tpwo.github.io/tag/docker.html">docker</a>
-            <a href="https://tpwo.github.io/tag/testing.html">testing</a>
-    </p>
-  </footer>
-  </article>
-        </main>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
         <footer>
-                <address>
-                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
-                </address>
+            <p>This entry is posted in <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
         </footer>
-</body>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2024
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
 </html>
