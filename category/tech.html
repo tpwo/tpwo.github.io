@@ -1,173 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <title>tpwo.github.io - tech category</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>tpwo.github.io - tech</title>
-        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/main.css" />
-        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A personal blog" />
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Full Atom Feed" />
+        <link href="https://tpwo.github.io/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Categories Atom Feed" />
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1>
-                <nav><ul>
-                    <li><a href="https://tpwo.github.io/category/posts.html">posts</a></li>
-                    <li class="active"><a href="https://tpwo.github.io/category/tech.html">tech</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose">Python integration tests with pytest and docker compose</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2024-07-15T22:48:00+02:00">
-                Published: Monday, 2024-07-15
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-        </address>
-<p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
-<p>tags: <a href="https://tpwo.github.io/tag/python.html">python</a> <a href="https://tpwo.github.io/tag/docker.html">docker</a> <a href="https://tpwo.github.io/tag/testing.html">testing</a> </p>
-</footer><!-- /.post-info --><section id="preamble" aria-label="Preamble"><p>I really like <a href="https://docs.pytest.org/">pytest</a>. It&#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.</p>
-<p>Recently, I experimented with using pytest fixture to create a simple integration test skeleton which integrates docker.</p></section>
-<section class="doc-section level-1"><h2 id="_fixtures">Fixtures</h2><p>Fixtures in pytest are a way to request for something in the test code. There are two basic types of fixtures.<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a></p>
-<div class="ulist"><ul><li><code>return</code> fixtures which provide a certain value or object<ul><li>This means we execute some code before requesting a fixture</li></ul></li><li><code>yield</code> fixtures which provide a certain state<ul><li>This means we execute some code before <strong>and after</strong> requesting a fixture</li></ul></li></ul></div>
-<p>In this case the latter is be needed, as we want to perform the test in a state when docker container is running. This way we can startup a docker container and clean it up regardless of the test results.</p>
-<p>I&#8217;m using <code>docker compose</code>, as it provides more flexibility and it&#8217;s cleaner than CLI flags for pure <code>docker</code>. I&#8217;d use it even when you have only a single container, as overhead is minimal.</p></section>
-<section class="doc-section level-1"><h2 id="_implementation">Implementation</h2><p>You can see the test file skeleton here.</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="n">shutil</span>
-<span class="kn">import</span> <span class="n">subprocess</span>
-<span class="kn">import</span> <span class="n">time</span>
-
-<span class="kn">import</span> <span class="n">pytest</span>
+<body>
+        <header>
+              <hgroup><h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1><p>A personal blog</p></hgroup>
+        <nav><ul>
+            <li><a href="https://tpwo.github.io/category/posts.html" >posts</a></li>
+            <li><a href="https://tpwo.github.io/category/tech.html"  aria-current="page" >tech</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<h2>Articles in the tech category</h2>
 
 
-<span class="k">def</span> <span class="nf">tested_function</span><span class="p">():</span>
-    <span class="bp">...</span>
+        <article>
+                <header> <h2><a href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose" rel="bookmark" title="Permalink to Python integration tests with pytest and docker compose">Python integration tests with pytest and docker compose</a></h2> </header>
+                <section><section id="preamble" aria-label="Preamble"><p>I really like <a href="https://docs.pytest.org/">pytest</a>. It&#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.</p>
+<p>Recently …</p></section></section>
+                <footer>
+                    <p>Published: <time datetime="2024-07-15T22:48:00+02:00"> Monday, 2024-07-15 </time></p>
+                    <address>By
+                        <a href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
+                    </address>
+                </footer>
+        </article>
+        <article>
+                <header> <h2><a href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb" rel="bookmark" title="Permalink to Python debugging 101: pdb">Python debugging 101: pdb</a></h2> </header>
+                <section><section id="preamble" aria-label="Preamble"><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
+<p><code>breakpoint()</code> was introduced in Python 3.7. Before that, import of <code>pdb</code> and calling a …</p></section></section>
+                <footer>
+                    <p>Published: <time datetime="2024-06-19T20:12:00+02:00"> Wednesday, 2024-06-19 </time></p>
+                    <address>By
+                        <a href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
+                    </address>
+                </footer>
+        </article>
+        <article>
+                <header> <h2><a href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files" rel="bookmark" title="Permalink to Xtract Ze Files!">Xtract Ze Files!</a></h2> </header>
+                <section><p>It&#8217;s a neat way to remember <code>tar</code> flags. <mark>X</mark>tract <mark>Z</mark>e <mark>F</mark>iles!</p>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nb">tar</span> <span class="nt">-xzf</span> &lt;myarchive&gt;.tar.gz</code></pre></div></section>
+                <footer>
+                    <p>Published: <time datetime="2024-06-19T19:45:00+02:00"> Wednesday, 2024-06-19 </time></p>
+                    <address>By
+                        <a href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
+                    </address>
+                </footer>
+        </article>
 
 
-<span class="nd">@pytest.fixture</span>
-<span class="k">def</span> <span class="nf">docker_container</span><span class="p">():</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span>
-        <span class="p">(</span><span class="sh">'</span><span class="s">docker</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">compose</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">--file</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">testing/docker-compose.yml</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">up</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">--detach</span><span class="sh">'</span><span class="p">),</span>
-        <span class="n">check</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="k">yield</span> <span class="n">out</span>
-    <span class="n">subprocess</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span>
-        <span class="p">(</span><span class="sh">'</span><span class="s">docker</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">compose</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">--file</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">testing/docker-compose.yml</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">down</span><span class="sh">'</span><span class="p">),</span>
-        <span class="n">check</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">test_integration</span><span class="p">(</span><span class="n">docker_container</span><span class="p">):</span>
-    <span class="n">actual</span> <span class="o">=</span> <span class="nf">tested_function</span><span class="p">()</span>
-    <span class="n">expected</span> <span class="o">=</span> <span class="sh">'</span><span class="s">&lt;expected output&gt;</span><span class="sh">'</span>
-    <span class="k">assert</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span></code></pre></div>
-<p>The flow is quite simple here:</p>
-<div class="ulist"><ul><li><code>test_integration</code> function starts</li><li>It requests <code>docker_container</code>, so the fixture function starts</li><li>We reach <code>yield</code> in <code>docker_container</code> and go back to the test function</li><li><code>docker_container</code> value in <code>test_integration</code> is a return value of <code>subprocess.run</code> from the fixture<ul><li>I&#8217;m not using it in this example</li></ul></li><li>Test code is run up to the end</li><li>Either if any exception is thrown or if the test code finished, we go back to the fixture and execute rest of the code<ul><li>In this case it&#8217;s <code>docker compose down</code></li></ul></li></ul></div>
-<p>The biggest drawback of this approach is <code>time.sleep</code>, as <code>out</code> is returned when <code>docker compose up</code> starts running, and it doesn&#8217;t mean that the container is ready for the test. Depending on your use case you would need less or even more time here.</p>
-<p>A smarter approach would be getting the container notify the code that it&#8217;s ready in an event-driven fashion, The presented solution is currently enough for my use case, even though it might be quite limiting if we want to scale it and run multiple test cases.</p>
-<p>But for my use case this was good enough, so I stopped here, and maybe I&#8217;ll expand it in the future.</p></section>
-<section class="doc-section level-1"><h2 id="_integration">Integration</h2><p>By default pytest picks up all files which are named <code>test_*.py</code> or <code>*_test.py</code>. As integration tests are quite longer than unit tests, we don&#8217;t want them to be run each time along with unit tests.</p>
-<p>I chose to rename the file with integration tests to <code>integration.py</code> which I put in <code>tests</code> folder along with other test files. This works fine on a small-scale project. In a bigger project, I&#8217;d probably create a separate folder in <code>tests</code> or maybe create a new top level folder like <code>integration_tests</code>.</p>
-<p>With the simple approach running these tests is a simple <code>pytest tests/integration.py</code>, which I put under <code>Makefile</code> target <code>integration-tests</code>. This way I can type <code>make i</code> and let tab-completion do the rest for me.</p>
-<p>In CI, I&#8217;m running them in the same job as unit tests, directly after them, as I assume that it doesn&#8217;t make sense to run costly integration tests if any of my unit tests is failing (even if GitHub pays for my CI 😛).</p>
-<p>You can see the actual implementation in my <a href="https://github.com/tpwo/event-scrapper-srt/blob/1de160463e0c02c49efb6a932213cf75ea112a5e/tests/integration.py">event-scrapper-srt</a> project.</p></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">To understand how they work <a href="https://youtu.be/ScEQRKwUePI">here&#8217;s a great video from Anthony Sottile about it</a> <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb" rel="bookmark"
-                           title="Permalink to Python debugging 101: pdb">Python debugging 101: pdb</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-06-19T20:12:00+02:00">
-                Published: Wednesday, 2024-06-19
-        </abbr>
-		<br />
-        <abbr class="modified" title="2024-07-15T23:50:00+02:00">
-                Updated: Monday, 2024-07-15
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-        </address>
-<p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
-<p>tags: <a href="https://tpwo.github.io/tag/python.html">python</a> <a href="https://tpwo.github.io/tag/tips.html">tips</a> <a href="https://tpwo.github.io/tag/cli.html">cli</a> </p>
-</footer><!-- /.post-info -->                <section id="preamble" aria-label="Preamble"><p><code>pdb</code> is a simple debugger that comes by default with Python. There are many more advanced alternatives like <code>pudb</code> or <code>ipdb</code>, but <code>pdb</code> is always available out of the box which is a big plus.</p>
-<p><code>breakpoint()</code> was introduced in Python 3.7. Before that, import of <code>pdb</code> and calling a …</p></section>
-                <a class="readmore" href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files" rel="bookmark"
-                           title="Permalink to Xtract Ze Files!">Xtract Ze Files!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-06-19T19:45:00+02:00">
-                Published: Wednesday, 2024-06-19
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://tpwo.github.io/author/tpwo.html">tpwo</a>
-        </address>
-<p>In <a href="https://tpwo.github.io/category/tech.html">tech</a>.</p>
-<p>tags: <a href="https://tpwo.github.io/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info -->                <p>It&#8217;s a neat way to remember <code>tar</code> flags. <mark>X</mark>tract <mark>Z</mark>e <mark>F</mark>iles!</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nb">tar</span> <span class="nt">-xzf</span> &lt;myarchive&gt;.tar.gz</code></pre></div>
-                <a class="readmore" href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="https://github.com/tpwo/">GitHub</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YTXP99N6VP');
-</script>
-
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
 </body>
 </html>
