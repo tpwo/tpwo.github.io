@@ -5,37 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/</loc>
-<lastmod>2024-08-05T23:33:42-00:00</lastmod>
+<lastmod>2024-08-13T01:07:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/tags.html</loc>
-<lastmod>2024-08-05T23:33:42-00:00</lastmod>
+<lastmod>2024-08-13T01:07:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/categories.html</loc>
-<lastmod>2024-08-05T23:33:42-00:00</lastmod>
+<lastmod>2024-08-13T01:07:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/authors.html</loc>
-<lastmod>2024-08-05T23:33:42-00:00</lastmod>
+<lastmod>2024-08-13T01:07:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/archives.html</loc>
-<lastmod>2024-08-05T23:33:42-00:00</lastmod>
+<lastmod>2024-08-13T01:07:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024</loc>
+<lastmod>2024-08-12T23:12:00+02:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -68,7 +75,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/category/posts.html</loc>
-<lastmod>2024-07-15T22:51:00+01:24</lastmod>
+<lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
@@ -76,6 +83,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://tpwo.github.io/category/tech.html</loc>
 <lastmod>2024-07-15T23:50:00+01:24</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/tag/tech.html</loc>
+<lastmod>2024-08-12T23:12:00+01:24</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://tpwo.github.io/tag/gaming.html</loc>
+<lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
@@ -117,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/author/tpwo.html</loc>
-<lastmod>2024-07-15T23:50:00+01:24</lastmod>
+<lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
