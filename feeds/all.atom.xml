@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-08-12T23:12:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Playing Super Mario World in 2024</title><link href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024" rel="alternate"></link><published>2024-08-12T23:12:00+02:00</published><updated>2024-08-12T23:12:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-08-12:/blog/2024/08/12/playing-super-mario-world-in-2024</id><summary type="html">How to run it on modern platforms in widescreen mode</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Super_Mario_World"&gt;Super Mario World&lt;/a&gt; is one of my childhood games I remember really well. It was released in 1990 but recently I found out that we can still play it today on modern platforms with widescreen support enabled!&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-08-12T23:12:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Playing Super Mario World in 2024</title><link href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024" rel="alternate"></link><published>2024-08-12T23:12:00+02:00</published><updated>2024-08-12T23:12:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-08-12:/blog/2024/08/12/playing-super-mario-world-in-2024</id><summary type="html">How to run it on modern platforms in widescreen mode</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Super_Mario_World"&gt;Super Mario World&lt;/a&gt;
+is one of my childhood games I remember really well.
+It was released in 1990 but recently I found out
+that we can still play it today on modern platforms
+with widescreen support enabled!&lt;/p&gt;
 &lt;div class="image-block left"&gt;&lt;img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/cover.png" alt="FLIPS patcher"&gt;&lt;/div&gt;
-&lt;p&gt;The base to do it is &lt;a href="https://github.com/bsnes-emu/bsnes"&gt;bsnes&lt;/a&gt;, a multi-platform SNES emulator. There is a fork of it which supports HD video features called &lt;a href="https://github.com/DerKoun/bsnes-hd"&gt;bsnes-hd&lt;/a&gt;, and we&amp;#8217;ll be using it.&lt;/p&gt;
-&lt;p&gt;Super Mario World Widescreen project is a fan-made patch which can be found in &lt;a href="https://github.com/VitorVilela7/wide-snes"&gt;wide-snes&lt;/a&gt; GitHub repo.&lt;/p&gt;
-&lt;p&gt;We also need a patcher. According to &lt;a href="https://sneslab.net/wiki/How_to_apply_ROM_patches"&gt;sneslab.net manual&lt;/a&gt; we can use either FLIPS or beam. They host FLIPS directly on their site: &lt;a class="bare" href="https://sneslab.net/tools/floating.zip"&gt;https://sneslab.net/tools/floating.zip&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Now, the only missing piece is ROM with the original game. I found a copy of it on &lt;a href="https://archive.org/details/super-mario-world-usa_20230925"&gt;archive.org&lt;/a&gt; which seems to be a pretty reasonable source. If it&amp;#8217;s there, Nintendo probably doesn&amp;#8217;t have anything against it, or at least no longer cares.&lt;/p&gt;
-&lt;p&gt;Internet Archive hosts multiple files under the linked project, but we care only about a zip which contains the &lt;code&gt;sfc&lt;/code&gt; file with the actual game.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_patching_the_rom"&gt;Patching the ROM&lt;/h2&gt;&lt;p&gt;After downloading the files, you should have something like this (we&amp;#8217;re skipping emulator for now):&lt;/p&gt;
+&lt;p&gt;The base to do it is
+&lt;a href="https://github.com/bsnes-emu/bsnes"&gt;bsnes&lt;/a&gt;,
+a multi-platform SNES emulator.
+There is a fork of it
+which supports HD video features called
+&lt;a href="https://github.com/DerKoun/bsnes-hd"&gt;bsnes-hd&lt;/a&gt;,
+and we&amp;#8217;ll be using it.&lt;/p&gt;
+&lt;p&gt;Super Mario World Widescreen project is a fan-made patch
+which can be found in
+&lt;a href="https://github.com/VitorVilela7/wide-snes"&gt;wide-snes&lt;/a&gt;
+GitHub repo.&lt;/p&gt;
+&lt;p&gt;We also need a patcher.
+According to
+&lt;a href="https://sneslab.net/wiki/How_to_apply_ROM_patches"&gt;sneslab.net manual&lt;/a&gt;
+we can use either FLIPS or beam.
+They host FLIPS directly on their site:
+&lt;a class="bare" href="https://sneslab.net/tools/floating.zip"&gt;https://sneslab.net/tools/floating.zip&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now, the only missing piece is ROM with the original game.
+I found a copy of it on
+&lt;a href="https://archive.org/details/super-mario-world-usa_20230925"&gt;archive.org&lt;/a&gt;
+which seems to be a pretty reasonable source.
+If it&amp;#8217;s there,
+Nintendo probably doesn&amp;#8217;t have anything against it,
+or at least no longer cares.&lt;/p&gt;
+&lt;p&gt;Internet Archive hosts multiple files under the linked project,
+but we care only about a zip which contains the &lt;code&gt;sfc&lt;/code&gt; file with the actual game.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_patching_the_rom"&gt;Patching the ROM&lt;/h2&gt;&lt;p&gt;After downloading the files,
+you should have something like this
+(we&amp;#8217;re skipping emulator for now):&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;├── smw-widescreen.bps           &lt;b class="conum"&gt;1&lt;/b&gt;
 ├── Super Mario World (USA).sfc  &lt;b class="conum"&gt;2&lt;/b&gt;
 └── floating
@@ -16,27 +43,67 @@
     ├── license.txt
     └── src.zip&lt;/pre&gt;&lt;ol class="callout-list arabic"&gt;&lt;li&gt;Patch file&lt;/li&gt;&lt;li&gt;ROM file&lt;/li&gt;&lt;li&gt;FLIPS patcher&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;
 
-&lt;p&gt;Run FLIPS and click &lt;code&gt;Apply Patch&lt;/code&gt;. At first it asks you for the patch file, then for the ROM file, and then for the filename to save the patched ROM.&lt;/p&gt;
+&lt;p&gt;Run FLIPS &amp;lt;3&amp;gt; and click &lt;code&gt;Apply Patch&lt;/code&gt;.
+At first it asks you for the patch file,
+then for the ROM file,
+and then for the filename to save the patched ROM.&lt;/p&gt;
 &lt;div class="image-block left"&gt;&lt;img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/flips.png" alt="FLIPS patcher"&gt;&lt;/div&gt;
 &lt;p&gt;You can notice that the patched file is twice the size of the original:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="shell"&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;du&lt;/span&gt; &lt;span class="nt"&gt;-sh&lt;/span&gt; &lt;span class="k"&gt;*&lt;/span&gt;
 1.0M    Super Mario World &lt;span class="o"&gt;(&lt;/span&gt;USA&lt;span class="o"&gt;)&lt;/span&gt; Widescreen Project.sfc
 512K    Super Mario World &lt;span class="o"&gt;(&lt;/span&gt;USA&lt;span class="o"&gt;)&lt;/span&gt;.sfc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_creating_widescreen_configuration_file"&gt;Creating widescreen configuration file&lt;/h2&gt;&lt;p&gt;&lt;code&gt;bsnes-hd&lt;/code&gt; requires a &lt;code&gt;bso&lt;/code&gt; configuration file in order to correctly run the game in a widescreen mode. Thankfully, you don&amp;#8217;t have to download it, as the file is very short and simple, and you can create it with this command:&lt;/p&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_creating_widescreen_configuration_file"&gt;Creating widescreen configuration file&lt;/h2&gt;&lt;p&gt;&lt;code&gt;bsnes-hd&lt;/code&gt; requires a &lt;code&gt;bso&lt;/code&gt; configuration file
+in order to correctly run the game in a widescreen mode.
+Thankfully, you don&amp;#8217;t have to download it,
+as the file is very short and simple,
+and you can create it with this command:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="shell"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;'w1s1W48S2i0o1p1b1B1c1'&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'Super Mario World (USA) Widescreen Project.bso'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The content of the file is taken from &lt;a href="https://github.com/VitorVilela7/wide-snes/blob/master/smw-widescreen.bso"&gt;wide-snes GitHub repo&lt;/a&gt;. I guess it uses special quirky syntax to tell the emulator how it should behave when dealing with the patched ROM.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_running_the_game"&gt;Running the game&lt;/h2&gt;&lt;p&gt;Now, you can unzip &lt;code&gt;bsnes-hd&lt;/code&gt; and run it. To make the game look better, &lt;strong&gt;make sure to select&lt;/strong&gt; &lt;code&gt;Settings &amp;gt; Shader &amp;gt; None&lt;/code&gt;. By default it&amp;#8217;s set to &lt;code&gt;Blur&lt;/code&gt; which makes the game very, well, blurry. You can later switch these options on the fly, maybe you&amp;#8217;ll like it.&lt;/p&gt;
-&lt;p&gt;To start the game, either select &lt;code&gt;System &amp;gt; Load Game&lt;/code&gt; or drag and drop patched &lt;code&gt;sfc&lt;/code&gt; file into the window. Super Mario World should start in widescreen mode!&lt;/p&gt;
+&lt;p&gt;The content of the file is taken from
+&lt;a href="https://github.com/VitorVilela7/wide-snes/blob/master/smw-widescreen.bso"&gt;wide-snes GitHub repo&lt;/a&gt;.
+I guess it uses special quirky syntax to tell the emulator
+how it should behave when dealing with the patched ROM.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_running_the_game"&gt;Running the game&lt;/h2&gt;&lt;p&gt;Now, you can unzip &lt;code&gt;bsnes-hd&lt;/code&gt; and run it.
+To make the game look better,
+&lt;strong&gt;make sure to select&lt;/strong&gt; &lt;code&gt;Settings &amp;gt; Shader &amp;gt; None&lt;/code&gt;.
+By default it&amp;#8217;s set to &lt;code&gt;Blur&lt;/code&gt; which makes the game very&amp;#8230;&amp;#8203; well, blurry.
+You can later switch these options on the fly,
+maybe you&amp;#8217;ll like it.&lt;/p&gt;
+&lt;p&gt;To start the game, either select &lt;code&gt;System &amp;gt; Load Game&lt;/code&gt; or drag
+and drop patched &lt;code&gt;sfc&lt;/code&gt; file into the window.
+Super Mario World should start in widescreen mode!&lt;/p&gt;
 &lt;div class="image-block"&gt;&lt;img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/gameplay.png" alt="Super Mario World in widescreen mode"&gt;&lt;/div&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_configuring_controller"&gt;Configuring controller&lt;/h2&gt;&lt;p&gt;I found the game to be much more enjoyable while playing it with a game pad. Fortunately, &lt;code&gt;bsnes&lt;/code&gt; allows for that. Select &lt;code&gt;Settings &amp;gt; Input&lt;/code&gt; to configure mappings for your device.&lt;/p&gt;
-&lt;p&gt;I&amp;#8217;m using Xbox 360 controller, and it works like a charm. Here are my settings:&lt;/p&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_configuring_controller"&gt;Configuring controller&lt;/h2&gt;&lt;p&gt;I found the game to be much more enjoyable while playing it with a game pad.
+Fortunately, &lt;code&gt;bsnes&lt;/code&gt; allows for that.
+Select &lt;code&gt;Settings &amp;gt; Input&lt;/code&gt; to configure mappings for your device.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m using Xbox 360 controller,
+and it works like a charm.
+Here are my settings:&lt;/p&gt;
 &lt;div class="image-block"&gt;&lt;img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/gamepad-mapping.png" alt="Input settings for Xbox 360 controller"&gt;&lt;/div&gt;
-&lt;p&gt;These are pretty much defaults, as much as you can tell that about SNES &amp;#8594; Xbox 360 conversion, but I added another mapping for &lt;code&gt;X&lt;/code&gt; which is used to run faster in the game.&lt;/p&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="gaming"></category></entry><entry><title>Python integration tests with pytest and docker compose</title><link href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose" rel="alternate"></link><published>2024-07-15T22:48:00+02:00</published><updated>2024-07-15T22:48:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-07-15:/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I really like &lt;a href="https://docs.pytest.org/"&gt;pytest&lt;/a&gt;. It&amp;#8217;s a great tool for writing unit tests in Python, as it provides a lot …&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I really like &lt;a href="https://docs.pytest.org/"&gt;pytest&lt;/a&gt;. It&amp;#8217;s a great tool for writing unit tests in Python, as it provides a lot of features out of the box. Some of them are quite magical, but they can make your life much easier, so at the end you need much less code.&lt;/p&gt;
-&lt;p&gt;Recently, I experimented with using pytest fixture to create a simple integration test skeleton which integrates docker.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_fixtures"&gt;Fixtures&lt;/h2&gt;&lt;p&gt;Fixtures in pytest are a way to request for something in the test code. There are two basic types of fixtures.&lt;a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;These are pretty much defaults,
+as much as you can tell that about SNES &amp;#8594; Xbox 360 conversion,
+but I added another mapping for &lt;code&gt;X&lt;/code&gt;
+which is used to run faster in the game.&lt;/p&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="gaming"></category></entry><entry><title>Python integration tests with pytest and docker compose</title><link href="https://tpwo.github.io/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose" rel="alternate"></link><published>2024-07-15T22:48:00+02:00</published><updated>2024-07-15T22:48:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-07-15:/blog/2024/07/15/python-integration-tests-with-pytest-and-docker-compose</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I really like
+&lt;a href="https://docs.pytest.org/"&gt;pytest&lt;/a&gt;.
+It&amp;#8217;s a great tool for writing unit tests in Python,
+as it provides a lot …&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I really like
+&lt;a href="https://docs.pytest.org/"&gt;pytest&lt;/a&gt;.
+It&amp;#8217;s a great tool for writing unit tests in Python,
+as it provides a lot of features out of the box.
+Some of them are quite magical, but they can make your life much easier,
+so at the end you need much less code.&lt;/p&gt;
+&lt;p&gt;Recently, I experimented with using pytest fixture
+to create a simple integration test skeleton which integrates docker.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_fixtures"&gt;Fixtures&lt;/h2&gt;&lt;p&gt;Fixtures in pytest are a way to request for something in the test code.
+There are two basic types of fixtures.&lt;a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref"&gt;[1]&lt;/a&gt;&lt;/p&gt;
 &lt;div class="ulist"&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;return&lt;/code&gt; fixtures which provide a certain value or object&lt;ul&gt;&lt;li&gt;This means we execute some code before requesting a fixture&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;yield&lt;/code&gt; fixtures which provide a certain state&lt;ul&gt;&lt;li&gt;This means we execute some code before &lt;strong&gt;and after&lt;/strong&gt; requesting a fixture&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
-&lt;p&gt;In this case the latter is be needed, as we want to perform the test in a state when docker container is running. This way we can startup a docker container and clean it up regardless of the test results.&lt;/p&gt;
-&lt;p&gt;I&amp;#8217;m using &lt;code&gt;docker compose&lt;/code&gt;, as it provides more flexibility and it&amp;#8217;s cleaner than CLI flags for pure &lt;code&gt;docker&lt;/code&gt;. I&amp;#8217;d use it even when you have only a single container, as overhead is minimal.&lt;/p&gt;&lt;/section&gt;
+&lt;p&gt;In this case the latter is be needed,
+as we want to perform the test in a state when docker container is running.
+This way we can startup a docker container
+and clean it up regardless of the test results.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m using &lt;code&gt;docker compose&lt;/code&gt;, as it provides more flexibility
+and it&amp;#8217;s cleaner than CLI flags for pure &lt;code&gt;docker&lt;/code&gt;.
+I&amp;#8217;d use it even when you have only a single container,
+as overhead is minimal.&lt;/p&gt;&lt;/section&gt;
 &lt;section class="doc-section level-1"&gt;&lt;h2 id="_implementation"&gt;Implementation&lt;/h2&gt;&lt;p&gt;You can see the test file skeleton here.&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="python"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;shutil&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;subprocess&lt;/span&gt;
@@ -68,30 +135,84 @@
     &lt;span class="n"&gt;expected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sh"&gt;'&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;expected output&amp;gt;&lt;/span&gt;&lt;span class="sh"&gt;'&lt;/span&gt;
     &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;expected&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The flow is quite simple here:&lt;/p&gt;
-&lt;div class="ulist"&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;test_integration&lt;/code&gt; function starts&lt;/li&gt;&lt;li&gt;It requests &lt;code&gt;docker_container&lt;/code&gt;, so the fixture function starts&lt;/li&gt;&lt;li&gt;We reach &lt;code&gt;yield&lt;/code&gt; in &lt;code&gt;docker_container&lt;/code&gt; and go back to the test function&lt;/li&gt;&lt;li&gt;&lt;code&gt;docker_container&lt;/code&gt; value in &lt;code&gt;test_integration&lt;/code&gt; is a return value of &lt;code&gt;subprocess.run&lt;/code&gt; from the fixture&lt;ul&gt;&lt;li&gt;I&amp;#8217;m not using it in this example&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;Test code is run up to the end&lt;/li&gt;&lt;li&gt;Either if any exception is thrown or if the test code finished, we go back to the fixture and execute rest of the code&lt;ul&gt;&lt;li&gt;In this case it&amp;#8217;s &lt;code&gt;docker compose down&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
-&lt;p&gt;The biggest drawback of this approach is &lt;code&gt;time.sleep&lt;/code&gt;, as &lt;code&gt;out&lt;/code&gt; is returned when &lt;code&gt;docker compose up&lt;/code&gt; starts running, and it doesn&amp;#8217;t mean that the container is ready for the test. Depending on your use case you would need less or even more time here.&lt;/p&gt;
-&lt;p&gt;A smarter approach would be getting the container notify the code that it&amp;#8217;s ready in an event-driven fashion, The presented solution is currently enough for my use case, even though it might be quite limiting if we want to scale it and run multiple test cases.&lt;/p&gt;
-&lt;p&gt;But for my use case this was good enough, so I stopped here, and maybe I&amp;#8217;ll expand it in the future.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_integration"&gt;Integration&lt;/h2&gt;&lt;p&gt;By default pytest picks up all files which are named &lt;code&gt;test_*.py&lt;/code&gt; or &lt;code&gt;*_test.py&lt;/code&gt;. As integration tests are quite longer than unit tests, we don&amp;#8217;t want them to be run each time along with unit tests.&lt;/p&gt;
-&lt;p&gt;I chose to rename the file with integration tests to &lt;code&gt;integration.py&lt;/code&gt; which I put in &lt;code&gt;tests&lt;/code&gt; folder along with other test files. This works fine on a small-scale project. In a bigger project, I&amp;#8217;d probably create a separate folder in &lt;code&gt;tests&lt;/code&gt; or maybe create a new top level folder like &lt;code&gt;integration_tests&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;With the simple approach running these tests is a simple &lt;code&gt;pytest tests/integration.py&lt;/code&gt;, which I put under &lt;code&gt;Makefile&lt;/code&gt; target &lt;code&gt;integration-tests&lt;/code&gt;. This way I can type &lt;code&gt;make i&lt;/code&gt; and let tab-completion do the rest for me.&lt;/p&gt;
-&lt;p&gt;In CI, I&amp;#8217;m running them in the same job as unit tests, directly after them, as I assume that it doesn&amp;#8217;t make sense to run costly integration tests if any of my unit tests is failing (even if GitHub pays for my CI 😛).&lt;/p&gt;
-&lt;p&gt;You can see the actual implementation in my &lt;a href="https://github.com/tpwo/event-scrapper-srt/blob/1de160463e0c02c49efb6a932213cf75ea112a5e/tests/integration.py"&gt;event-scrapper-srt&lt;/a&gt; project.&lt;/p&gt;&lt;/section&gt;&lt;section class="footnotes" aria-label="Footnotes" role="doc-endnotes"&gt;&lt;hr&gt;&lt;ol class="footnotes"&gt;&lt;li class="footnote" id="_footnote_1" role="doc-endnote"&gt;To understand how they work &lt;a href="https://youtu.be/ScEQRKwUePI"&gt;here&amp;#8217;s a great video from Anthony Sottile about it&lt;/a&gt; &lt;a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/section&gt;</content><category term="tech"></category><category term="python"></category><category term="docker"></category><category term="testing"></category></entry><entry><title>Python debugging 101: pdb</title><link href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb" rel="alternate"></link><published>2024-06-19T20:12:00+02:00</published><updated>2024-07-15T23:50:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-06-19:/blog/2024/06/19/python-debugging-101-pdb</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;code&gt;pdb&lt;/code&gt; is a simple debugger that comes by default with Python. There are many more advanced alternatives like &lt;code&gt;pudb&lt;/code&gt; or …&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;code&gt;pdb&lt;/code&gt; is a simple debugger that comes by default with Python. There are many more advanced alternatives like &lt;code&gt;pudb&lt;/code&gt; or &lt;code&gt;ipdb&lt;/code&gt;, but &lt;code&gt;pdb&lt;/code&gt; is always available out of the box which is a big plus.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;breakpoint()&lt;/code&gt; was introduced in Python 3.7. Before that, import of &lt;code&gt;pdb&lt;/code&gt; and calling a function that creates a breakpoint is required.&lt;/p&gt;&lt;/section&gt;
+&lt;div class="ulist"&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;test_integration&lt;/code&gt; function starts&lt;/li&gt;&lt;li&gt;It requests &lt;code&gt;docker_container&lt;/code&gt;, so the fixture function starts&lt;/li&gt;&lt;li&gt;We reach &lt;code&gt;yield&lt;/code&gt; in &lt;code&gt;docker_container&lt;/code&gt; and go back to the test function&lt;/li&gt;&lt;li&gt;&lt;code&gt;docker_container&lt;/code&gt; value in &lt;code&gt;test_integration&lt;/code&gt; is a return value of &lt;code&gt;subprocess.run&lt;/code&gt; from the fixture&lt;ul&gt;&lt;li&gt;I&amp;#8217;m not using it in this example&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;Test code is run up to the end&lt;/li&gt;&lt;li&gt;Either if any exception is thrown or if the test code finished,
+we go back to the fixture and execute rest of the code&lt;ul&gt;&lt;li&gt;In this case it&amp;#8217;s &lt;code&gt;docker compose down&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;p&gt;The biggest drawback of this approach is &lt;code&gt;time.sleep&lt;/code&gt;,
+as &lt;code&gt;out&lt;/code&gt; is returned when &lt;code&gt;docker compose up&lt;/code&gt; starts running,
+and it doesn&amp;#8217;t mean that the container is ready for the test.
+Depending on your use case you would need less or even more time here.&lt;/p&gt;
+&lt;p&gt;A smarter approach would be getting the container notify the code
+that it&amp;#8217;s ready in an event-driven fashion.
+The presented solution is currently enough for my use case,
+even though it might be quite limiting
+if we want to scale it and run multiple test cases.&lt;/p&gt;
+&lt;p&gt;But for my use case this was good enough,
+so I stopped here,
+and maybe I&amp;#8217;ll expand it in the future.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_integration"&gt;Integration&lt;/h2&gt;&lt;p&gt;By default pytest picks up all files which are named &lt;code&gt;test_*.py&lt;/code&gt; or &lt;code&gt;*_test.py&lt;/code&gt;.
+As integration tests are quite longer than unit tests,
+we don&amp;#8217;t want them to be run each time along with unit tests.&lt;/p&gt;
+&lt;p&gt;I chose to rename the file with integration tests to &lt;code&gt;integration.py&lt;/code&gt;
+which I put in &lt;code&gt;tests&lt;/code&gt; folder along with other test files.
+This works fine on a small-scale project.
+In a bigger project,
+I&amp;#8217;d probably create a separate folder in &lt;code&gt;tests&lt;/code&gt;
+or maybe create a new top level folder like &lt;code&gt;integration_tests&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;With the simple approach
+running these tests is a simple &lt;code&gt;pytest tests/integration.py&lt;/code&gt;,
+which I put under &lt;code&gt;Makefile&lt;/code&gt; target &lt;code&gt;integration-tests&lt;/code&gt;.
+This way I can type &lt;code&gt;make i&lt;/code&gt; and let tab-completion do the rest for me.&lt;/p&gt;
+&lt;p&gt;In CI, I&amp;#8217;m running them in the same job as unit tests, directly after them,
+as I assume that it doesn&amp;#8217;t make sense to run costly integration tests
+if any of my unit tests is failing (even if GitHub pays for my CI 😛).&lt;/p&gt;
+&lt;p&gt;You can see the actual implementation in my &lt;a href="https://github.com/tpwo/event-scrapper-srt/blob/1de160463e0c02c49efb6a932213cf75ea112a5e/tests/integration.py"&gt;event-scrapper-srt&lt;/a&gt; project.&lt;/p&gt;&lt;/section&gt;&lt;section class="footnotes" aria-label="Footnotes" role="doc-endnotes"&gt;&lt;hr&gt;&lt;ol class="footnotes"&gt;&lt;li class="footnote" id="_footnote_1" role="doc-endnote"&gt;To understand how they work &lt;a href="https://youtu.be/ScEQRKwUePI"&gt;here&amp;#8217;s a great video from Anthony Sottile about it&lt;/a&gt; &lt;a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/section&gt;</content><category term="tech"></category><category term="python"></category><category term="docker"></category><category term="testing"></category></entry><entry><title>Python debugging 101: pdb</title><link href="https://tpwo.github.io/blog/2024/06/19/python-debugging-101-pdb" rel="alternate"></link><published>2024-06-19T20:12:00+02:00</published><updated>2024-07-15T23:50:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-06-19:/blog/2024/06/19/python-debugging-101-pdb</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;code&gt;pdb&lt;/code&gt; is a simple debugger that comes by default with Python.
+There are many more advanced alternatives like &lt;code&gt;pudb&lt;/code&gt; or …&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;code&gt;pdb&lt;/code&gt; is a simple debugger that comes by default with Python.
+There are many more advanced alternatives like &lt;code&gt;pudb&lt;/code&gt; or &lt;code&gt;ipdb&lt;/code&gt;,
+but &lt;code&gt;pdb&lt;/code&gt; is always available out of the box which is a big plus.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;breakpoint()&lt;/code&gt; was introduced in Python 3.7.
+Before that,
+import of &lt;code&gt;pdb&lt;/code&gt; and calling a function that creates a breakpoint was required.&lt;/p&gt;&lt;/section&gt;
 &lt;section class="doc-section level-1"&gt;&lt;h2 id="_pdb_commands"&gt;&lt;code&gt;pdb&lt;/code&gt; commands&lt;/h2&gt;&lt;div class="ulist"&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;h&lt;/code&gt; / &lt;code&gt;help&lt;/code&gt;&amp;#8201;&amp;#8211;&amp;#8201;display available commands&lt;/li&gt;&lt;li&gt;&lt;code&gt;c&lt;/code&gt; / &lt;code&gt;continue&lt;/code&gt;&amp;#8201;&amp;#8211;&amp;#8201;continue running the code until the end&lt;/li&gt;&lt;li&gt;&lt;code&gt;q&lt;/code&gt; / &lt;code&gt;quit&lt;/code&gt;&amp;#8201;&amp;#8211;&amp;#8201;quit program by raising &lt;code&gt;BdbQuit&lt;/code&gt; exception&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
-&lt;section class="doc-section level-2"&gt;&lt;h3 id="_l_list"&gt;&lt;code&gt;l&lt;/code&gt; / &lt;code&gt;list&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Prints lines of code around the line that is &lt;strong&gt;about to be run&lt;/strong&gt; (marked with an arrow).  Pressing enter will list even more file. &lt;code&gt;list .&lt;/code&gt; will reset the view to the original (i.e. some lines before and after a line with arrow).&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-2"&gt;&lt;h3 id="_ll"&gt;&lt;code&gt;ll&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Long list, prints more lines of code. Pressing enter has no effect.  There is no support for dot from this reason.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_l_list"&gt;&lt;code&gt;l&lt;/code&gt; / &lt;code&gt;list&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Prints lines of code around the line that is &lt;strong&gt;about to be run&lt;/strong&gt;
+(marked with an arrow).
+Pressing enter will list even more file.
+&lt;code&gt;list .&lt;/code&gt; will reset the view to the original
+(i.e. some lines before and after a line with arrow).&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_ll"&gt;&lt;code&gt;ll&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Long list, prints more lines of code.
+Pressing enter has no effect.
+There is no support for dot from this reason.&lt;/p&gt;&lt;/section&gt;
 &lt;section class="doc-section level-2"&gt;&lt;h3 id="_w_where"&gt;&lt;code&gt;w&lt;/code&gt; / &lt;code&gt;where&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Displays a call stack that led to the execution of the given code.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-2"&gt;&lt;h3 id="_u_up_d_down"&gt;&lt;code&gt;u&lt;/code&gt; / &lt;code&gt;up&lt;/code&gt; &amp;amp; &lt;code&gt;d&lt;/code&gt; / &lt;code&gt;down&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Goes up or down one stack frame. An arrow showed with &lt;code&gt;where&lt;/code&gt; is updated to account for the new position. Also, &lt;code&gt;list&lt;/code&gt; will print the code around the current stack frame.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;up&lt;/code&gt; and &lt;code&gt;down&lt;/code&gt; accept step parameter, e.g. &lt;code&gt;up 3&lt;/code&gt; will go up by three stack frames.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-2"&gt;&lt;h3 id="_p_pp"&gt;&lt;code&gt;p&lt;/code&gt; &amp;amp; &lt;code&gt;pp&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;For printing and pretty printing. The latter is especially helpful when printing more complex data structures.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_u_up_d_down"&gt;&lt;code&gt;u&lt;/code&gt; / &lt;code&gt;up&lt;/code&gt; &amp;amp; &lt;code&gt;d&lt;/code&gt; / &lt;code&gt;down&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Goes up or down one stack frame.
+An arrow showed with &lt;code&gt;where&lt;/code&gt; is updated to account for the new position.
+Also, &lt;code&gt;list&lt;/code&gt; will print the code around the current stack frame.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;up&lt;/code&gt; and &lt;code&gt;down&lt;/code&gt; accept step parameter,
+e.g. &lt;code&gt;up 3&lt;/code&gt; will go up by three stack frames.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_p_pp"&gt;&lt;code&gt;p&lt;/code&gt; &amp;amp; &lt;code&gt;pp&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;For printing and pretty printing.
+The latter is especially helpful when printing more complex data structures.&lt;/p&gt;&lt;/section&gt;
 &lt;section class="doc-section level-2"&gt;&lt;h3 id="_n_next"&gt;&lt;code&gt;n&lt;/code&gt; / &lt;code&gt;next&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Goes to the next line.&lt;/p&gt;
-&lt;p&gt;Whenever, a debugger returns it prints &lt;code&gt;--Return--&lt;/code&gt; to the screen, and pauses right after the return value. Pressing &lt;code&gt;n&lt;/code&gt; again will go to the next function.&lt;/p&gt;&lt;/section&gt;
+&lt;p&gt;Whenever, a debugger returns it prints &lt;code&gt;--Return--&lt;/code&gt; to the screen,
+and pauses right after the return value.
+Pressing &lt;code&gt;n&lt;/code&gt; again will go to the next function.&lt;/p&gt;&lt;/section&gt;
 &lt;section class="doc-section level-2"&gt;&lt;h3 id="_s_step"&gt;&lt;code&gt;s&lt;/code&gt; / &lt;code&gt;step&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Goes inside a function call.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-2"&gt;&lt;h3 id="_r_return"&gt;&lt;code&gt;r&lt;/code&gt; / &lt;code&gt;return&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Goes directly to the return statement of the current function. Useful to quickly exit functions that we are not interested in debugging.&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_summary"&gt;Summary&lt;/h2&gt;&lt;p&gt;There are a lot of more features that can be used, e.g. creating breakpoints from &lt;code&gt;pdb&lt;/code&gt;, but above I described the basics that should be useful most of the time.&lt;/p&gt;
-&lt;p&gt;For conditional breakpoints you can use Python &lt;code&gt;if&lt;/code&gt; and hide breakpoint under a certain condition.&lt;/p&gt;
-&lt;p&gt;I really recommend &lt;a href="https://youtu.be/0LPuG825eAk"&gt;this video from Anthony Sottile&lt;/a&gt; if you want to learn more and see how to use &lt;code&gt;pdb&lt;/code&gt; in practice.&lt;/p&gt;&lt;/section&gt;</content><category term="tech"></category><category term="python"></category><category term="tips"></category><category term="cli"></category></entry><entry><title>Xtract Ze Files!</title><link href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files" rel="alternate"></link><published>2024-06-19T19:45:00+02:00</published><updated>2024-06-19T19:45:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-06-19:/blog/2024/06/19/xtract-ze-files</id><summary type="html">&lt;p&gt;It&amp;#8217;s a neat way to remember &lt;code&gt;tar&lt;/code&gt; flags. &lt;mark&gt;X&lt;/mark&gt;tract &lt;mark&gt;Z&lt;/mark&gt;e &lt;mark&gt;F&lt;/mark&gt;iles!&lt;/p&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_r_return"&gt;&lt;code&gt;r&lt;/code&gt; / &lt;code&gt;return&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;Goes directly to the return statement of the current function.
+Useful to quickly exit functions that we are not interested in debugging.&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_summary"&gt;Summary&lt;/h2&gt;&lt;p&gt;There are a lot of more features that can be used,
+e.g. creating breakpoints from &lt;code&gt;pdb&lt;/code&gt;,
+but above I described the basics that should be useful most of the time.&lt;/p&gt;
+&lt;p&gt;For conditional breakpoints you can use Python &lt;code&gt;if&lt;/code&gt;
+and hide breakpoint under a certain condition.&lt;/p&gt;
+&lt;p&gt;I really recommend
+&lt;a href="https://youtu.be/0LPuG825eAk"&gt;this video from Anthony Sottile&lt;/a&gt;
+if you want to learn more and see how to use &lt;code&gt;pdb&lt;/code&gt; in practice.&lt;/p&gt;&lt;/section&gt;</content><category term="tech"></category><category term="python"></category><category term="tips"></category><category term="cli"></category></entry><entry><title>Xtract Ze Files!</title><link href="https://tpwo.github.io/blog/2024/06/19/xtract-ze-files" rel="alternate"></link><published>2024-06-19T19:45:00+02:00</published><updated>2024-06-19T19:45:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-06-19:/blog/2024/06/19/xtract-ze-files</id><summary type="html">&lt;p&gt;It&amp;#8217;s a neat way to remember &lt;code&gt;tar&lt;/code&gt; flags. &lt;mark&gt;X&lt;/mark&gt;tract &lt;mark&gt;Z&lt;/mark&gt;e &lt;mark&gt;F&lt;/mark&gt;iles!&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;&lt;span class="nb"&gt;tar&lt;/span&gt; &lt;span class="nt"&gt;-xzf&lt;/span&gt; &amp;lt;myarchive&amp;gt;.tar.gz …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;It&amp;#8217;s a neat way to remember &lt;code&gt;tar&lt;/code&gt; flags. &lt;mark&gt;X&lt;/mark&gt;tract &lt;mark&gt;Z&lt;/mark&gt;e &lt;mark&gt;F&lt;/mark&gt;iles!&lt;/p&gt;
-&lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;&lt;span class="nb"&gt;tar&lt;/span&gt; &lt;span class="nt"&gt;-xzf&lt;/span&gt; &amp;lt;myarchive&amp;gt;.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="tech"></category><category term="tips"></category></entry><entry><title>Hello, World!</title><link href="https://tpwo.github.io/blog/2024/06/05/hello-world" rel="alternate"></link><published>2024-06-05T23:53:00+02:00</published><updated>2024-07-15T22:51:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-06-05:/blog/2024/06/05/hello-world</id><summary type="html">&lt;p&gt;We&amp;#8217;re live! I had an idea to create a personal blog for quite some time, and here it is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We&amp;#8217;re live! I had an idea to create a personal blog for quite some time, and here it is.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s still in a very WIP state, as I connected all the wires to run it, and didn&amp;#8217;t have much time to focus on personalization, themes and other nice-to-eyes features. But at first, I&amp;#8217;d like to add some content, so I can see the impact of style changes on real posts.&lt;/p&gt;</content><category term="posts"></category></entry></feed>
+&lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;&lt;span class="nb"&gt;tar&lt;/span&gt; &lt;span class="nt"&gt;-xzf&lt;/span&gt; &amp;lt;myarchive&amp;gt;.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="tech"></category><category term="tips"></category></entry><entry><title>Hello, World!</title><link href="https://tpwo.github.io/blog/2024/06/05/hello-world" rel="alternate"></link><published>2024-06-05T23:53:00+02:00</published><updated>2024-07-15T22:51:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-06-05:/blog/2024/06/05/hello-world</id><summary type="html">&lt;p&gt;We&amp;#8217;re live!
+I had an idea to create a personal blog for quite some time,
+and here it is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We&amp;#8217;re live!
+I had an idea to create a personal blog for quite some time,
+and here it is.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s still in a very WIP state,
+as I connected all the wires to run it,
+and didn&amp;#8217;t have much time to focus on
+personalization, themes and other nice-to-eyes features.
+But at first, I&amp;#8217;d like to add some content,
+so I can see the impact of style changes on real posts.&lt;/p&gt;</content><category term="posts"></category></entry></feed>

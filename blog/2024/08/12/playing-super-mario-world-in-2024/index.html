@@ -29,14 +29,41 @@
         </header>
 
         <article>
-            <section id="preamble" aria-label="Preamble"><p><a href="https://en.wikipedia.org/wiki/Super_Mario_World">Super Mario World</a> is one of my childhood games I remember really well. It was released in 1990 but recently I found out that we can still play it today on modern platforms with widescreen support enabled!</p>
+            <section id="preamble" aria-label="Preamble"><p><a href="https://en.wikipedia.org/wiki/Super_Mario_World">Super Mario World</a>
+is one of my childhood games I remember really well.
+It was released in 1990 but recently I found out
+that we can still play it today on modern platforms
+with widescreen support enabled!</p>
 <div class="image-block left"><img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/cover.png" alt="FLIPS patcher"></div>
-<p>The base to do it is <a href="https://github.com/bsnes-emu/bsnes">bsnes</a>, a multi-platform SNES emulator. There is a fork of it which supports HD video features called <a href="https://github.com/DerKoun/bsnes-hd">bsnes-hd</a>, and we&#8217;ll be using it.</p>
-<p>Super Mario World Widescreen project is a fan-made patch which can be found in <a href="https://github.com/VitorVilela7/wide-snes">wide-snes</a> GitHub repo.</p>
-<p>We also need a patcher. According to <a href="https://sneslab.net/wiki/How_to_apply_ROM_patches">sneslab.net manual</a> we can use either FLIPS or beam. They host FLIPS directly on their site: <a class="bare" href="https://sneslab.net/tools/floating.zip">https://sneslab.net/tools/floating.zip</a>.</p>
-<p>Now, the only missing piece is ROM with the original game. I found a copy of it on <a href="https://archive.org/details/super-mario-world-usa_20230925">archive.org</a> which seems to be a pretty reasonable source. If it&#8217;s there, Nintendo probably doesn&#8217;t have anything against it, or at least no longer cares.</p>
-<p>Internet Archive hosts multiple files under the linked project, but we care only about a zip which contains the <code>sfc</code> file with the actual game.</p></section>
-<section class="doc-section level-1"><h2 id="_patching_the_rom">Patching the ROM</h2><p>After downloading the files, you should have something like this (we&#8217;re skipping emulator for now):</p>
+<p>The base to do it is
+<a href="https://github.com/bsnes-emu/bsnes">bsnes</a>,
+a multi-platform SNES emulator.
+There is a fork of it
+which supports HD video features called
+<a href="https://github.com/DerKoun/bsnes-hd">bsnes-hd</a>,
+and we&#8217;ll be using it.</p>
+<p>Super Mario World Widescreen project is a fan-made patch
+which can be found in
+<a href="https://github.com/VitorVilela7/wide-snes">wide-snes</a>
+GitHub repo.</p>
+<p>We also need a patcher.
+According to
+<a href="https://sneslab.net/wiki/How_to_apply_ROM_patches">sneslab.net manual</a>
+we can use either FLIPS or beam.
+They host FLIPS directly on their site:
+<a class="bare" href="https://sneslab.net/tools/floating.zip">https://sneslab.net/tools/floating.zip</a>.</p>
+<p>Now, the only missing piece is ROM with the original game.
+I found a copy of it on
+<a href="https://archive.org/details/super-mario-world-usa_20230925">archive.org</a>
+which seems to be a pretty reasonable source.
+If it&#8217;s there,
+Nintendo probably doesn&#8217;t have anything against it,
+or at least no longer cares.</p>
+<p>Internet Archive hosts multiple files under the linked project,
+but we care only about a zip which contains the <code>sfc</code> file with the actual game.</p></section>
+<section class="doc-section level-1"><h2 id="_patching_the_rom">Patching the ROM</h2><p>After downloading the files,
+you should have something like this
+(we&#8217;re skipping emulator for now):</p>
 <div class="listing-block"><pre>├── smw-widescreen.bps           <b class="conum">1</b>
 ├── Super Mario World (USA).sfc  <b class="conum">2</b>
 └── floating
@@ -46,22 +73,46 @@
     ├── license.txt
     └── src.zip</pre><ol class="callout-list arabic"><li>Patch file</li><li>ROM file</li><li>FLIPS patcher</li></ol></div>
 
-<p>Run FLIPS and click <code>Apply Patch</code>. At first it asks you for the patch file, then for the ROM file, and then for the filename to save the patched ROM.</p>
+<p>Run FLIPS &lt;3&gt; and click <code>Apply Patch</code>.
+At first it asks you for the patch file,
+then for the ROM file,
+and then for the filename to save the patched ROM.</p>
 <div class="image-block left"><img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/flips.png" alt="FLIPS patcher"></div>
 <p>You can notice that the patched file is twice the size of the original:</p>
 <div class="listing-block"><pre class="rouge highlight"><code data-lang="shell"><span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="k">*</span>
 1.0M    Super Mario World <span class="o">(</span>USA<span class="o">)</span> Widescreen Project.sfc
 512K    Super Mario World <span class="o">(</span>USA<span class="o">)</span>.sfc</code></pre></div></section>
-<section class="doc-section level-1"><h2 id="_creating_widescreen_configuration_file">Creating widescreen configuration file</h2><p><code>bsnes-hd</code> requires a <code>bso</code> configuration file in order to correctly run the game in a widescreen mode. Thankfully, you don&#8217;t have to download it, as the file is very short and simple, and you can create it with this command:</p>
+<section class="doc-section level-1"><h2 id="_creating_widescreen_configuration_file">Creating widescreen configuration file</h2><p><code>bsnes-hd</code> requires a <code>bso</code> configuration file
+in order to correctly run the game in a widescreen mode.
+Thankfully, you don&#8217;t have to download it,
+as the file is very short and simple,
+and you can create it with this command:</p>
 <div class="listing-block"><pre class="rouge highlight"><code data-lang="shell"><span class="nb">echo</span> <span class="s1">'w1s1W48S2i0o1p1b1B1c1'</span> <span class="o">&gt;</span> <span class="s1">'Super Mario World (USA) Widescreen Project.bso'</span></code></pre></div>
-<p>The content of the file is taken from <a href="https://github.com/VitorVilela7/wide-snes/blob/master/smw-widescreen.bso">wide-snes GitHub repo</a>. I guess it uses special quirky syntax to tell the emulator how it should behave when dealing with the patched ROM.</p></section>
-<section class="doc-section level-1"><h2 id="_running_the_game">Running the game</h2><p>Now, you can unzip <code>bsnes-hd</code> and run it. To make the game look better, <strong>make sure to select</strong> <code>Settings &gt; Shader &gt; None</code>. By default it&#8217;s set to <code>Blur</code> which makes the game very, well, blurry. You can later switch these options on the fly, maybe you&#8217;ll like it.</p>
-<p>To start the game, either select <code>System &gt; Load Game</code> or drag and drop patched <code>sfc</code> file into the window. Super Mario World should start in widescreen mode!</p>
+<p>The content of the file is taken from
+<a href="https://github.com/VitorVilela7/wide-snes/blob/master/smw-widescreen.bso">wide-snes GitHub repo</a>.
+I guess it uses special quirky syntax to tell the emulator
+how it should behave when dealing with the patched ROM.</p></section>
+<section class="doc-section level-1"><h2 id="_running_the_game">Running the game</h2><p>Now, you can unzip <code>bsnes-hd</code> and run it.
+To make the game look better,
+<strong>make sure to select</strong> <code>Settings &gt; Shader &gt; None</code>.
+By default it&#8217;s set to <code>Blur</code> which makes the game very&#8230;&#8203; well, blurry.
+You can later switch these options on the fly,
+maybe you&#8217;ll like it.</p>
+<p>To start the game, either select <code>System &gt; Load Game</code> or drag
+and drop patched <code>sfc</code> file into the window.
+Super Mario World should start in widescreen mode!</p>
 <div class="image-block"><img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/gameplay.png" alt="Super Mario World in widescreen mode"></div></section>
-<section class="doc-section level-1"><h2 id="_configuring_controller">Configuring controller</h2><p>I found the game to be much more enjoyable while playing it with a game pad. Fortunately, <code>bsnes</code> allows for that. Select <code>Settings &gt; Input</code> to configure mappings for your device.</p>
-<p>I&#8217;m using Xbox 360 controller, and it works like a charm. Here are my settings:</p>
+<section class="doc-section level-1"><h2 id="_configuring_controller">Configuring controller</h2><p>I found the game to be much more enjoyable while playing it with a game pad.
+Fortunately, <code>bsnes</code> allows for that.
+Select <code>Settings &gt; Input</code> to configure mappings for your device.</p>
+<p>I&#8217;m using Xbox 360 controller,
+and it works like a charm.
+Here are my settings:</p>
 <div class="image-block"><img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/gamepad-mapping.png" alt="Input settings for Xbox 360 controller"></div>
-<p>These are pretty much defaults, as much as you can tell that about SNES &#8594; Xbox 360 conversion, but I added another mapping for <code>X</code> which is used to run faster in the game.</p></section>
+<p>These are pretty much defaults,
+as much as you can tell that about SNES &#8594; Xbox 360 conversion,
+but I added another mapping for <code>X</code>
+which is used to run faster in the game.</p></section>
         </article>
 
         <center>

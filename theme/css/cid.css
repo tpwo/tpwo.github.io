@@ -415,7 +415,7 @@ img.right, figure.right, div.figure.align-right {
   font-size: 90%;
   color: #c7254e;
   background-color: #f9f2f4;
-  border-radius: 4px;
+  margin: 0.1em;
 }
 .container .post .highlight {
   font-size: 0.9em;
