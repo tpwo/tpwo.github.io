@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>    Useful Git settings
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p> A personal blog </p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Useful Git settings</h1>
+            <p class="date">Written on <time datetime="2024-08-14T12:16:00+02:00">Aug 14, 2024</time></p>
+        </header>
+
+        <article>
+            <section id="preamble" aria-label="Preamble"><p>In my dotfiles I always have a <code>.gitconfig</code> file
+with some of the settings preconfigured.
+Without them using Git for me would be much more cumbersome.
+Here&#8217;s a list of them along with some comments and sources.</p></section>
+<section class="doc-section level-1"><h2 id="_core_settings">Core settings</h2><section class="doc-section level-2"><h3 id="_core_autocrlf"><code>core.autocrlf</code></h3><p>Line ending characters are one big mess due to backwards compatibility.
+Windows systems use <code>CRLF</code>, Unix and consequently Linux uses <code>LF</code>.
+More than that, older Macs used <code>CR</code>,
+so the only missing option was <code>LFCR</code> 🤠.
+Thankfully Apple switched to <code>LF</code> with Mac OS X 10.0,
+so we&#8217;re left with two variants.<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a></p>
+<p>Git was created by Linus Torvalds
+so it&#8217;s no surprise that it prefers <code>LF</code> by default,
+and warns you if you try committing files with other line ending characters.</p>
+<p>Theoretically you can stick to e.g. <code>CRLF</code>
+if you&#8217;re doing a strictly Windows project,
+but I find it much easier to always commit <code>LF</code>,
+and configure Git (and my CI<a class="footnote-ref" id="_footnoteref_2" href="#_footnote_2" title="View footnote 2" role="doc-noteref">[2]</a>) to guarantee that.</p>
+<p>In practice, you might notice that a lot of files
+in a lot of repositories in your project
+were already committed with <code>CRLF</code>. Such is life.
+Because of that I don&#8217;t like setting <code>autocrlf</code> to <code>true</code>,
+as it tells Git to always convert from <code>CRLF</code> to <code>LF</code> when doing a commit.</p>
+<p>This is a bit annoying,
+as then it shows that the whole file was modified
+(which is in fact true) in the commit view,
+and it makes much harder to see the actual changes.
+This depends on the tool you&#8217;re using
+as some of them can hide line ending changes pretty well.
+Still, I would advocate to isolate line ending changes from other types of changes.</p>
+<p>E.g. you might want to do a single commit in a repo
+in which you clean it up for <em>all files</em><a class="footnote-ref" id="_footnoteref_3" href="#_footnote_3" title="View footnote 3" role="doc-noteref">[3]</a>,
+and then add this commit to <code>.git-blame-ignore-revs</code>,
+so it doesn&#8217;t makes mess with the history regardless of the tool
+and/or settings you are using.</p>
+<section class="doc-section level-3"><h4 id="_tldr">TLDR</h4><p>My rule of a thumb:</p>
+<div class="listing-block"><pre>git config --global core.autocrlf true  <b class="conum">1</b>
+git config --global core.autocrlf input <b class="conum">2</b></pre><ol class="callout-list arabic"><li>Use that setting on Windows</li><li>Use that setting otherwise (Linux, Mac, WSL)</li></ol></div>
+</section></section>
+<section class="doc-section level-2"><h3 id="_core_excludesfile"><code>core.excludesFile</code></h3><p>Have you noticed that due to your setup,
+i.e. editor or IDE you&#8217;re using,
+you are the person who always adds particular entries to <code>.gitignore</code> in all repos?
+Are you tired of that?
+<code>excludesFile</code> is the solution for you.
+It&#8217;s a globally defined <code>.gitignore</code>
+which Git always uses even if a <code>.gitignore</code> is missing in a repo.</p>
+<p>I like to keep it in my home folder along with <code>.gitconfig</code>,
+and I use the name <code>.gitignore_global</code>:</p>
+<div class="listing-block"><pre>git config --global core.excludesFile '~/.gitignore_global'</pre></div></section>
+<section class="doc-section level-2"><h3 id="_core_sshcommand"><code>core.sshcommand</code></h3><p>I&#8217;m a Windows user, but I prefer bash.
+As terminal is very important in my workflow,
+I use WSL both at work and in my private projects.
+There are a lot of quirks about WSL
+and one of them is having Git remember you SSH passwords.
+There are Linux solutions for that,
+and I experimented with them.
+Unfortunately, it wasn&#8217;t working out great for me
+(but maybe something has changed in recent years).
+Another solution is to use password-less keys,
+but <strong><em>you don&#8217;t want to do that, right?</em></strong></p>
+<p>Thankfully we can use Windows built-in SSH agent
+to remember passwords for us even in WSL.<a class="footnote-ref" id="_footnoteref_4" href="#_footnote_4" title="View footnote 4" role="doc-noteref">[4]</a></p>
+<p>To do that, we have to tell WSL Git to use SSH binary from Windows:</p>
+<div class="listing-block"><pre>git config --global core.sshcommand '/mnt/c/Windows/System32/OpenSSH/ssh.exe'</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_credential_settings">Credential settings</h2><section class="doc-section level-2"><h3 id="_credential_helper"><code>credential.helper</code></h3><p>This is quite similar to <code>core.sshcommand</code> I mentioned above when using Git in WSL.
+You can choose to use HTTPS over SSH when talking with Git remotes.
+But WSL doesn&#8217;t have a built-in way to store these credentials,
+and using plaintext file <code>.git-credentials</code> is not something you want to be doing.</p>
+<p>Again, Windows comes to the rescue.
+Here, you have to install Git on Windows
+to be able to use its credential manager from WSL Git.
+Then, you can authenticate once,
+usually via a browser window,
+and <em>Git will remember this</em>.</p>
+<div class="listing-block"><pre>git config --global credential.helper '/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe'</pre></div>
+<p>Make sure to quote the path
+as space in <code>Program Files</code> would cause some issues otherwise.
+And use the actual path of where you have Git for Windows installed,
+other default alternative is <code>AppData</code> of your Windows user.</p></section></section>
+<section class="doc-section level-1"><h2 id="_git_features">Git features</h2><section class="doc-section level-2"><h3 id="_feature_manyfiles"><code>feature.manyFiles</code></h3><p>Git introduced this feature a few years ago to improve support for bigger repos.
+I naively enabled it after reading the change log
+and it instantly broke some tools for me,
+particularly Matlab Git integration was completely broken.
+After these experiences I disabled this feature,
+so my setting repeats the current default.<a class="footnote-ref" id="_footnoteref_5" href="#_footnote_5" title="View footnote 5" role="doc-noteref">[5]</a></p>
+<div class="listing-block"><pre>git config --global feature.manyFiles false</pre></div>
+<p>If you&#8217;re struggling with Git performance you might consider to enable it.
+Hopefully after a few years tools already support it.</p></section></section>
+<section class="doc-section level-1"><h2 id="_git_commit"><code>git commit</code></h2><section class="doc-section level-2"><h3 id="_commit_verbose"><code>commit.verbose</code></h3><p><code>git commit</code> has a <code>--verbose</code> flag
+which includes committed diff in a commit window.
+It&#8217;s nothing more but an automatically opened file
+which you edit, save, and quit,
+which makes git do the commit.</p>
+<p>This option always adds this flag,
+so you always can see what are you actually committing.</p>
+<div class="listing-block"><pre>git config --global commit.verbose true</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_git_fetch"><code>git fetch</code></h2><section class="doc-section level-2"><h3 id="_fetch_prune"><code>fetch.prune</code></h3><p>You can remove any remote-tracking references
+(i.e. <code>origin/&lt;branch-name&gt;</code>)
+which were removed on the remote with <code>git fetch --prune</code>.
+I find it very convenient to be the default,
+as branches are usually removed happens after merging pull request,
+so you can quickly have a lot of dangling references.</p>
+<div class="listing-block"><pre>git config --global fetch.prune true</pre></div>
+<p>If you have multiple remotes,
+and would like to prune references from only some of them,
+it&#8217;s also an option.
+For that, there is another command:</p>
+<div class="listing-block"><pre>git config --global remote.&lt;name&gt;.prune true</pre></div>
+<p><code>&lt;name&gt;</code> can be anything,
+and by convention <code>origin</code> is used for the default remote name.</p>
+<p>You might be wondering if setting something like
+<code>git config --global remote.prune true</code> is allowed.
+Yes, it is, and it does pretty much the same thing
+as setting <code>fetch.prune</code> to true.<a class="footnote-ref" id="_footnoteref_6" href="#_footnote_6" title="View footnote 6" role="doc-noteref">[6]</a></p></section></section>
+<section class="doc-section level-1"><h2 id="_git_pull"><code>git pull</code></h2><section class="doc-section level-2"><h3 id="_pull_rebase"><code>pull.rebase</code></h3><p>I like
+<a href="https://youtu.be/xN1-2p06Urc">explanation from this video</a>
+why default behavior of <code>git pull</code> is a bit annoying.
+Title is a little bit clickbaity,
+but I agree with the arguments.</p>
+<p>I was also a bit surprised
+that author didn&#8217;t mentioned option we&#8217;re talking about here.
+To do <code>git pull --rebase</code> automatically with each pull set:</p>
+<div class="listing-block"><pre>git config --global pull.rebase true</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_git_rebase"><code>git rebase</code></h2><section class="doc-section level-2"><h3 id="_rebase_autosquash"><code>rebase.autosquash</code></h3><div class="listing-block"><pre>git config --global rebase.autosquash true</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_git_rerere_sic"><code>git rerere</code> (sic!)</h2><section class="doc-section level-2"><h3 id="_rerere_enabled"><code>rerere.enabled</code></h3><div class="listing-block"><pre>git config --global rerere.enabled true</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_git_merge"><code>git merge</code></h2><section class="doc-section level-2"><h3 id="_merge_tool"><code>merge.tool</code></h3></section>
+<section class="doc-section level-2"><h3 id="_merge_conflictstyle"><code>merge.conflictstyle</code></h3><p>I think I don&#8217;t know a person who likes to solve merge conflicts.
+But I noticed that many people are more scared about them
+then they probably should be.</p>
+<p>Setting a better conflict style in Git
+is one of the steps to make them less scary.</p>
+<p><code>zdiff3</code> is a relatively new conflict style in Git
+which was introduced in 2022 with version 2.35.
+That means that you still can work with systems
+which don&#8217;t have this feature,
+so make sure to see if your Git version is new enough.</p>
+<p>But what is <code>zdiff3</code>?
+It&#8217;s an updated version of <code>diff3</code>
+which is much older algorithm<a class="footnote-ref" id="_footnoteref_7" href="#_footnote_7" title="View footnote 7" role="doc-noteref">[7]</a>
+and which has one big benefit:
+in classic conflict view you see two versions of the code,
+<code>ours</code> and <code>theirs</code>, as Git labels it.
+<code>diff3</code> also shows what was <em>before that</em>,
+which we can name a common ancestor of both commits.<a class="footnote-ref" id="_footnoteref_8" href="#_footnote_8" title="View footnote 8" role="doc-noteref">[8]</a></p>
+<p>This simple addition often adds much needed context,
+to solve merge conflict faster, and do it correctly.</p>
+<p>Unfortunately, <code>diff3</code> isn&#8217;t ideal,
+and sometimes creates more noisy conflicts,
+marking more lines as conflicting.<a class="footnote-ref" id="_footnoteref_9" href="#_footnote_9" title="View footnote 9" role="doc-noteref">[9]</a></p>
+<p><code>zdiff3</code> addresses these issues.
+Interestingly enough, <code>z</code> in the name comes from the word <em>zealous</em>.</p>
+<div class="listing-block"><pre>git config --global merge.conflictstyle zdiff3</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_git_init"><code>git init</code></h2><section class="doc-section level-2"><h3 id="_init_defaultbranch"><code>init.defaultBranch</code></h3><p>Like it or not, but <code>main</code> is the new <code>master</code> in Git,
+and it doesn&#8217;t seem to be changing any time soon.</p>
+<p>Git though still uses default <code>master</code>, so this option has to be set.</p>
+<div class="listing-block"><pre>git config --global init.defaultBranch main</pre></div></section></section>
+<section class="doc-section level-1"><h2 id="_git_blame"><code>git blame</code></h2><section class="doc-section level-2"><h3 id="_blame_markignoredlines"><code>blame.markIgnoredLines</code></h3></section>
+<section class="doc-section level-2"><h3 id="_blame_markunblamablelines"><code>blame.markUnblamableLines</code></h3></section></section>
+<section class="doc-section level-1"><h2 id="_git_aliases">Git aliases</h2><section class="doc-section level-2"><h3 id="_git_git"><code>git git</code></h3><p>I borrowed that idea from Anthony Sottile<a class="footnote-ref" id="_footnoteref_10" href="#_footnote_10" title="View footnote 10" role="doc-noteref">[10]</a>.
+It allows you to type <code>git git &lt;command&gt;</code>
+and make the command still work.
+In fact, you might type as many <code>git</code> commands as you like,
+as it&#8217;s recursive.</p>
+<p>Why? Same as Anthony,
+I sometimes type <code>git</code> in the terminal,
+then start thinking about something,
+then and go back to typing,
+often typing <code>git</code> again due to muscle memory.
+Adding an alias is simpler than fighting with it, apparently 😛</p></section>
+<section class="doc-section level-2"><h3 id="_git_l"><code>git l</code></h3></section>
+<section class="doc-section level-2"><h3 id="_git_lg"><code>git lg</code></h3></section>
+<section class="doc-section level-2"><h3 id="_git_llg"><code>git llg</code></h3></section>
+<section class="doc-section level-2"><h3 id="_git_k"><code>git k</code></h3></section>
+<section class="doc-section level-2"><h3 id="_git_ka"><code>git ka</code></h3></section></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I recommend a <a href="https://youtu.be/TtiBhktB4Qg">video from Scott Hanselman</a> if you want to learn more about this topic <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote"><code>pre-commit</code> with its <a href="https://github.com/pre-commit/pre-commit-hooks/tree/429455474be018c8f085ae7d312432ab4154d5a2?tab=readme-ov-file#mixed-line-ending"><code>mixed-line-ending</code> hook</a> set to <code>lf</code> is a great tool for that <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><code>pre-commit</code> mentioned above is a great way to do this. Also make sure to set up it to check it with each new commit or these <code>CRLF</code> files might start reappearing, as we live in a society <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_4" role="doc-endnote">Refer to <a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">MS docs</a> on how to enable SSH agent <a class="footnote-backref" href="#_footnoteref_4" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_5" role="doc-endnote">When writing this post, I did some research, and it seems that this might be due to <code>libgit2</code> incomparability with <code>manyFiles</code>. More details <a href="https://stackoverflow.com/a/77290211/14458327">on Stack Overflow</a> <a class="footnote-backref" href="#_footnoteref_5" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_6" role="doc-endnote">There is quite a good summary of the topic <a href="https://stackoverflow.com/a/40842589">again on SO</a> <a class="footnote-backref" href="#_footnoteref_6" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_7" role="doc-endnote">Introduced in 2007 with Git 1.5.0 <a class="footnote-backref" href="#_footnoteref_7" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_8" role="doc-endnote">A pretty nice explanation of that is <a href="https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3">in this blog post</a> <a class="footnote-backref" href="#_footnoteref_8" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_9" role="doc-endnote">Again, <a href="https://stackoverflow.com/a/71254097/14458327">SO for the rescue</a> <a class="footnote-backref" href="#_footnoteref_9" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_10" role="doc-endnote">Here&#8217;s his video about it: <a class="bare" href="https://youtu.be/BkUW2NgfZao">https://youtu.be/BkUW2NgfZao</a> <a class="footnote-backref" href="#_footnoteref_10" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
+        <footer>
+            <p>This entry is posted in <a href="https://tpwo.github.io/category/posts.html">posts</a>.</p>
+
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2024
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
+</html>

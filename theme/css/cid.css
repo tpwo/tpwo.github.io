@@ -234,6 +234,9 @@ body {
 body a {
   font-weight: 400;
 }
+body a:hover {
+  text-decoration: none;
+}
 body h1, body h2, body h3, body h4, body h5, body h6 {
   font-family: "Gentium Book Basic", "Georgia", serif;
 }
@@ -438,6 +441,39 @@ img.right, figure.right, div.figure.align-right {
   line-height: 1.73333em;
 }
 .container .post footer {
-  margin: 2em 0 3em;
+  font-size: 0.8em;
+  margin: 2em 0.5em 3em 0.5em;
+  text-align: right;
+}
+.container .post footer .navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.container .post footer .prev-article, .container .post footer .next-article {
+  width: 45%;
+}
+.container .post footer .prev-article a, .container .post footer .next-article a {
+  text-decoration: none;
+}
+.container .post footer .prev-article a:hover, .container .post footer .next-article a:hover {
+  text-decoration: underline;
+}
+.container .post footer .prev-article-header, .container .post footer .next-article-header {
+  font-weight: 150;
+  letter-spacing: 1px;
+  color: #333;
+  margin: 0 0 0.2em;
+  padding: 0 0 0.2em 0;
+}
+.container .post footer .prev-article-content, .container .post footer .next-article-content {
+  margin: 0 1em 0 1em;
+}
+.container .post footer .prev-article {
+  text-align: left;
+}
+.container .post footer .next-article {
   text-align: right;
 }
