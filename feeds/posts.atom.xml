@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-08-12T23:12:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Playing Super Mario World in 2024</title><link href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024" rel="alternate"></link><published>2024-08-12T23:12:00+02:00</published><updated>2024-08-12T23:12:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-08-12:/blog/2024/08/12/playing-super-mario-world-in-2024</id><summary type="html">How to run it on modern platforms in widescreen mode</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Super_Mario_World"&gt;Super Mario World&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-08-12T23:12:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Playing Super Mario World in 2024</title><link href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024" rel="alternate"></link><published>2024-08-12T23:12:00+02:00</published><updated>2024-08-12T23:12:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-08-12:/blog/2024/08/12/playing-super-mario-world-in-2024</id><summary type="html">How to run it on modern platforms in widescreen mode</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;div class="quote-block"&gt;&lt;blockquote&gt;&lt;p&gt;Thank you Mario! But our princess is in another castle!&lt;/p&gt;&lt;footer&gt;&amp;#8212; &lt;cite&gt;&lt;a href="https://en.wikipedia.org/wiki/Our_princess_is_in_another_castle!"&gt;Toad&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Super_Mario_World"&gt;Super Mario World&lt;/a&gt;
 is one of my childhood games I remember really well.
 It was released in 1990 but recently I found out
 that we can still play it today on modern platforms
@@ -30,8 +31,8 @@ which seems to be a pretty reasonable source.
 If it&amp;#8217;s there,
 Nintendo probably doesn&amp;#8217;t have anything against it,
 or at least no longer cares.&lt;/p&gt;
-&lt;p&gt;Internet Archive hosts multiple files under the linked project,
-but we care only about a zip which contains the &lt;code&gt;sfc&lt;/code&gt; file with the actual game.&lt;/p&gt;&lt;/section&gt;
+&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;Internet Archive hosts multiple files under the linked project,
+but we care only about a zip which contains the &lt;code&gt;sfc&lt;/code&gt; file with the actual game.&lt;/p&gt;&lt;/aside&gt;&lt;/section&gt;
 &lt;section class="doc-section level-1"&gt;&lt;h2 id="_patching_the_rom"&gt;Patching the ROM&lt;/h2&gt;&lt;p&gt;After downloading the files,
 you should have something like this
 (we&amp;#8217;re skipping emulator for now):&lt;/p&gt;

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .highlight .hll {
   background-color: #ffffcc;
 }
@@ -234,6 +235,11 @@ body {
 body a {
   font-weight: 400;
 }
+body a.footnote-ref {
+  font-size: 70%;
+  vertical-align: top;
+  font-weight: 600;
+}
 body a:hover {
   text-decoration: none;
 }
@@ -413,9 +419,6 @@ img.center, figure.center, div.figure.align-center {
 .container .post h5, .container .post h6 {
   font-size: 1.18em;
 }
-.container .post a {
-  font-weight: 400;
-}
 .container .post img {
   max-width: 100%;
   height: auto;
@@ -435,6 +438,41 @@ img.center, figure.center, div.figure.align-center {
 .container .post blockquote {
   font-style: italic;
   font-weight: 300;
+  background: #f9f2f4;
+  border-left: 5px solid #dedede;
+  padding: 0.5em 0.5em 0 0.75em;
+}
+.container .post blockquote p {
+  margin: 0;
+  font-size: 0.9em;
+  font-style: italic;
+}
+.container .post blockquote p::before {
+  content: "“";
+  position: relative;
+  vertical-align: text-top;
+  top: 20px;
+  right: 15px;
+  font-family: sans-serif;
+  font-size: 7rem;
+  opacity: 0.25;
+}
+.container .post blockquote footer {
+  font-size: 0.9em;
+  margin: 0;
+  text-align: left;
+}
+.container .post .admonition-block {
+  background: #f9f2f4;
+  padding: 0.75em 1em;
+}
+.container .post .admonition-block h6 {
+  margin: 0;
+  font-size: 1.3em;
+}
+.container .post .admonition-block p {
+  margin: 0;
+  font-size: 0.9em;
 }
 .container .post header {
   margin: 2.2em 0;
