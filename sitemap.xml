@@ -5,35 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://tpwo.github.io/</loc>
-<lastmod>2024-08-16T01:10:43-00:00</lastmod>
+<lastmod>2024-08-16T14:07:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/tags.html</loc>
-<lastmod>2024-08-16T01:10:43-00:00</lastmod>
+<lastmod>2024-08-16T14:07:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://tpwo.github.io/categories.html</loc>
-<lastmod>2024-08-16T01:10:43-00:00</lastmod>
+<lastmod>2024-08-16T14:07:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/authors.html</loc>
-<lastmod>2024-08-16T01:10:43-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.7</priority>
-</url>
-
-<url>
-<loc>https://tpwo.github.io/archives.html</loc>
-<lastmod>2024-08-16T01:10:43-00:00</lastmod>
+<loc>https://tpwo.github.io/blog</loc>
+<lastmod>2024-08-16T14:07:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
@@ -74,71 +67,64 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://tpwo.github.io/category/posts.html</loc>
+<loc>https://tpwo.github.io/categories/posts</loc>
 <lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/category/tech.html</loc>
+<loc>https://tpwo.github.io/categories/tech</loc>
 <lastmod>2024-07-15T23:50:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/tech.html</loc>
+<loc>https://tpwo.github.io/tags/tech</loc>
 <lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/gaming.html</loc>
+<loc>https://tpwo.github.io/tags/gaming</loc>
 <lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/python.html</loc>
+<loc>https://tpwo.github.io/tags/python</loc>
 <lastmod>2024-07-15T23:50:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/docker.html</loc>
+<loc>https://tpwo.github.io/tags/docker</loc>
 <lastmod>2024-07-15T22:48:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/testing.html</loc>
+<loc>https://tpwo.github.io/tags/testing</loc>
 <lastmod>2024-07-15T22:48:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/tips.html</loc>
+<loc>https://tpwo.github.io/tags/tips</loc>
 <lastmod>2024-07-15T23:50:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://tpwo.github.io/tag/cli.html</loc>
+<loc>https://tpwo.github.io/tags/cli</loc>
 <lastmod>2024-07-15T23:50:00+01:24</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.7</priority>
-</url>
-
-<url>
-<loc>https://tpwo.github.io/author/tpwo.html</loc>
-<lastmod>2024-08-12T23:12:00+01:24</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.7</priority>
 </url>
