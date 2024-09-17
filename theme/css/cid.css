@@ -239,6 +239,11 @@ body a.footnote-ref {
   font-size: 70%;
   vertical-align: top;
   font-weight: 600;
+  opacity: 70%;
+}
+body a.footnote-backref {
+  font-weight: 600;
+  opacity: 70%;
 }
 body a:hover {
   text-decoration: none;

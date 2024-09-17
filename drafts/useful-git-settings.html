@@ -63,7 +63,7 @@ in which you clean it up for <em>all files</em><a class="footnote-ref" id="_foot
 and then add this commit to <code>.git-blame-ignore-revs</code>,
 so it doesn&#8217;t makes mess with the history regardless of the tool
 and/or settings you are using.</p>
-<section class="doc-section level-3"><h4 id="_tldr">TLDR</h4><p>My rule of a thumb:</p>
+<section class="doc-section level-3"><h4 id="_tldr">TLDR</h4><p>My rule of thumb:</p>
 <div class="listing-block"><pre>git config --global core.autocrlf true  <b class="conum">1</b>
 git config --global core.autocrlf input <b class="conum">2</b></pre><ol class="callout-list arabic"><li>Use that setting on Windows</li><li>Use that setting otherwise (Linux, Mac, WSL)</li></ol></div>
 </section></section>
@@ -73,7 +73,7 @@ you are the person who always adds particular entries to <code>.gitignore</code>
 Are you tired of that?
 <code>excludesFile</code> is the solution for you.
 It&#8217;s a globally defined <code>.gitignore</code>
-which Git always uses even if a <code>.gitignore</code> is missing in a repo.</p>
+which Git uses even if a <code>.gitignore</code> is missing in a repo.</p>
 <p>I like to keep it in my home folder along with <code>.gitconfig</code>,
 and I use the name <code>.gitignore_global</code>:</p>
 <div class="listing-block"><pre>git config --global core.excludesFile '~/.gitignore_global'</pre></div></section>
@@ -118,17 +118,17 @@ so my setting repeats the current default.<a class="footnote-ref" id="_footnoter
 Hopefully after a few years tools already support it.</p></section></section>
 <section class="doc-section level-1"><h2 id="_git_commit"><code>git commit</code></h2><section class="doc-section level-2"><h3 id="_commit_verbose"><code>commit.verbose</code></h3><p><code>git commit</code> has a <code>--verbose</code> flag
 which includes committed diff in a commit window.
-It&#8217;s nothing more but an automatically opened file
+The commit windows is nothing more but an automatically opened file
 which you edit, save, and quit,
 which makes git do the commit.</p>
 <p>This option always adds this flag,
-so you always can see what are you actually committing.</p>
+so you can see what are you committing every time.</p>
 <div class="listing-block"><pre>git config --global commit.verbose true</pre></div></section></section>
 <section class="doc-section level-1"><h2 id="_git_fetch"><code>git fetch</code></h2><section class="doc-section level-2"><h3 id="_fetch_prune"><code>fetch.prune</code></h3><p>You can remove any remote-tracking references
 (i.e. <code>origin/&lt;branch-name&gt;</code>)
 which were removed on the remote with <code>git fetch --prune</code>.
 I find it very convenient to be the default,
-as branches are usually removed happens after merging pull request,
+as branches are usually removed after merging pull request,
 so you can quickly have a lot of dangling references.</p>
 <div class="listing-block"><pre>git config --global fetch.prune true</pre></div>
 <p>If you have multiple remotes,
@@ -137,7 +137,7 @@ it&#8217;s also an option.
 For that, there is another command:</p>
 <div class="listing-block"><pre>git config --global remote.&lt;name&gt;.prune true</pre></div>
 <p><code>&lt;name&gt;</code> can be anything,
-and by convention <code>origin</code> is used for the default remote name.</p>
+and by convention <code>origin</code> is used as the default remote name.</p>
 <p>You might be wondering if setting something like
 <code>git config --global remote.prune true</code> is allowed.
 Yes, it is, and it does pretty much the same thing
@@ -145,12 +145,27 @@ as setting <code>fetch.prune</code> to true.<a class="footnote-ref" id="_footnot
 <section class="doc-section level-1"><h2 id="_git_pull"><code>git pull</code></h2><section class="doc-section level-2"><h3 id="_pull_rebase"><code>pull.rebase</code></h3><p>I like
 <a href="https://youtu.be/xN1-2p06Urc">explanation from this video</a>
 why default behavior of <code>git pull</code> is a bit annoying.
-Title is a little bit clickbaity,
+Its title is a little bit clickbaitish,
 but I agree with the arguments.</p>
 <p>I was also a bit surprised
 that author didn&#8217;t mentioned option we&#8217;re talking about here.
 To do <code>git pull --rebase</code> automatically with each pull set:</p>
-<div class="listing-block"><pre>git config --global pull.rebase true</pre></div></section></section>
+<div class="listing-block"><pre>git config --global pull.rebase true</pre></div></section>
+<section class="doc-section level-2"><h3 id="_pull_ff_only"><code>pull.ff only</code></h3><p>There is also another option
+which enforces <a href="https://graphite.dev/guides/git-config-ff-only">fast-forward merge in git pull</a>.
+The difference is that <code>--ff-only</code> merge works
+only if there are no newer commits coming from the remote.
+Otherwise it fails,
+and you have to do something with it manually.
+That means you are forced to do the rebase on your own.</p>
+<p>This adds you more work
+but one can advocate that it&#8217;s safer,
+as you have to explicitly rebase to the new version.</p>
+<p>This is in line with the approach <strong>never use git pull</strong>
+(i.e. <strong>use git fetch and git rebase instead</strong>).
+If you&#8217;re into that,
+consider using this option.</p>
+<div class="listing-block"><pre>git config --global pull.ff only</pre></div></section></section>
 <section class="doc-section level-1"><h2 id="_git_rebase"><code>git rebase</code></h2><section class="doc-section level-2"><h3 id="_rebase_autosquash"><code>rebase.autosquash</code></h3><div class="listing-block"><pre>git config --global rebase.autosquash true</pre></div></section></section>
 <section class="doc-section level-1"><h2 id="_git_rerere_sic"><code>git rerere</code> (sic!)</h2><section class="doc-section level-2"><h3 id="_rerere_enabled"><code>rerere.enabled</code></h3><div class="listing-block"><pre>git config --global rerere.enabled true</pre></div></section></section>
 <section class="doc-section level-1"><h2 id="_git_merge"><code>git merge</code></h2><section class="doc-section level-2"><h3 id="_merge_tool"><code>merge.tool</code></h3></section>

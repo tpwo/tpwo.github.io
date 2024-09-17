@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Clipboard sync between WSL Neovim and Windows &middot; tpwo.github.io</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p>A personal blog</p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+        <a href="https://tpwo.github.io/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Clipboard sync between WSL Neovim and Windows</h1>
+            <p class="date">Written on <time datetime="2024-09-17T21:52:00+02:00">Sep 17, 2024</time></p>
+        </header>
+
+        <article>
+            <section id="preamble" aria-label="Preamble"><p>I recently started migration from Vim to Neovim.
+One of the first issues was proper configuration of clipboard.
+By <em>proper</em>, I mean a situation
+where I have a working 2-way-sync clipboard
+between Neovim running in tmux in WSL in Windows Terminal and Windows,
+so I can easily copy and paste
+from my browser or any other program to and from Neovim.</p>
+<p>With Vim I intially achieved that with <a href="https://github.com/Opticos/GWSL-Source">GWSL</a>
+and configured <code>$DISPLAY</code> env variable
+which was a quite complex and unstable solution
+(GWSL sometimes has weird issues).
+Thankfully, it was needed only on older versions of Windows 10
+(my <code>$CURRENT_COMPANY</code> still uses the old Win10 version though&#8230;&#8203;).
+Up-to-date Windows 10 and Windows 11
+support clipboard sync for Vim out of the box.
+They have something like GWSL built-in,
+and surprisingly it&#8217;s quite stable and just works.
+Bravo Microsoft 😛</p>
+<p>The only caveat is to install Vim version which has clipboard support&#8201;&#8211;&#8201;usually <code>vim-gtk</code> is recommended on Debian/Ubuntu.</p></section>
+<section class="doc-section level-1"><h2 id="_the_unexpected">The unexpected</h2><p>I was a bit surprised to find out
+that this doesn&#8217;t work with Neovim.</p>
+<p>Some googling brought the solution: <code>win32yank</code>.
+This is a small Rust program
+which integrates with Windows cliboard,
+providing an interface which can be easily used by Neovim.</p>
+<p>Actually, Neovim has built-in support for it.
+You just need to make sure that <code>win32yank.exe</code> is on your <code>$PATH</code>.</p></section>
+<section class="doc-section level-1"><h2 id="_how_to_get_win32yank_exe">How to get <code>win32yank.exe</code>?</h2><aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>If, from any reason, you don&#8217;t want Neovim on Windows,
+you can download only the <code>win32yank.exe</code> file.
+E.g. by doing <code>winget install win32yank</code>.
+Just make sure to use the correct path to the <code>exe</code> file.</p></aside>
+<p>I use WSL to do most of my text editting,
+but I still find it useful to have the same editor on Windows itself.</p>
+<p>You can install it most easily with
+<a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">winget</a>,
+i.e. <code>winget install Neovim.Neovim</code>.</p>
+<p>Why this it important?
+It turns out that Neovim on Windows is shipped with <code>win32yank</code>!</p></section>
+<section class="doc-section level-1"><h2 id="_creating_symlink">Creating symlink</h2><aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>I noticed that Neovim has issues
+if I copy the Windows exectuable directly to WSL drive.
+That&#8217;s why you probably should create a symlink,
+even if you download only the binary.</p></aside>
+<p><code>winget</code> installs Neovim in <code>Program Files</code>,
+and <code>win32yank.exe</code> is located in the <code>bin</code> subfolder.
+Use this command to create a symlink in your home folder,
+so Neovim can see it.</p>
+<div class="listing-block"><pre>ln --symbolic /mnt/c/Program\ Files/Neovim/bin/win32yank.exe ./.local/bin/win32yank.exe</pre></div>
+<p>Of course, <code>~/.local/bin</code> has to exist
+and be in your <code>$PATH</code> for this to work.</p></section>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
+        <footer>
+            <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
+
+                <div class="navigation">
+                    <div class="prev-article">
+                            <div class="prev-article-header">
+                                « PREV
+                            </div>
+                            <div class="prev-article-content">
+                                <a href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024">
+                                    Playing Super Mario World in 2024
+                                </a>
+                            </div>
+                    </div>
+                    <div class="next-article">
+                    </div>
+                </div>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2024
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
+</html>

@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-08-12T23:12:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Playing Super Mario World in 2024</title><link href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024" rel="alternate"></link><published>2024-08-12T23:12:00+02:00</published><updated>2024-08-12T23:12:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-08-12:/blog/2024/08/12/playing-super-mario-world-in-2024</id><summary type="html">How to run it on modern platforms in widescreen mode</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;div class="quote-block"&gt;&lt;blockquote&gt;&lt;p&gt;Thank you Mario! But our princess is in another castle!&lt;/p&gt;&lt;footer&gt;&amp;#8212; &lt;cite&gt;&lt;a href="https://en.wikipedia.org/wiki/Our_princess_is_in_another_castle!"&gt;Toad&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-09-17T21:52:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Clipboard sync between WSL Neovim and Windows</title><link href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows" rel="alternate"></link><published>2024-09-17T21:52:00+02:00</published><updated>2024-09-17T21:52:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-09-17:/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
+One of the first issues was proper configuration of clipboard.
+By &lt;em&gt;proper …&lt;/em&gt;&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
+One of the first issues was proper configuration of clipboard.
+By &lt;em&gt;proper&lt;/em&gt;, I mean a situation
+where I have a working 2-way-sync clipboard
+between Neovim running in tmux in WSL in Windows Terminal and Windows,
+so I can easily copy and paste
+from my browser or any other program to and from Neovim.&lt;/p&gt;
+&lt;p&gt;With Vim I intially achieved that with &lt;a href="https://github.com/Opticos/GWSL-Source"&gt;GWSL&lt;/a&gt;
+and configured &lt;code&gt;$DISPLAY&lt;/code&gt; env variable
+which was a quite complex and unstable solution
+(GWSL sometimes has weird issues).
+Thankfully, it was needed only on older versions of Windows 10
+(my &lt;code&gt;$CURRENT_COMPANY&lt;/code&gt; still uses the old Win10 version though&amp;#8230;&amp;#8203;).
+Up-to-date Windows 10 and Windows 11
+support clipboard sync for Vim out of the box.
+They have something like GWSL built-in,
+and surprisingly it&amp;#8217;s quite stable and just works.
+Bravo Microsoft 😛&lt;/p&gt;
+&lt;p&gt;The only caveat is to install Vim version which has clipboard support&amp;#8201;&amp;#8211;&amp;#8201;usually &lt;code&gt;vim-gtk&lt;/code&gt; is recommended on Debian/Ubuntu.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_the_unexpected"&gt;The unexpected&lt;/h2&gt;&lt;p&gt;I was a bit surprised to find out
+that this doesn&amp;#8217;t work with Neovim.&lt;/p&gt;
+&lt;p&gt;Some googling brought the solution: &lt;code&gt;win32yank&lt;/code&gt;.
+This is a small Rust program
+which integrates with Windows cliboard,
+providing an interface which can be easily used by Neovim.&lt;/p&gt;
+&lt;p&gt;Actually, Neovim has built-in support for it.
+You just need to make sure that &lt;code&gt;win32yank.exe&lt;/code&gt; is on your &lt;code&gt;$PATH&lt;/code&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_how_to_get_win32yank_exe"&gt;How to get &lt;code&gt;win32yank.exe&lt;/code&gt;?&lt;/h2&gt;&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;If, from any reason, you don&amp;#8217;t want Neovim on Windows,
+you can download only the &lt;code&gt;win32yank.exe&lt;/code&gt; file.
+E.g. by doing &lt;code&gt;winget install win32yank&lt;/code&gt;.
+Just make sure to use the correct path to the &lt;code&gt;exe&lt;/code&gt; file.&lt;/p&gt;&lt;/aside&gt;
+&lt;p&gt;I use WSL to do most of my text editting,
+but I still find it useful to have the same editor on Windows itself.&lt;/p&gt;
+&lt;p&gt;You can install it most easily with
+&lt;a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/"&gt;winget&lt;/a&gt;,
+i.e. &lt;code&gt;winget install Neovim.Neovim&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Why this it important?
+It turns out that Neovim on Windows is shipped with &lt;code&gt;win32yank&lt;/code&gt;!&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_creating_symlink"&gt;Creating symlink&lt;/h2&gt;&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;I noticed that Neovim has issues
+if I copy the Windows exectuable directly to WSL drive.
+That&amp;#8217;s why you probably should create a symlink,
+even if you download only the binary.&lt;/p&gt;&lt;/aside&gt;
+&lt;p&gt;&lt;code&gt;winget&lt;/code&gt; installs Neovim in &lt;code&gt;Program Files&lt;/code&gt;,
+and &lt;code&gt;win32yank.exe&lt;/code&gt; is located in the &lt;code&gt;bin&lt;/code&gt; subfolder.
+Use this command to create a symlink in your home folder,
+so Neovim can see it.&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;ln --symbolic /mnt/c/Program\ Files/Neovim/bin/win32yank.exe ./.local/bin/win32yank.exe&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Of course, &lt;code&gt;~/.local/bin&lt;/code&gt; has to exist
+and be in your &lt;code&gt;$PATH&lt;/code&gt; for this to work.&lt;/p&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="tips"></category><category term="vim"></category><category term="wsl"></category><category term="windows"></category></entry><entry><title>Playing Super Mario World in 2024</title><link href="https://tpwo.github.io/blog/2024/08/12/playing-super-mario-world-in-2024" rel="alternate"></link><published>2024-08-12T23:12:00+02:00</published><updated>2024-08-12T23:12:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-08-12:/blog/2024/08/12/playing-super-mario-world-in-2024</id><summary type="html">How to run it on modern platforms in widescreen mode</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;div class="quote-block"&gt;&lt;blockquote&gt;&lt;p&gt;Thank you Mario! But our princess is in another castle!&lt;/p&gt;&lt;footer&gt;&amp;#8212; &lt;cite&gt;&lt;a href="https://en.wikipedia.org/wiki/Our_princess_is_in_another_castle!"&gt;Toad&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Super_Mario_World"&gt;Super Mario World&lt;/a&gt;
 is one of my childhood games I remember really well.
 It was released in 1990 but recently I found out
