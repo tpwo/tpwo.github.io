@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Setting up Macbook &middot; tpwo.github.io</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p>A personal blog</p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+        <a href="https://tpwo.github.io/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Setting up Macbook</h1>
+            <p class="date">Written on <time datetime="2024-09-27T07:19:00+02:00">Sep 27, 2024</time></p>
+        </header>
+
+        <article>
+            <section id="preamble" aria-label="Preamble"><p>I recently switched from a Windows laptop to a Macbook Pro 2019 with Intel chip at my job.</p>
+<p>I&#8217;ve never used Mac before, so I wanted to describe what I&#8217;m setting up, as I&#8217;m migrating.</p></section>
+<section class="doc-section level-1"><h2 id="_enable_tap_to_click">Enable tap to click</h2><p>It&#8217;s funny, but I found it as a recommended first step
+when configuring a new mac.</p>
+<p>By default to have actual click with the trackpad,
+you have to press it until it clicks.
+But with the mentioned option enabled,
+tap is enough.</p></section>
+<section class="doc-section level-1"><h2 id="_invert_scroll">Invert scroll</h2><p>I&#8217;m used to a way of scrolling where I scroll down,
+and the content also scrolls down.</p>
+<p>The inverse of that is default in MacOS.
+At first, I thought it&#8217;s impossible to change it,
+but it turned out the option is there,
+but it has a weird name:
+<em>natural scrolling</em>,
+where "content tracks finger movement".</p>
+<p>That&#8217;s true, but in my opinion it makes more sense
+when using touch screen,
+where you have a direct connection between fingers and the content.</p>
+<p>But maybe I&#8217;ll switch to this option,
+as it seesm to be default also on other platforms (Windows).</p>
+<p>TODO: check if it&#8217;s really the default behavior on Windows.</p>
+<p>Why: when using someone&#8217;s else machine, it&#8217;s more likely
+that they&#8217;ll have the default settings.</p>
+<p>From the same reason, it isn&#8217;t wise to create a lot of
+personal bindings in ubiquitous tools like Vim.</p></section>
+<section class="doc-section level-1"><h2 id="_remap_action_keys">Remap action keys</h2><p>On all of my Windows machines i remap CapsLock key to Control,
+as CapsLock is almost never used, and can be easily replaced
+with just pressing Shift.
+And at the same time, it&#8217;s located in the home row,
+which means it&#8217;s very easy to reach.</p>
+<p>I&#8217;m a terminal, tmux, and Vim (or at least Vim-bindings) user,
+so easy-to-access Control has a lot of sense for me.</p>
+<p>On Windows I have to use external tool called Ctrl2Cap
+(althogh written by a Microsoft employee).</p>
+<p>On MacOS, you can do the remap directly in the OS,
+for at least few years.
+I&#8217;m doing the same CapsLock &#8594; Control remapping.</p>
+<p>TODO: I found people recommending the following setup for CapsLock:
+when pressed it should servce as Esc;
+when you hold it, it should as as Control.
+It sounds cool, but requires more complex setup
+both on Windows and MacOS.
+But I guess I should investigate that,
+as it would make using Vim a bit more efficient
+(now I&#8217;m using <code>Ctrl + [</code> to exit from the insert mode).</p>
+<section class="doc-section level-2"><h3 id="_remapping_keys_on_windows_type_keyboard">Remapping keys on Windows-type keyboard</h3><p>I have a docking station with monitors and external keyboard and mouse.
+Of course, this setup is a classic Windows-compatible solution.
+I quickly learnt that Windows and Mac keyboards are way different than you may think.
+Especially when talking about action keys.</p>
+<p>The problem is that MacOS has one more action key that Windows:
+Command key.
+That means, some of the functionality,
+I&#8217;m used into with Ctrl/Alt,
+on Mac is done with Command.</p>
+<p>I understand it like that:</p>
+<div class="ulist"><ul><li>Fn key is the same as Fn in Windows
+(most commonly laptops)</li><li>Option key is Windows Alt
+(it even was named like that on Mac in older times).
+E.g. when typing Polish characters.
+But Command key sometimes is used instead.</li><li>Command key is sometimes acting as Windows Control (e.g. in Chrome, closing tab is Ctrl/Command + W)</li><li>But sometimes it acts as Windows Alt (e.g. Alt+Tab to switch Windows is Command+Tab)</li></ul></div>
+<p>The recommended solution I found,
+is to remap Windows Alt to Command
+(so Alt+Tab etc. works like on Windows)
+and remap Windows Key to Alt</p>
+<p>TODO: insert screenshot with the mapping.</p></section>
+<section class="doc-section level-2"><h3 id="_unsolved_issues">Unsolved issues</h3><p>I still am figuring out how to properly solve the Polish characters typing
+when using remapped Windows keyboard.</p>
+<p>By default on Mac it&#8217;s done with Option which would be fine,
+<em>if I haven&#8217;t done</em> the remapping.
+With remapped keys,
+I can only type in Polish characters with the Windows key,
+which is on the wrong side of space.</p>
+<p>I heard about software to remap keys
+(similar to Windows AutoHotkey),
+namely Karabiner.</p>
+<p>But I&#8217;m not sure if it can solve this issue.
+I&#8217;m still looking for a ready solution,
+as I cannot believe that I&#8217;m the only person with such an issue.</p></section></section>
+<section class="doc-section level-1"><h2 id="_install_homebrew">Install homebrew</h2><p>MacOS doesn&#8217;t come with a package manager in a classic Unix way.
+There is an appstore app, but it&#8217;s more like a smartphone solution,
+than something like apt registries.</p>
+<p><code>homebrew</code> fixes that.
+I only started to use it,
+but it looks like a <code>winget</code> for MacOS.
+I guess that recipes are added by people,
+and so far I haven&#8217;t found software,
+which isn&#8217;t available there.
+With the only exception being paid software.</p>
+<section class="doc-section level-2"><h3 id="_findings">Findings</h3><p>I noticed that homebrew has at least two "install types".
+One of them is standard <code>brew install &lt;recipe-name&gt;</code>.
+But some apps require an additional flag:
+<code>brew install --kask &lt;recipe-name&gt;</code>.
+Also then, I have to provide my password to install the app.
+I noticed that it&#8217;s used for desktop apps.
+It might be connected with moving the app to the <code>Applications</code> folder;
+which is, quite a strange way, to "install" something on MacOS.</p>
+<p>TODO: verify the above.</p></section>
+<section class="doc-section level-2"><h3 id="_software_to_install">Software to install</h3><div class="ulist"><ul><li>developer tools (prompted by the system when trying to run Git)</li><li><code>brew install ripgrep</code> (for Neovim plugins)</li><li><code>brew install gh</code> (GitHub CLI)</li><li><code>brew install bash-completion@2</code></li><li><code>brew install doll</code></li><li><code>brew install neovim</code></li><li><code>brew install htop</code></li><li><code>brew install tmux</code></li></ul></div>
+<p>GUI apps:</p>
+<div class="ulist"><ul><li><code>brew install --cask iterm2</code></li><li><code>brew install --cask appcleaner</code></li><li><code>brew install --cask --no-quarantine middleclick</code> (TODO: check why these flags are here)</li><li><code>brew install --cask keepassxc</code></li><li><code>brew install --cask visual-studio-code</code></li><li><code>brew install --cask spotify</code></li></ul></div></section></section>
+<section class="doc-section level-1"><h2 id="_change_default_shell">Change default shell</h2><p>MacOS switched from Bash to zsh a few years ago.
+I use Bash on my every other system,
+and I didn&#8217;t want to learn a new shell just for one platform.
+Migrating from Bash to zsh on other platform is impractical,
+as Bash is the de facto standard in the industry
+when talking about Linux platforms.</p>
+<p>There is a <code>chsh</code> command whcih allows to change a shell easily.</p>
+<p>But another caveat is the Bash version shiped with MacOS
+is a pretty old 3.2.
+And the newest version is 5.X.
+This caused some issues with my dotfiles
+(namely <code>globstar</code> shell option missing in 3.2).</p>
+<p>I read that the reason is licensing.
+It turns out that Bash changed it license some time ago,
+and Apple cannot legally ship its newest version with its OS.</p>
+<p>Fortunately it&#8217;s easy to install newest Bash with homebrew.
+Note that in order for <code>chsh</code> to be able to switch it,
+you have to edit a file in <code>/etc/</code> with root permissions
+(TODO: provide path to the actual file),
+and add installed newer version of Bash
+(<code>/usr/local/bin/bash</code>, TODO: confirm path).</p></section>
+<section class="doc-section level-1"><h2 id="_install_bash_completion">Install <code>bash-completion</code></h2><p>After you install Bash,
+you can quickly notice
+that something is wrong&#8201;&#8211;&#8201;tab completions are missing.</p>
+<p>It may not seem like much,
+but this adds a lot of little annoyances.</p>
+<p>Fortunately, homebrew has a recipe to install them.
+When using newer Bash from brew,
+you have to install <code>@2</code> version of the recipe.</p>
+<div class="listing-block"><pre>brew install bash-completion@2</pre></div>
+<p>Then, you have to source downloaded file in your <code>.bashrc</code>.
+For that, I use a little utility function
+which does <code>-r</code> on the path
+(checks if a file is readable)
+before sourcing it.</p>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">_source_if<span class="o">()</span> <span class="o">{</span> <span class="nb">test</span> <span class="nt">-r</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">.</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span> <span class="o">}</span></code></pre></div>
+<p>Then you can use it:</p>
+<div class="listing-block"><pre>_source_if "/usr/local/opt/bash-completion@2/etc/profile.d/bash_completion.sh"</pre></div>
+<p>Remember that you can use <code>brew --prefix bash-completion@2</code>
+to get the correct path.
+I decided to use hardcoded path,
+as running <code>brew --prefix</code> takes some time to execute,
+when you add it to your <code>.bashrc</code>.</p></section>
+<section class="doc-section level-1"><h2 id="_install_git_completions">Install Git completions</h2><p>I noticed that Git installed in Mac doesn&#8217;t ship with tab completion.
+I read something about it,
+I noticed it, as my <code>$PS1</code> uses <code>__git_ps1</code> which wasn&#8217;t available.</p>
+<p>I found that you can download the completions file manually.</p>
+<div class="listing-block"><pre>mkdir -p ~/.local/completions
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash \
+  -o ~/.local/completions/</pre></div>
+<p>In your <code>.bashrc</code>:</p>
+<div class="listing-block"><pre>_source_if "$HOME/.local/completions/.git-completion.bash"</pre></div>
+<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>this is not an ideal solution,
+as it freezes the version of Git completions.
+But Git is a stable program, so I guess it&#8217;s good enough.</p></aside>
+<p>TODO: check if the above can be done in a better way easily.</p></section>
+<section class="doc-section level-1"><h2 id="_install_iterm2">Install iterm2</h2><p>Default terminal in MacOS is similar to Windows.
+It&#8217;s not so great.
+Even before switching to Mac I heard about iterm.
+I did a quick search if it&#8217;s still a viable option,
+and after confirming it,
+I immediately switched.</p>
+<p>I found that some people are using different tools
+like Alactricity (TODO: fix name) which is written in Rust and is multiplatform.
+But at the beginning I wanted to have something battle tested and stable,
+so I know that any issues are caused by me,
+rather than the issues with the tool itself.
+Maybe, I&#8217;ll swithc in the future.</p></section>
+<section class="doc-section level-1"><h2 id="_swich_from_bsd_to_gnu_utils">Swich from BSD to GNU utils</h2><p>After importing my dotfiles,
+I quickly noticed that there are some issues with Unix tools.
+Namely <code>ls --group-directories-first</code> was a problem.
+It turns out BSD <code>ls</code> doesn&#8217;t have this flag.</p>
+<p>I was aware about big differences in other tools like <code>sed</code>,
+but I didn&#8217;t know that even <code>ls</code> is impacted.</p>
+<p>Later I also noticed that BSD <code>xargs</code> doesn&#8217;t support <code>--delimiter</code> flag,
+so there are a lot of small annoyances.</p>
+<p>Fortunately, you can install missing utils via <code>brew</code>,
+and <strong>prepend</strong> them to your <code>PATH</code>,
+so they take precedence.</p>
+<div class="listing-block"><pre>brew install coreutils
+brew install findutils
+brew install gnu-sed</pre></div>
+<p>Then you can use <code>brew --prefix coreutils</code>
+to see where the binaries were downloaded.</p>
+<p>In fact, they are a bit hidden in subfolders:</p>
+<div class="listing-block"><pre>/usr/local/opt/coreutils/libexec/gnubin
+/usr/local/opt/findutils/libexec/gnubin
+/usr/local/opt/gnu-sed/libexec/gnubin</pre></div>
+<p>Add these two in the beginning of your <code>PATH</code>
+and you should be good to go.</p>
+<p>I&#8217;ll share a little convenient function I use in my <code>.bashrc</code>
+to do this easily.
+It tests if a given folder exists before adding it,
+so you can leave it also on other platforms
+if you share your dotfiles between machines.</p>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">,pathprepend<span class="o">()</span> <span class="o">{</span>
+  <span class="k">for </span>arg <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="p">;</span> <span class="k">do
+    </span><span class="nb">test</span> <span class="nt">-d</span> <span class="s2">"</span><span class="nv">$arg</span><span class="s2">"</span> <span class="o">||</span> <span class="k">continue
+    </span><span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">PATH</span><span class="p">//</span>:<span class="s2">"</span><span class="nv">$arg</span><span class="s2">:"</span><span class="p">/</span>:<span class="k">}</span>
+    <span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">PATH</span><span class="p">/#</span><span class="s2">"</span><span class="nv">$arg</span><span class="s2">:"</span><span class="p">/</span><span class="k">}</span>
+    <span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">PATH</span><span class="p">/%</span><span class="s2">":</span><span class="nv">$arg</span><span class="s2">"</span><span class="p">/</span><span class="k">}</span>
+    <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$arg</span><span class="k">${</span><span class="nv">PATH</span>:+<span class="s2">":</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span><span class="k">}</span><span class="s2">"</span>
+  <span class="k">done</span>
+<span class="o">}</span> <span class="o">&amp;&amp;</span> <span class="nb">export</span> <span class="nt">-f</span> ,pathprepend
+
+<span class="c"># Remember that the last arg will be first in PATH</span>
+,pathprepend <span class="se">\</span>
+  <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/bin"</span> <span class="se">\</span>
+  &lt;...&gt; <span class="se">\ </span> <span class="c"># other entries here</span>
+  <span class="s2">"/usr/local/opt/coreutils/libexec/gnubin"</span> <span class="se">\</span>
+  <span class="s2">"/usr/local/opt/findutils/libexec/gnubin"</span> <span class="se">\</span>
+  :</code></pre></div></section>
+<section class="doc-section level-1"><h2 id="_install_appcleaner">Install AppCleaner</h2><p>Theoretically, uninstalling an app in MacOS
+is just moving it to the trash.
+I quickly found out that life isn&#8217;t so simple in practice.
+In fact, a lot of apps is not fully uninstalled,
+leaving configuration files behind.
+It&#8217;s very annoying when you&#8217;re trying to do a clean reinstall.</p>
+<p>What&#8217;s not surprising&#8201;&#8211;&#8201;there&#8217;s a solution for that provided by a 3rd party.
+It&#8217;s called AppCleaner, it&#8217;s free, and can be installed via their website or homebrew.</p></section>
+<section class="doc-section level-1"><h2 id="_install_middleclick">Install MiddleClick</h2><p>It turns out that MacOS doesn&#8217;t support middle mouse click
+with trackpad gesture.</p>
+<p>I was a bit surprised to learn that.</p>
+<p>Like in many other cases, there is a tool for that.</p>
+<p>It can be installed from here:
+<a class="bare" href="https://formulae.brew.sh/cask/middleclick">https://formulae.brew.sh/cask/middleclick</a></p>
+<p>It requires special permissions,
+but then works fine without any issues.</p>
+<p>TODO: I noticed that MiddleClick doesn&#8217;t load automatically
+after I reboot my Mac.
+I have to figure out how to change it.</p></section>
+<section class="doc-section level-1"><h2 id="_install_doll">Install Doll</h2><p>MacOS doesn&#8217;t have any native support for tray icons for apps.
+The only way to have a tray icon is for the app to define it.</p>
+<p>I was surprised to see that most apps don&#8217;t have them defined,
+e.g. Slack or Teams.
+Coming from Windows this was a big difference,
+but fortunately I found and app called <code>Doll</code>
+which is able to handle that.</p>
+<p>Again, it can be installed with homebrew:
+<a class="bare" href="https://formulae.brew.sh/cask/doll">https://formulae.brew.sh/cask/doll</a></p></section>
+<section class="doc-section level-1"><h2 id="_figure_out_ssh_agent">Figure out SSH agent</h2><p>TODO: it seems that Git is more stable when using SSH.
+I see errors with HTTP when pushing big branches to forks.</p>
+<p>I have to check if MacOS has a good approach to SSH agent.
+Windows does, at it works pretty well for me,
+for I&#8217;m hopeful that it&#8217;s more or less the same with Mac.</p></section>
+<section class="doc-section level-1"><h2 id="_install_python">Install Python</h2><p>I noticed that <code>uv</code> can be a good choice on MacOS, as it supports installing a lot of Python versions with a single command.</p>
+<p><a class="bare" href="https://docs.astral.sh/uv/concepts/python-versions/">https://docs.astral.sh/uv/concepts/python-versions/</a></p>
+<p>I noticed that you can add installed versions to PATH,
+so they are correctly detected by tools like <code>tox</code>.</p>
+<div class="listing-block"><pre>ln -s /Users/twojdat/.local/share/uv/python/cpython-3.8.20-macos-x86_64-none/bin/python3 ~/.local/bin/python3.8</pre></div></section>
+<section class="doc-section level-1"><h2 id="_ending_notes">Ending notes</h2><p>I&#8217;m sure this list is not complete.
+And probably it would take me a few times,
+to add other points to it.
+But I wanted to write it having all the experiences fresh in mind,
+so I can refine it and iterate on it later.</p></section>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
+        <footer>
+            <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
+
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2024
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
+</html>
