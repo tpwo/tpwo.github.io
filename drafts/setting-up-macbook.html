@@ -31,13 +31,17 @@
         <article>
             <section id="preamble" aria-label="Preamble"><p>I recently switched from a Windows laptop to a Macbook Pro 2019 with Intel chip at my job.</p>
 <p>I&#8217;ve never used Mac before, so I wanted to describe what I&#8217;m setting up, as I&#8217;m migrating.</p></section>
+<section class="doc-section level-1"><h2 id="_keyboard_and_mouse">Keyboard and mouse</h2><p>Coming from Windows,
+I noticed that some macOS defaults are quite different.
+I think that some of them can be tweaked slightly,
+so you have more familiar experience.</p></section>
 <section class="doc-section level-1"><h2 id="_enable_tap_to_click">Enable tap to click</h2><p>It&#8217;s funny, but I found it as a recommended first step
 when configuring a new mac.</p>
 <p>By default to have actual click with the trackpad,
 you have to press it until it clicks.
 But with the mentioned option enabled,
-tap is enough.</p></section>
-<section class="doc-section level-1"><h2 id="_invert_scroll">Invert scroll</h2><p>I&#8217;m used to a way of scrolling where I scroll down,
+tap is enough.</p>
+<section class="doc-section level-2"><h3 id="_invert_scroll">Invert scroll</h3><p>I&#8217;m used to a way of scrolling where I scroll down,
 and the content also scrolls down.</p>
 <p>The inverse of that is default in MacOS.
 At first, I thought it&#8217;s impossible to change it,
@@ -53,11 +57,7 @@ where you have a direct connection between fingers and the content.</p>
 changing this is one click.
 Also, this isn&#8217;t a big blocker,
 just a small annoyance.</p></section>
-<section class="doc-section level-1"><h2 id="_use_f1_f2_etc_keys_as_standard_function_keys">Use F1, F2, etc. keys as standard function keys</h2><p>I have a habit of pressing <code>fn</code> when I need a special function,
-and I like to have F-keys available directly.
-There is a single switch in Mac OS
-which changes the default behavior.</p></section>
-<section class="doc-section level-1"><h2 id="_remap_action_keys">Remap action keys</h2><p>On all of my Windows machines i remap CapsLock key to Control,
+<section class="doc-section level-2"><h3 id="_remap_action_keys">Remap action keys</h3><p>On all of my Windows machines i remap CapsLock key to Control,
 as CapsLock is almost never used, and can be easily replaced
 with just pressing Shift.
 And at the same time, it&#8217;s located in the home row,
@@ -77,7 +77,7 @@ both on Windows and MacOS.
 But I guess I should investigate that,
 as it would make using Vim a bit more efficient
 (now I&#8217;m using <code>Ctrl + [</code> to exit from the insert mode).</p>
-<section class="doc-section level-2"><h3 id="_remapping_keys_on_windows_type_keyboard">Remapping keys on Windows-type keyboard</h3><p>I have a docking station with monitors and external keyboard and mouse.
+<section class="doc-section level-3"><h4 id="_remapping_keys_on_windows_type_keyboard">Remapping keys on Windows-type keyboard</h4><p>I have a docking station with monitors and external keyboard and mouse.
 Of course, this setup is a classic Windows-compatible solution.
 I quickly learnt that Windows and Mac keyboards are way different than you may think.
 Especially when talking about action keys.</p>
@@ -97,7 +97,7 @@ is to remap Windows Alt to Command
 (so Alt+Tab etc. works like on Windows)
 and remap Windows Key to Alt</p>
 <p>TODO: insert screenshot with the mapping.</p></section>
-<section class="doc-section level-2"><h3 id="_unsolved_issues">Unsolved issues</h3><p>I still am figuring out how to properly solve the Polish characters typing
+<section class="doc-section level-3"><h4 id="_unsolved_issues">Unsolved issues</h4><p>I still am figuring out how to properly solve the Polish characters typing
 when using remapped Windows keyboard.</p>
 <p>By default on Mac it&#8217;s done with Option which would be fine,
 <em>if I haven&#8217;t done</em> the remapping.
@@ -110,6 +110,15 @@ namely Karabiner.</p>
 <p>But I&#8217;m not sure if it can solve this issue.
 I&#8217;m still looking for a ready solution,
 as I cannot believe that I&#8217;m the only person with such an issue.</p></section></section>
+<section class="doc-section level-2"><h3 id="_adjust_key_repeat_rate_and_delay_until_repeat">Adjust key repeat rate and delay until repeat</h3><p>I noticed that by default,
+macOS waits longer before it starts repeating keys,
+so I change the delay to be as short as possible.</p>
+<p>I&#8217;m still experimenting with key repeat rate.
+I think that the default one less than fastest setting
+is quite good.
+But I tried with the fastest,
+and I also like it,
+although it&#8217;s definitely faster than on Windows.</p></section></section>
 <section class="doc-section level-1"><h2 id="_install_homebrew">Install homebrew</h2><p>MacOS doesn&#8217;t come with a package manager in a classic Unix way.
 There is an appstore app, but it&#8217;s more like a smartphone solution,
 than something like apt registries.</p>
