@@ -282,6 +282,31 @@ e.g. Slack or Teams.
 Coming from Windows this was a big difference,
 but fortunately I found and app called <code>Doll</code>
 which is able to handle that.</p></section>
+<section class="doc-section level-1"><h2 id="_install_sublime_text">Install Sublime Text</h2><div class="listing-block"><pre>brew install --cask sublime-text</pre></div>
+<p>On Windows I got used to Notepad+\+, and I wanted something with a similar feel.
+I tried CotEditor, as recommended to be MacOS-native editor,
+but I didn&#8217;t like it very much.
+Sublime Text was the answer.
+It can be installed via homebrew,
+it supports tabs,
+and works quite well with a lot of configuration options.</p>
+<p>To open all files in the same window of Sublime Text,
+you have to change a config option,
+as by default it always opens a new window.
+You have to set:</p>
+<div class="listing-block"><pre>"open_files_in_new_window": "never",</pre></div>
+<p>By looking at the default config, it seems that it&#8217;s already set,
+but for MacOS it&#8217;s overwritten to a different option.</p></section>
+<section class="doc-section level-1"><h2 id="_set_a_default_text_editor">Set a default text editor</h2><p>It turns out it&#8217;s more compilcated than you might think,
+especially if you want to open all text files this way
+(i.e. you don&#8217;t care about their extensions).
+I found out that installing <code>duti</code> is the simplest option for me:</p>
+<div class="listing-block"><pre>brew install duti
+
+duti -s com.sublimetext.4 public.plain-text all
+duti -s com.sublimetext.4 public.data all</pre></div>
+<p>This way, you don&#8217;t have to override the default editor for each file extension one-by-one
+which is a blessing.</p></section>
 <section class="doc-section level-1"><h2 id="_figure_out_ssh_agent">Figure out SSH agent</h2><p>TODO: it seems that Git is more stable when using SSH.
 I see errors with HTTP when pushing big branches to forks.</p>
 <p>I have to check if MacOS has a good approach to SSH agent.
@@ -349,7 +374,7 @@ so I can refine it and iterate on it later.</p></section>
     </ul>
 
     <p class="disclaimer">
-        Designed, built & written by Tomasz Wojdat © 2024
+        Designed, built & written by Tomasz Wojdat © 2025
     </p>
 </footer>
             </div>
