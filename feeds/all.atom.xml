@@ -61,10 +61,27 @@ and I had to manually clone repo and tweak it to be able to compile it.&lt;/p&gt
 &lt;section class="doc-section level-2"&gt;&lt;h3 id="_install_vobsub2srt"&gt;Install &lt;code&gt;VobSub2SRT&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;You can use my fork, so you don&amp;#8217;t have to apply the fix by yourself.
 The "fix" was bumping the minimum required version of &lt;code&gt;cmake&lt;/code&gt; which I did in
 &lt;a href="https://github.com/tpwo/VobSub2SRT/commit/cd391e43cfc13df9fc54a58246664bb3c42b481a"&gt;this one-liner&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Before compilation, you have to install build dependencies:&lt;/p&gt;
+&lt;section class="doc-section level-3"&gt;&lt;h4 id="_use_my_homebrew_tap"&gt;Use my homebrew tap&lt;/h4&gt;&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;Remember that you probably shouldn&amp;#8217;t just trust me
+and run these commands below without checking the source code first 😉&lt;/p&gt;&lt;/aside&gt;
+&lt;p&gt;I was able to set up a private homebrew tap,
+so it&amp;#8217;s possible to install my fixed version with these two commands.
+Homebrew will take care of build dependencies
+(or at least for &lt;code&gt;cmake&lt;/code&gt; and &lt;code&gt;tesseract&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;brew tap tpwo/vobsub2srt
+brew install --HEAD tpwo/vobsub2srt/vobsub2srt&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Setting this up was new for me.
+It turns out that Homebrew requires
+&lt;code&gt;&amp;lt;user&amp;gt;/homebrew-&amp;lt;name&amp;gt;&lt;/code&gt; repo to be present,
+so I &lt;a href="https://github.com/tpwo/homebrew-vobsub2srt"&gt;created it&lt;/a&gt;.
+This repo contains the
+&lt;a href="https://github.com/tpwo/homebrew-vobsub2srt/blob/main/Formula/vobsub2srt.rb"&gt;formula&lt;/a&gt;
+to install VobSub2SRT
+from &lt;a href="https://github.com/tpwo/VobSub2SRT"&gt;my fork&lt;/a&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-3"&gt;&lt;h4 id="_manual_installation"&gt;Manual installation&lt;/h4&gt;&lt;p&gt;If you prefer manual installation, it&amp;#8217;s also possible.
+Before compilation, you have to install build dependencies:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;brew install cmake
 brew install tesseract&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Then you can clone my repo and compile the tool:&lt;/p&gt;
+&lt;p&gt;Then you can clone my fork and compile the tool:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;git clone https://github.com/tpwo/VobSub2SRT
 &lt;span class="nb"&gt;cd &lt;/span&gt;VobSub2SRT
 
@@ -78,7 +95,7 @@ but I just grabbed the compiled binary and moved it to my PATH in &lt;code&gt;~/
 &lt;p&gt;Then you can finally convert &lt;code&gt;sub&lt;/code&gt; and &lt;code&gt;idx&lt;/code&gt; file into &lt;code&gt;srt&lt;/code&gt; file:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;# Note we don't pass file extension here
 vobsub2srt &amp;lt;output-file&amp;gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;e.g. &lt;code&gt;vobsub2srt output&lt;/code&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;p&gt;e.g. &lt;code&gt;vobsub2srt output&lt;/code&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;
 &lt;section class="doc-section level-1"&gt;&lt;h2 id="_script_to_run_it_all_with_one_command"&gt;Script to run it all with one command&lt;/h2&gt;&lt;p&gt;I had a bunch videos with embedded subtitles,
 so I created a Bash script to quickly run it with &lt;code&gt;for f in *&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;&lt;span class="nv"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
@@ -156,14 +173,14 @@ and using GPG is a lot of pain.&lt;/p&gt;
 and quick research showed that I&amp;#8217;m not the only one.&lt;/p&gt;
 &lt;p&gt;Out of curiosity I checked it now,
 and I was able to sign my commits after a few minutes of configuration.&lt;/p&gt;&lt;/section&gt;
-&lt;section class="doc-section level-1"&gt;&lt;h2 id="_configure_git"&gt;Configure Git&lt;/h2&gt;&lt;p&gt;I assume that you already have and use a password-protected SSH key.
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_configure_git"&gt;Configure Git&lt;/h2&gt;&lt;p&gt;I assume that you already have and use a password-protected SSH key&lt;a class="footnote-ref" id="_footnoteref_2" href="#_footnote_2" title="View footnote 2" role="doc-noteref"&gt;[2]&lt;/a&gt;.
 Then you can tell Git to use it:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/&amp;lt;your-public-key&amp;gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And that&amp;#8217;s all!
 To sign a single commit:&lt;/p&gt;
 &lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;while doing research you might also encounter sign-off
-which is a different thing in Git, and is not backed by by any encryption&lt;a class="footnote-ref" id="_footnoteref_2" href="#_footnote_2" title="View footnote 2" role="doc-noteref"&gt;[2]&lt;/a&gt;.&lt;/p&gt;&lt;/aside&gt;
+which is a different thing in Git, and is not backed by by any encryption&lt;a class="footnote-ref" id="_footnoteref_3" href="#_footnote_3" title="View footnote 3" role="doc-noteref"&gt;[3]&lt;/a&gt;.&lt;/p&gt;&lt;/aside&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;git commit -S -m 'Your commit message'&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To always sign your commits:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;git config --global commit.gpgsign true&lt;/pre&gt;&lt;/div&gt;
@@ -193,7 +210,9 @@ Good "git" signature for your.email@example.com with ED25519 key SHA256:&amp;lt;
 Author: John Doe &amp;lt;your.email@example.com&amp;gt;
 Date:   Fri May 30 21:22:36 2025 +0200
 
-    Hello there&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;&lt;section class="footnotes" aria-label="Footnotes" role="doc-endnotes"&gt;&lt;hr&gt;&lt;ol class="footnotes"&gt;&lt;li class="footnote" id="_footnote_1" role="doc-endnote"&gt;I don&amp;#8217;t want to go into details, but e.g. &lt;a href="https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html"&gt;this blog post&lt;/a&gt; does it ery well &lt;a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;li class="footnote" id="_footnote_2" role="doc-endnote"&gt;&lt;a href="https://youtu.be/6hu3cbBhHqQ"&gt;This video&lt;/a&gt; shows different ways to sign a Git commit. Also, author clearly states that he doesn&amp;#8217;t sign his commits, so you clearly see that opinions vary on this topic. &lt;a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="git"></category></entry><entry><title>Clipboard sync between WSL Neovim and Windows</title><link href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows" rel="alternate"></link><published>2024-09-17T21:52:00+02:00</published><updated>2024-09-17T21:52:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-09-17:/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
+    Hello there&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_further_reading"&gt;Further reading&lt;/h2&gt;&lt;div class="ulist"&gt;&lt;ul&gt;&lt;li&gt;How to do it on Windows:&lt;br&gt;
+&lt;a class="bare" href="https://www.meziantou.net/signing-commits-in-git-using-ssh-keys-on-windows.htm"&gt;https://www.meziantou.net/signing-commits-in-git-using-ssh-keys-on-windows.htm&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/section&gt;&lt;section class="footnotes" aria-label="Footnotes" role="doc-endnotes"&gt;&lt;hr&gt;&lt;ol class="footnotes"&gt;&lt;li class="footnote" id="_footnote_1" role="doc-endnote"&gt;I don&amp;#8217;t want to go into details, but e.g. &lt;a href="https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html"&gt;this blog post&lt;/a&gt; does it ery well &lt;a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;li class="footnote" id="_footnote_2" role="doc-endnote"&gt;If you don&amp;#8217;t have your SSH key set up, &lt;a href="https://www.git-tower.com/blog/setting-up-ssh-for-commit-signing"&gt;this blog post&lt;/a&gt; will be helpful. They go into much more details along with tips how to load SSH keys into keychain on MacOS etc. &lt;a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;li class="footnote" id="_footnote_3" role="doc-endnote"&gt;&lt;a href="https://youtu.be/6hu3cbBhHqQ"&gt;This video&lt;/a&gt; shows different ways to sign a Git commit. Also, author clearly states that he doesn&amp;#8217;t sign his commits, so you clearly see that opinions vary on this topic. &lt;a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="git"></category></entry><entry><title>Clipboard sync between WSL Neovim and Windows</title><link href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows" rel="alternate"></link><published>2024-09-17T21:52:00+02:00</published><updated>2024-09-17T21:52:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-09-17:/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
 One of the first issues was proper configuration of clipboard.
 By &lt;em&gt;proper …&lt;/em&gt;&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
 One of the first issues was proper configuration of clipboard.

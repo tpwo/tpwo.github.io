@@ -91,10 +91,27 @@ and I had to manually clone repo and tweak it to be able to compile it.</p>
 <section class="doc-section level-2"><h3 id="_install_vobsub2srt">Install <code>VobSub2SRT</code></h3><p>You can use my fork, so you don&#8217;t have to apply the fix by yourself.
 The "fix" was bumping the minimum required version of <code>cmake</code> which I did in
 <a href="https://github.com/tpwo/VobSub2SRT/commit/cd391e43cfc13df9fc54a58246664bb3c42b481a">this one-liner</a>.</p>
-<p>Before compilation, you have to install build dependencies:</p>
+<section class="doc-section level-3"><h4 id="_use_my_homebrew_tap">Use my homebrew tap</h4><aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>Remember that you probably shouldn&#8217;t just trust me
+and run these commands below without checking the source code first 😉</p></aside>
+<p>I was able to set up a private homebrew tap,
+so it&#8217;s possible to install my fixed version with these two commands.
+Homebrew will take care of build dependencies
+(or at least for <code>cmake</code> and <code>tesseract</code>):</p>
+<div class="listing-block"><pre>brew tap tpwo/vobsub2srt
+brew install --HEAD tpwo/vobsub2srt/vobsub2srt</pre></div>
+<p>Setting this up was new for me.
+It turns out that Homebrew requires
+<code>&lt;user&gt;/homebrew-&lt;name&gt;</code> repo to be present,
+so I <a href="https://github.com/tpwo/homebrew-vobsub2srt">created it</a>.
+This repo contains the
+<a href="https://github.com/tpwo/homebrew-vobsub2srt/blob/main/Formula/vobsub2srt.rb">formula</a>
+to install VobSub2SRT
+from <a href="https://github.com/tpwo/VobSub2SRT">my fork</a>.</p></section>
+<section class="doc-section level-3"><h4 id="_manual_installation">Manual installation</h4><p>If you prefer manual installation, it&#8217;s also possible.
+Before compilation, you have to install build dependencies:</p>
 <div class="listing-block"><pre>brew install cmake
 brew install tesseract</pre></div>
-<p>Then you can clone my repo and compile the tool:</p>
+<p>Then you can clone my fork and compile the tool:</p>
 <div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">git clone https://github.com/tpwo/VobSub2SRT
 <span class="nb">cd </span>VobSub2SRT
 
@@ -108,7 +125,7 @@ but I just grabbed the compiled binary and moved it to my PATH in <code>~/.local
 <p>Then you can finally convert <code>sub</code> and <code>idx</code> file into <code>srt</code> file:</p>
 <div class="listing-block"><pre># Note we don't pass file extension here
 vobsub2srt &lt;output-file&gt;</pre></div>
-<p>e.g. <code>vobsub2srt output</code></p></section></section>
+<p>e.g. <code>vobsub2srt output</code></p></section></section></section>
 <section class="doc-section level-1"><h2 id="_script_to_run_it_all_with_one_command">Script to run it all with one command</h2><p>I had a bunch videos with embedded subtitles,
 so I created a Bash script to quickly run it with <code>for f in *</code>:</p>
 <div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nv">title</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
