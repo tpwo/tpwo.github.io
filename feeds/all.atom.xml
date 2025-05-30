@@ -1,5 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2024-09-17T21:52:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Clipboard sync between WSL Neovim and Windows</title><link href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows" rel="alternate"></link><published>2024-09-17T21:52:00+02:00</published><updated>2024-09-17T21:52:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-09-17:/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2025-05-30T21:33:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Use SSH key to sign your Git commits</title><link href="https://tpwo.github.io/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits" rel="alternate"></link><published>2025-05-30T21:33:00+02:00</published><updated>2025-05-30T21:33:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2025-05-30:/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits</id><summary type="html">How to sign commits without using GPG</summary><content type="html">&lt;section class="doc-section level-1"&gt;&lt;h2 id="_but_why"&gt;But why?&lt;/h2&gt;&lt;p&gt;You might wonder why should you sign your commits.
+This is a valid question, and some people just don&amp;#8217;t care about it.
+If you don&amp;#8217;t have a ready opinion, I&amp;#8217;ll try to convince you.&lt;/p&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_choose_your_warrior_committer"&gt;Choose your &lt;s&gt;warrior&lt;/s&gt; committer&lt;/h3&gt;&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;Yes, I know that author and committer are two different things in Git,
+but you can fabricate both of them pretty much the same way.&lt;/p&gt;&lt;/aside&gt;
+&lt;p&gt;In Git you can assign any author to any commit.
+This is a basic functionality of Git,
+you can put any name and email in &lt;code&gt;.gitconfig&lt;/code&gt;
+or pass one-time name/email with &lt;code&gt;-C&lt;/code&gt; when committing
+(or set ENV variables etc.&amp;#8201;&amp;#8211;&amp;#8201;there are many ways).&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_make_github_to_link_their_profile"&gt;Make GitHub to link their profile&lt;/h3&gt;&lt;p&gt;Then, you can push this commit to GitHub.
+If the commit email address is already used by someone on GitHub,
+GitHub links it with their profile.
+Even if this is obviously not their commit.
+GitHub cannot know this.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_fork_their_repo_and_display_fabricated_commit_from_the_base_url"&gt;Fork their repo and display fabricated commit from the base URL&lt;/h3&gt;&lt;p&gt;You might think that no one cares about you
+doing some fake commits in your repos.
+But you can fork any repo and fake commits in the fork.&lt;/p&gt;
+&lt;p&gt;Then, you can display a commit from fork
+even when looking at it from the original repo.
+Actually, this is a big problem with GitHub UI,
+as it treats all forks to be connected with the base repo.&lt;/p&gt;
+&lt;p&gt;I once found a fabricated Linus Torvalds commit
+in which he deleted the whole
+&lt;a href="https://github.com/torvalds/linux"&gt;Linux codebase&lt;/a&gt;
+with a funny commit message.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I haven&amp;#8217;t found it now but
+&lt;a href="https://github.com/Amog-OS/AmogOS/commit/4f503a0"&gt;here&amp;#8217;s something similar&lt;/a&gt;
+(also from Torvalds!).&lt;/p&gt;
+&lt;p&gt;TLDR: fabrication process is simple:&lt;/p&gt;
+&lt;div class="olist arabic"&gt;&lt;ol class="arabic"&gt;&lt;li&gt;Fork a repo&lt;/li&gt;&lt;li&gt;Create a fake commit.&lt;/li&gt;&lt;li&gt;Display it in context of the original repo. &lt;strong&gt;GitHub allows for that!&lt;/strong&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_what_can_i_do"&gt;What can I do?&lt;/h3&gt;&lt;p&gt;You cannot prevent people from using your (public) email
+and fabricate commits on your account.
+But you can turn on GitHub &lt;strong&gt;vigilant mode&lt;/strong&gt; which is described in
+&lt;a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits"&gt;their docs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then all of your unsigned commits will be marked explicitly as unverified.
+Unfortunately, also all of &lt;strong&gt;your own&lt;/strong&gt; commits,
+prior you started to sign them, will be marked as well.&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_old_times"&gt;Old times&lt;/h2&gt;&lt;p&gt;Nevermind, let&amp;#8217;s go back to the original topic.&lt;/p&gt;
+&lt;p&gt;By the end of 2021 with v2.34.0
+Git added a way to sign your commits using SSH keys.
+Before then, only GPG could be used for that,
+and using GPG is a lot of pain.&lt;/p&gt;
+&lt;p&gt;I tried switching to SSH a few years ago but it didn&amp;#8217;t work,
+and quick research showed that I&amp;#8217;m not the only one.&lt;/p&gt;
+&lt;p&gt;Out of curiosity I checked it now,
+and I was able to sign my commits after a few minutes of configuration.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_configure_git"&gt;Configure Git&lt;/h2&gt;&lt;p&gt;I assume that you already have and use a password-protected SSH key.
+Then you can tell Git to use it:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/&amp;lt;your-public-key&amp;gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And that&amp;#8217;s all!
+To sign a single commit:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git commit -S -m "Your commit message&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To sign all commits:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git config --global commit.gpgsign true&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To also sign all tags:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git config --global tag.gpgsign true&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_configure_github"&gt;Configure GitHub&lt;/h2&gt;&lt;p&gt;To have commits marked as signed in GitHub,
+you have to add SSH key one more time,
+and choose it to be your &lt;strong&gt;Signing Key&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="image-block"&gt;&lt;img src="https://tpwo.github.io/images/use-ssh-key-to-sign-your-git-commits/add-new-ssh-key.png" alt="Add new SSH signing key in GitHub"&gt;&lt;/div&gt;
+&lt;p&gt;After doing that,
+your signed commits will be marked as &lt;strong&gt;Verified&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="image-block"&gt;&lt;img src="https://tpwo.github.io/images/use-ssh-key-to-sign-your-git-commits/commit-sign.png" alt="Commit signed with SSH key as displayed in GitHub"&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_local_signers_file"&gt;Local signers file&lt;/h2&gt;&lt;p&gt;You can also create an allowed signers file
+for quick local verification of signatures&lt;/p&gt;
+&lt;p&gt;Create a file (e.g., &lt;code&gt;~/.config/git/allowed_signers&lt;/code&gt;)
+listing trusted email and public key pairs in this format:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;your.email@example.com ssh-ed25519 AAAAC3NzaC1...&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then tell Git to use it:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git config --global gpg.ssh.allowedSignersFile "~/.config/git/allowed_signers"&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can now verify if your commit was signed properly:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;$ git verify-commit &amp;lt;hash&amp;gt;
+Good "git" signature for your.email@example.com with ED25519 key SHA256:&amp;lt;...snip...&amp;gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can do it for git log as well:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;$ git log --show-signature
+commit &amp;lt;hash&amp;gt; (HEAD -&amp;gt; main, origin/main)
+Good "git" signature for your.email@example.com with ED25519 key SHA256:&amp;lt;...snip...&amp;gt;
+Author: John Doe &amp;lt;your.email@example.com&amp;gt;
+Date:   Fri May 30 21:22:36 2025 +0200
+
+    Hello there&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="git"></category></entry><entry><title>Clipboard sync between WSL Neovim and Windows</title><link href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows" rel="alternate"></link><published>2024-09-17T21:52:00+02:00</published><updated>2024-09-17T21:52:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2024-09-17:/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
 One of the first issues was proper configuration of clipboard.
 By &lt;em&gt;proper …&lt;/em&gt;&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I recently started migration from Vim to Neovim.
 One of the first issues was proper configuration of clipboard.

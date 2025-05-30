@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Use SSH key to sign your Git commits &middot; tpwo.github.io</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p>A personal blog</p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+        <a href="https://tpwo.github.io/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Use SSH key to sign your Git commits</h1>
+            <p class="date">Written on <time datetime="2025-05-30T21:33:00+02:00">May 30, 2025</time></p>
+        </header>
+
+        <article>
+            <section class="doc-section level-1"><h2 id="_but_why">But why?</h2><p>You might wonder why should you sign your commits.
+This is a valid question, and some people just don&#8217;t care about it.
+If you don&#8217;t have a ready opinion, I&#8217;ll try to convince you.</p>
+<section class="doc-section level-2"><h3 id="_choose_your_warrior_committer">Choose your <s>warrior</s> committer</h3><aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>Yes, I know that author and committer are two different things in Git,
+but you can fabricate both of them pretty much the same way.</p></aside>
+<p>In Git you can assign any author to any commit.
+This is a basic functionality of Git,
+you can put any name and email in <code>.gitconfig</code>
+or pass one-time name/email with <code>-C</code> when committing
+(or set ENV variables etc.&#8201;&#8211;&#8201;there are many ways).</p></section>
+<section class="doc-section level-2"><h3 id="_make_github_to_link_their_profile">Make GitHub to link their profile</h3><p>Then, you can push this commit to GitHub.
+If the commit email address is already used by someone on GitHub,
+GitHub links it with their profile.
+Even if this is obviously not their commit.
+GitHub cannot know this.</p></section>
+<section class="doc-section level-2"><h3 id="_fork_their_repo_and_display_fabricated_commit_from_the_base_url">Fork their repo and display fabricated commit from the base URL</h3><p>You might think that no one cares about you
+doing some fake commits in your repos.
+But you can fork any repo and fake commits in the fork.</p>
+<p>Then, you can display a commit from fork
+even when looking at it from the original repo.
+Actually, this is a big problem with GitHub UI,
+as it treats all forks to be connected with the base repo.</p>
+<p>I once found a fabricated Linus Torvalds commit
+in which he deleted the whole
+<a href="https://github.com/torvalds/linux">Linux codebase</a>
+with a funny commit message.</p>
+<p>Unfortunately, I haven&#8217;t found it now but
+<a href="https://github.com/Amog-OS/AmogOS/commit/4f503a0">here&#8217;s something similar</a>
+(also from Torvalds!).</p>
+<p>TLDR: fabrication process is simple:</p>
+<div class="olist arabic"><ol class="arabic"><li>Fork a repo</li><li>Create a fake commit.</li><li>Display it in context of the original repo. <strong>GitHub allows for that!</strong></li></ol></div></section>
+<section class="doc-section level-2"><h3 id="_what_can_i_do">What can I do?</h3><p>You cannot prevent people from using your (public) email
+and fabricate commits on your account.
+But you can turn on GitHub <strong>vigilant mode</strong> which is described in
+<a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits">their docs</a>.</p>
+<p>Then all of your unsigned commits will be marked explicitly as unverified.
+Unfortunately, also all of <strong>your own</strong> commits,
+prior you started to sign them, will be marked as well.</p></section></section>
+<section class="doc-section level-1"><h2 id="_old_times">Old times</h2><p>Nevermind, let&#8217;s go back to the original topic.</p>
+<p>By the end of 2021 with v2.34.0
+Git added a way to sign your commits using SSH keys.
+Before then, only GPG could be used for that,
+and using GPG is a lot of pain.</p>
+<p>I tried switching to SSH a few years ago but it didn&#8217;t work,
+and quick research showed that I&#8217;m not the only one.</p>
+<p>Out of curiosity I checked it now,
+and I was able to sign my commits after a few minutes of configuration.</p></section>
+<section class="doc-section level-1"><h2 id="_configure_git">Configure Git</h2><p>I assume that you already have and use a password-protected SSH key.
+Then you can tell Git to use it:</p>
+<div class="listing-block"><pre>git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/&lt;your-public-key&gt;</pre></div>
+<p>And that&#8217;s all!
+To sign a single commit:</p>
+<div class="listing-block"><pre>git commit -S -m "Your commit message</pre></div>
+<p>To sign all commits:</p>
+<div class="listing-block"><pre>git config --global commit.gpgsign true</pre></div>
+<p>To also sign all tags:</p>
+<div class="listing-block"><pre>git config --global tag.gpgsign true</pre></div></section>
+<section class="doc-section level-1"><h2 id="_configure_github">Configure GitHub</h2><p>To have commits marked as signed in GitHub,
+you have to add SSH key one more time,
+and choose it to be your <strong>Signing Key</strong>:</p>
+<div class="image-block"><img src="https://tpwo.github.io/images/use-ssh-key-to-sign-your-git-commits/add-new-ssh-key.png" alt="Add new SSH signing key in GitHub"></div>
+<p>After doing that,
+your signed commits will be marked as <strong>Verified</strong>:</p>
+<div class="image-block"><img src="https://tpwo.github.io/images/use-ssh-key-to-sign-your-git-commits/commit-sign.png" alt="Commit signed with SSH key as displayed in GitHub"></div></section>
+<section class="doc-section level-1"><h2 id="_local_signers_file">Local signers file</h2><p>You can also create an allowed signers file
+for quick local verification of signatures</p>
+<p>Create a file (e.g., <code>~/.config/git/allowed_signers</code>)
+listing trusted email and public key pairs in this format:</p>
+<div class="listing-block"><pre>your.email@example.com ssh-ed25519 AAAAC3NzaC1...</pre></div>
+<p>Then tell Git to use it:</p>
+<div class="listing-block"><pre>git config --global gpg.ssh.allowedSignersFile "~/.config/git/allowed_signers"</pre></div>
+<p>You can now verify if your commit was signed properly:</p>
+<div class="listing-block"><pre>$ git verify-commit &lt;hash&gt;
+Good "git" signature for your.email@example.com with ED25519 key SHA256:&lt;...snip...&gt;</pre></div>
+<p>You can do it for git log as well:</p>
+<div class="listing-block"><pre>$ git log --show-signature
+commit &lt;hash&gt; (HEAD -&gt; main, origin/main)
+Good "git" signature for your.email@example.com with ED25519 key SHA256:&lt;...snip...&gt;
+Author: John Doe &lt;your.email@example.com&gt;
+Date:   Fri May 30 21:22:36 2025 +0200
+
+    Hello there</pre></div></section>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
+        <footer>
+            <center>
+               <p><i>That's All Folks!</i></p>
+            </center>
+
+            <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
+
+                <div class="navigation">
+                    <div class="prev-article">
+                            <div class="prev-article-header">
+                                « PREV
+                            </div>
+                            <div class="prev-article-content">
+                                <a href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows">
+                                    Clipboard sync between WSL Neovim and Windows
+                                </a>
+                            </div>
+                    </div>
+                    <div class="next-article">
+                    </div>
+                </div>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2025
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
+</html>
