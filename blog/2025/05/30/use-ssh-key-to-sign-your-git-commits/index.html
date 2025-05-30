@@ -31,7 +31,7 @@
         <article>
             <section class="doc-section level-1"><h2 id="_but_why">But why?</h2><p>You might wonder why should you sign your commits.
 This is a valid question, and some people just don&#8217;t care about it.
-If you don&#8217;t have a ready opinion, I&#8217;ll try to convince you.</p>
+If you don&#8217;t have a ready opinion<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a>, I&#8217;ll try to convince you.</p>
 <section class="doc-section level-2"><h3 id="_choose_your_warrior_committer">Choose your <s>warrior</s> committer</h3><aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>Yes, I know that author and committer are two different things in Git,
 but you can fabricate both of them pretty much the same way.</p></aside>
 <p>In Git you can assign any author to any commit.
@@ -82,10 +82,12 @@ Then you can tell Git to use it:</p>
 git config --global user.signingkey ~/.ssh/&lt;your-public-key&gt;</pre></div>
 <p>And that&#8217;s all!
 To sign a single commit:</p>
+<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>while doing research you might also encounter sign-off
+which is a different thing in Git, and is not backed by by any encryption<a class="footnote-ref" id="_footnoteref_2" href="#_footnote_2" title="View footnote 2" role="doc-noteref">[2]</a>.</p></aside>
 <div class="listing-block"><pre>git commit -S -m 'Your commit message'</pre></div>
-<p>To sign all commits:</p>
+<p>To always sign your commits:</p>
 <div class="listing-block"><pre>git config --global commit.gpgsign true</pre></div>
-<p>To also sign all tags:</p>
+<p>To also always sign your tags:</p>
 <div class="listing-block"><pre>git config --global tag.gpgsign true</pre></div></section>
 <section class="doc-section level-1"><h2 id="_configure_github">Configure GitHub</h2><p>To have commits marked as signed in GitHub,
 you have to add SSH key one more time,
@@ -111,7 +113,7 @@ Good "git" signature for your.email@example.com with ED25519 key SHA256:&lt;...s
 Author: John Doe &lt;your.email@example.com&gt;
 Date:   Fri May 30 21:22:36 2025 +0200
 
-    Hello there</pre></div></section>
+    Hello there</pre></div></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I don&#8217;t want to go into details, but e.g. <a href="https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html">this blog post</a> does it ery well <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote"><a href="https://youtu.be/6hu3cbBhHqQ">This video</a> shows different ways to sign a Git commit. Also, author clearly states that he doesn&#8217;t sign his commits, so you clearly see that opinions vary on this topic. <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
         </article>
 
         <center>
