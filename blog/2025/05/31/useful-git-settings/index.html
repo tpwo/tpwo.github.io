@@ -25,7 +25,7 @@
 
         <header>
             <h1>Useful Git settings</h1>
-            <p class="date">Written on <time datetime="2024-08-14T12:16:00+02:00">Aug 14, 2024</time></p>
+            <p class="date">Written on <time datetime="2025-05-31T00:31:00+02:00">May 31, 2025</time></p>
         </header>
 
         <article>
@@ -164,12 +164,8 @@ as you have to explicitly rebase to the new version.</p>
 <p>This is in line with the approach <strong>never use git pull</strong>
 (i.e. <strong>use git fetch and git rebase instead</strong>).
 If you&#8217;re into that,
-consider using this option.</p>
-<div class="listing-block"><pre>git config --global pull.ff only</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_rebase"><code>git rebase</code></h2><section class="doc-section level-2"><h3 id="_rebase_autosquash"><code>rebase.autosquash</code></h3><div class="listing-block"><pre>git config --global rebase.autosquash true</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_rerere_sic"><code>git rerere</code> (sic!)</h2><section class="doc-section level-2"><h3 id="_rerere_enabled"><code>rerere.enabled</code></h3><div class="listing-block"><pre>git config --global rerere.enabled true</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_merge"><code>git merge</code></h2><section class="doc-section level-2"><h3 id="_merge_tool"><code>merge.tool</code></h3></section>
-<section class="doc-section level-2"><h3 id="_merge_conflictstyle"><code>merge.conflictstyle</code></h3><p>I think I don&#8217;t know a person who likes to solve merge conflicts.
+consider using this option.</p></section></section>
+<section class="doc-section level-1"><h2 id="_git_merge"><code>git merge</code></h2><section class="doc-section level-2"><h3 id="_merge_conflictstyle"><code>merge.conflictstyle</code></h3><p>I think I don&#8217;t know a person who likes to solve merge conflicts.
 But I noticed that many people are more scared about them
 then they probably should be.</p>
 <p>Setting a better conflict style in Git
@@ -199,8 +195,6 @@ Interestingly enough, <code>z</code> in the name comes from the word <em>zealous
 and it doesn&#8217;t seem to be changing any time soon.</p>
 <p>Git though still uses default <code>master</code>, so this option has to be set.</p>
 <div class="listing-block"><pre>git config --global init.defaultBranch main</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_blame"><code>git blame</code></h2><section class="doc-section level-2"><h3 id="_blame_markignoredlines"><code>blame.markIgnoredLines</code></h3></section>
-<section class="doc-section level-2"><h3 id="_blame_markunblamablelines"><code>blame.markUnblamableLines</code></h3></section></section>
 <section class="doc-section level-1"><h2 id="_git_aliases">Git aliases</h2><section class="doc-section level-2"><h3 id="_git_git"><code>git git</code></h3><p>I borrowed that idea from Anthony Sottile<a class="footnote-ref" id="_footnoteref_10" href="#_footnote_10" title="View footnote 10" role="doc-noteref">[10]</a>.
 It allows you to type <code>git git &lt;command&gt;</code>
 and make the command still work.
@@ -211,12 +205,30 @@ I sometimes type <code>git</code> in the terminal,
 then start thinking about something,
 then and go back to typing,
 often typing <code>git</code> again due to muscle memory.
-Adding an alias is simpler than fighting with it, apparently 😛</p></section>
-<section class="doc-section level-2"><h3 id="_git_l"><code>git l</code></h3></section>
-<section class="doc-section level-2"><h3 id="_git_lg"><code>git lg</code></h3></section>
-<section class="doc-section level-2"><h3 id="_git_llg"><code>git llg</code></h3></section>
-<section class="doc-section level-2"><h3 id="_git_k"><code>git k</code></h3></section>
-<section class="doc-section level-2"><h3 id="_git_ka"><code>git ka</code></h3></section></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I recommend a <a href="https://youtu.be/TtiBhktB4Qg">video from Scott Hanselman</a> if you want to learn more about this topic <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote"><code>pre-commit</code> with its <a href="https://github.com/pre-commit/pre-commit-hooks/tree/429455474be018c8f085ae7d312432ab4154d5a2?tab=readme-ov-file#mixed-line-ending"><code>mixed-line-ending</code> hook</a> set to <code>lf</code> is a great tool for that <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><code>pre-commit</code> mentioned above is a great way to do this. Also make sure to set up it to check it with each new commit or these <code>CRLF</code> files might start reappearing, as we live in a society <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_4" role="doc-endnote">Refer to <a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">MS docs</a> on how to enable SSH agent <a class="footnote-backref" href="#_footnoteref_4" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_5" role="doc-endnote">When writing this post, I did some research, and it seems that this might be due to <code>libgit2</code> incomparability with <code>manyFiles</code>. More details <a href="https://stackoverflow.com/a/77290211/14458327">on Stack Overflow</a> <a class="footnote-backref" href="#_footnoteref_5" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_6" role="doc-endnote">There is quite a good summary of the topic <a href="https://stackoverflow.com/a/40842589">again on SO</a> <a class="footnote-backref" href="#_footnoteref_6" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_7" role="doc-endnote">Introduced in 2007 with Git 1.5.0 <a class="footnote-backref" href="#_footnoteref_7" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_8" role="doc-endnote">A pretty nice explanation of that is <a href="https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3">in this blog post</a> <a class="footnote-backref" href="#_footnoteref_8" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_9" role="doc-endnote">Again, <a href="https://stackoverflow.com/a/71254097/14458327">SO for the rescue</a> <a class="footnote-backref" href="#_footnoteref_9" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_10" role="doc-endnote">Here&#8217;s his video about it: <a class="bare" href="https://youtu.be/BkUW2NgfZao">https://youtu.be/BkUW2NgfZao</a> <a class="footnote-backref" href="#_footnoteref_10" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
+Adding an alias is simpler than fighting with it, apparently 😛</p>
+<div class="listing-block"><pre>git config --global alias.git '!git'</pre></div></section>
+<section class="doc-section level-2"><h3 id="_git_l"><code>git l</code></h3><p>Quickly output oneline log for all branches.
+Very handy to quickly orient around in the repo.
+This is one of my most-used git commands.</p>
+<div class="listing-block"><pre>git config --global alias.l 'log --graph --all --oneline'</pre></div></section>
+<section class="doc-section level-2"><h3 id="_git_lg"><code>git lg</code></h3><p><code>git l</code> with a bit more details.
+It uses more formatting and
+I copied it from someone&#8217;s dotfiles years ago.</p>
+<div class="listing-block"><pre>git config --global alias.lg "log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%cr)%C(reset) %C(white)%s%C(reset) %C(bold yellow)- %cn%C(reset)%C(bold red)%d%C(reset)' --abbrev-commit --date=relative"</pre></div></section>
+<section class="doc-section level-2"><h3 id="_git_llg"><code>git llg</code></h3><p>Even more detailed log.
+Also copied from that same person.</p>
+<div class="listing-block"><pre>git config --global alias.llg "log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cD%C(reset) %C(bold green)(%cr)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold yellow)- %cn%C(reset)' --abbrev-commit"</pre></div></section>
+<section class="doc-section level-2"><h3 id="_git_k"><code>git k</code></h3><p>You migth not know this,
+but Git comes with a GUI called <code>gitk</code>.
+It isn&#8217;t always installed (e.g. MacOS Git via homebrew),
+but when you have it,
+it might be handy in some cases.</p>
+<p>I&#8217;m used to Git commits starting with <code>git &lt;cmd&gt;</code>,
+so I added an alias which reflects it.</p>
+<div class="listing-block"><pre>git config --global alias.k '!gitk &amp;'</pre></div></section>
+<section class="doc-section level-2"><h3 id="_git_ka"><code>git ka</code></h3><p>Another <code>gitk</code> alias to run the program with <code>--all</code> flag
+which then shows all branches.</p>
+<div class="listing-block"><pre>git config --global alias.ka '!gitk --all &amp;'</pre></div></section></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I recommend a <a href="https://youtu.be/TtiBhktB4Qg">video from Scott Hanselman</a> if you want to learn more about this topic <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote"><code>pre-commit</code> with its <a href="https://github.com/pre-commit/pre-commit-hooks/tree/429455474be018c8f085ae7d312432ab4154d5a2?tab=readme-ov-file#mixed-line-ending"><code>mixed-line-ending</code> hook</a> set to <code>lf</code> is a great tool for that <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><code>pre-commit</code> mentioned above is a great way to do this. Also make sure to set up it to check it with each new commit or these <code>CRLF</code> files might start reappearing, as we live in a society <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_4" role="doc-endnote">Refer to <a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">MS docs</a> on how to enable SSH agent <a class="footnote-backref" href="#_footnoteref_4" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_5" role="doc-endnote">When writing this post, I did some research, and it seems that this might be due to <code>libgit2</code> incomparability with <code>manyFiles</code>. More details <a href="https://stackoverflow.com/a/77290211/14458327">on Stack Overflow</a> <a class="footnote-backref" href="#_footnoteref_5" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_6" role="doc-endnote">There is quite a good summary of the topic <a href="https://stackoverflow.com/a/40842589">again on SO</a> <a class="footnote-backref" href="#_footnoteref_6" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_7" role="doc-endnote">Introduced in 2007 with Git 1.5.0 <a class="footnote-backref" href="#_footnoteref_7" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_8" role="doc-endnote">A pretty nice explanation of that is <a href="https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3">in this blog post</a> <a class="footnote-backref" href="#_footnoteref_8" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_9" role="doc-endnote">Again, <a href="https://stackoverflow.com/a/71254097/14458327">SO for the rescue</a> <a class="footnote-backref" href="#_footnoteref_9" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_10" role="doc-endnote">Here&#8217;s his video about it: <a class="bare" href="https://youtu.be/BkUW2NgfZao">https://youtu.be/BkUW2NgfZao</a> <a class="footnote-backref" href="#_footnoteref_10" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
         </article>
 
         <center>
@@ -230,6 +242,20 @@ Adding an alias is simpler than fighting with it, apparently 😛</p></section>
 
             <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
 
+                <div class="navigation">
+                    <div class="prev-article">
+                            <div class="prev-article-header">
+                                « PREV
+                            </div>
+                            <div class="prev-article-content">
+                                <a href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles">
+                                    Convert dvdsub into srt subtitles
+                                </a>
+                            </div>
+                    </div>
+                    <div class="next-article">
+                    </div>
+                </div>
         </footer>
 
 
