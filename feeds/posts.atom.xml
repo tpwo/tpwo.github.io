@@ -1,5 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2025-05-30T21:33:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Use SSH key to sign your Git commits</title><link href="https://tpwo.github.io/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits" rel="alternate"></link><published>2025-05-30T21:33:00+02:00</published><updated>2025-05-30T21:33:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2025-05-30:/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits</id><summary type="html">How to sign commits without using GPG</summary><content type="html">&lt;section class="doc-section level-1"&gt;&lt;h2 id="_but_why"&gt;But why?&lt;/h2&gt;&lt;p&gt;You might wonder why should you sign your commits.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2025-05-30T22:56:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Convert dvdsub into srt subtitles</title><link href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles" rel="alternate"></link><published>2025-05-30T22:56:00+02:00</published><updated>2025-05-30T22:56:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2025-05-30:/blog/2025/05/30/convert-dvdsub-into-srt-subtitles</id><summary type="html">How to convert bitmap subtitles into text format</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;I wanted to extract subtitles from a bunch of &lt;code&gt;.mp4&lt;/code&gt; files,
+as they were containing song names playing in the background of the movie.&lt;/p&gt;
+&lt;p&gt;This was more complicated than I thought.&lt;/p&gt;
+&lt;p&gt;It turns out video subtitles can come in very different formats.
+One of them is &lt;code&gt;dvdsub&lt;/code&gt;, and it&amp;#8217;s a bitmap subtitle format.&lt;/p&gt;
+&lt;p&gt;To convert it into something you can grep,
+you have to go through a lot of steps including OCR.&lt;/p&gt;
+&lt;p&gt;Fortunately, good people created tools to do just that.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_ffmpeg_for_the_win"&gt;ffmpeg for the win&lt;/h2&gt;&lt;p&gt;I loved &lt;code&gt;ffmpeg&lt;/code&gt; once I discovered it many years ago.
+I really don&amp;#8217;t like bloated constrained GUI-based apps
+to manipulate video and audio files.&lt;/p&gt;
+&lt;p&gt;It can help with subtitles as well.&lt;/p&gt;
+&lt;p&gt;To install on MacOS you can use homebrew:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;brew install ffmpeg&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;On Linux it should be available in your package manager.
+On Windows probably the best solution is to use
+&lt;a href="https://learn.microsoft.com/en-us/windows/wsl/install"&gt;WSL2&lt;/a&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_check_your_subs"&gt;Check your subs&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ffmpeg&lt;/code&gt; can help you verifying that your subs are actually in &lt;code&gt;dvdsub&lt;/code&gt; format.
+Use &lt;code&gt;-i&lt;/code&gt; and point to the video file:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;ffmpeg -i &amp;lt;video-file&amp;gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e.g. &lt;code&gt;ffmpeg -i video.mp4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Output should look like this:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;&amp;lt;...snip...&amp;gt;
+Stream #0:0[0x1](eng): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 448x336 [SAR 1:1 DAR 4:3], 825 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2007-09-27T17:47:49.000000Z
+        handler_name    : Video Media Handler
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 74 kb/s (default)
+      Metadata:
+        creation_time   : 2007-09-27T17:47:49.000000Z
+        handler_name    : Sound Media Handler
+        vendor_id       : [0][0][0][0]
+  Stream #0:2[0x3](eng): Subtitle: dvd_subtitle (dvdsub) (mp4s / 0x7334706D), 720x480, 0 kb/s (default)
+      Metadata:
+        creation_time   : 2007-09-27T17:47:57.000000Z
+        handler_name    : Unspecified
+At least one output file must be specified&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The part we&amp;#8217;re interested in is
+&lt;code&gt;Subtitle: dvd_subtitle (dvdsub)&lt;/code&gt;.
+This confirms that our subtitles are bitmap-based,
+and are one of the three streams in the file.&lt;/p&gt;
+&lt;p&gt;Indexing is 0-based with a number after &lt;code&gt;Stream #&lt;/code&gt;,
+i.e. &lt;code&gt;0:2&lt;/code&gt; in case of subtitle stream.&lt;/p&gt;
+&lt;p&gt;Stream index is required in the next step.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_extract_subs_into_separate_container"&gt;Extract subs into separate container&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ffmpeg&lt;/code&gt; comes in handy again:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;ffmpeg -i &amp;lt;video-file&amp;gt; -map &amp;lt;stream-index&amp;gt; -c:s copy &amp;lt;output-file&amp;gt;.mkv&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e.g.&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;ffmpeg -i video.mp4 -map 0:2 -c:s copy output.mkv&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_convert_mkv_into_sub_and_idx_files"&gt;Convert &lt;code&gt;mkv&lt;/code&gt; into &lt;code&gt;sub&lt;/code&gt; and &lt;code&gt;idx&lt;/code&gt; files&lt;/h2&gt;&lt;p&gt;This step requires mkvextract.
+Again, you can install it with homebrew:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;brew install mkvtoolnix&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then &lt;code&gt;mkvextract&lt;/code&gt; should be available.
+You can use it to create &lt;code&gt;sub&lt;/code&gt; and &lt;code&gt;idx&lt;/code&gt; file from &lt;code&gt;mkv&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;mkvextract tracks &amp;lt;output-file&amp;gt;.mkv 0:&amp;lt;output-file&amp;gt;.sub&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e.g. &lt;code&gt;mkvextract tracks output.mkv 0:output.sub&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;We do it because OCR tools support this format instead of &lt;code&gt;mkv&lt;/code&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_use_ocr_to_get_srt_file"&gt;Use OCR to get &lt;code&gt;srt&lt;/code&gt; file&lt;/h2&gt;&lt;p&gt;This step took me the most, as the tool we&amp;#8217;re using here is pretty old,
+and I had to manually clone repo and tweak it to be able to compile it.&lt;/p&gt;
+&lt;section class="doc-section level-2"&gt;&lt;h3 id="_install_vobsub2srt"&gt;Install &lt;code&gt;VobSub2SRT&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;You can use my fork, so you don&amp;#8217;t have to apply the fix by yourself.
+The "fix" was bumping the minimum required version of &lt;code&gt;cmake&lt;/code&gt; which I did in
+&lt;a href="https://github.com/tpwo/VobSub2SRT/commit/cd391e43cfc13df9fc54a58246664bb3c42b481a"&gt;this one-liner&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before compilation, you have to install build dependencies:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;brew install cmake
+brew install tesseract&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then you can clone my repo and compile the tool:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;git clone https://github.com/tpwo/VobSub2SRT
+&lt;span class="nb"&gt;cd &lt;/span&gt;VobSub2SRT
+
+&lt;span class="c"&gt;# Then you can follow original README&lt;/span&gt;
+./configure
+make
+
+&lt;span class="c"&gt;# `vobsub2srt` should be present in `build/bin`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Original README suggests &lt;code&gt;sudo make install&lt;/code&gt;,
+but I just grabbed the compiled binary and moved it to my PATH in &lt;code&gt;~/.local/bin&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then you can finally convert &lt;code&gt;sub&lt;/code&gt; and &lt;code&gt;idx&lt;/code&gt; file into &lt;code&gt;srt&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;# Note we don't pass file extension here
+vobsub2srt &amp;lt;output-file&amp;gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e.g. &lt;code&gt;vobsub2srt output&lt;/code&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_script_to_run_it_all_with_one_command"&gt;Script to run it all with one command&lt;/h2&gt;&lt;p&gt;I had a bunch videos with embedded subtitles,
+so I created a Bash script to quickly run it with &lt;code&gt;for f in *&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre class="rouge highlight"&gt;&lt;code data-lang="bash"&gt;&lt;span class="nv"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="nv"&gt;title_wo_suffix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;title&lt;/span&gt;&lt;span class="p"&gt;%.*&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+
+&lt;span class="nv"&gt;outdir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;music
+
+&lt;span class="nv"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;$(&lt;/span&gt;ffmpeg &lt;span class="nt"&gt;-i&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$title&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; 2&amp;gt;&amp;amp;1 | &lt;span class="nb"&gt;grep&lt;/span&gt; &lt;span class="s1"&gt;'dvdsub'&lt;/span&gt; | &lt;span class="nb"&gt;awk&lt;/span&gt; &lt;span class="nt"&gt;-F&lt;/span&gt; &lt;span class="s1"&gt;'[#\[]'&lt;/span&gt; &lt;span class="s1"&gt;'{print $2}'&lt;/span&gt;&lt;span class="si"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nt"&gt;-z&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$stream&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then
+    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;'No subtitles track in the video!'&lt;/span&gt;
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi
+
+&lt;/span&gt;&lt;span class="nb"&gt;mkdir&lt;/span&gt; &lt;span class="nt"&gt;-p&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$outdir&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+
+ffmpeg &lt;span class="nt"&gt;-i&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$title&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="nt"&gt;-map&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$stream&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="nt"&gt;-c&lt;/span&gt;:s copy &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$outdir&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$title_wo_suffix&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;.mkv
+
+mkvextract tracks &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$outdir&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$title_wo_suffix&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;.mkv 0:&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$outdir&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$title_wo_suffix&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;.sub
+
+vobsub2srt &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$outdir&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$title_wo_suffix&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To run it, save it under &lt;code&gt;&amp;lt;name&amp;gt;&lt;/code&gt;,
+do &lt;code&gt;chmod +x &amp;lt;name&amp;gt;&lt;/code&gt;,
+and run:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;./&amp;lt;name&amp;gt; &amp;lt;video-file&amp;gt;.&amp;lt;ext&amp;gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e.g. &lt;code&gt;./extract-subs video.mp4&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To run it for e.g. all &lt;code&gt;.mp4&lt;/code&gt; files in the current folder do:&lt;/p&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;for f in *.mp4; do ./extract-subs.sh "$f"; done&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_sources_and_further_reading"&gt;Sources and further reading&lt;/h2&gt;&lt;div class="ulist"&gt;&lt;ul&gt;&lt;li&gt;Original VobSub2SRT repo (I forked a fork!):&lt;br&gt;
+&lt;a class="bare" href="https://github.com/ruediger/VobSub2SRT"&gt;https://github.com/ruediger/VobSub2SRT&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Tutorial describing alternative flow with &lt;code&gt;ffmes&lt;/code&gt;. I figured VobSub2SRT is easier to run on Apple Sillcon Macbook:&lt;br&gt;
+&lt;a class="bare" href="https://subarashii-no-fansub.github.io/Subbing-Tutorial/Convert-vobsub-file-into-srt/"&gt;https://subarashii-no-fansub.github.io/Subbing-Tutorial/Convert-vobsub-file-into-srt/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/section&gt;</content><category term="posts"></category><category term="tech"></category><category term="video"></category></entry><entry><title>Use SSH key to sign your Git commits</title><link href="https://tpwo.github.io/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits" rel="alternate"></link><published>2025-05-30T21:33:00+02:00</published><updated>2025-05-30T21:33:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2025-05-30:/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits</id><summary type="html">How to sign commits without using GPG</summary><content type="html">&lt;section class="doc-section level-1"&gt;&lt;h2 id="_but_why"&gt;But why?&lt;/h2&gt;&lt;p&gt;You might wonder why should you sign your commits.
 This is a valid question, and some people just don&amp;#8217;t care about it.
 If you don&amp;#8217;t have a ready opinion, I&amp;#8217;ll try to convince you.&lt;/p&gt;
 &lt;section class="doc-section level-2"&gt;&lt;h3 id="_choose_your_warrior_committer"&gt;Choose your &lt;s&gt;warrior&lt;/s&gt; committer&lt;/h3&gt;&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;Yes, I know that author and committer are two different things in Git,
@@ -52,7 +162,7 @@ Then you can tell Git to use it:&lt;/p&gt;
 git config --global user.signingkey ~/.ssh/&amp;lt;your-public-key&amp;gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And that&amp;#8217;s all!
 To sign a single commit:&lt;/p&gt;
-&lt;div class="listing-block"&gt;&lt;pre&gt;git commit -S -m "Your commit message&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git commit -S -m 'Your commit message'&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To sign all commits:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;git config --global commit.gpgsign true&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To also sign all tags:&lt;/p&gt;
@@ -70,7 +180,7 @@ for quick local verification of signatures&lt;/p&gt;
 listing trusted email and public key pairs in this format:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;your.email@example.com ssh-ed25519 AAAAC3NzaC1...&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then tell Git to use it:&lt;/p&gt;
-&lt;div class="listing-block"&gt;&lt;pre&gt;git config --global gpg.ssh.allowedSignersFile "~/.config/git/allowed_signers"&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="listing-block"&gt;&lt;pre&gt;git config --global gpg.ssh.allowedSignersFile '~/.config/git/allowed_signers'&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can now verify if your commit was signed properly:&lt;/p&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;$ git verify-commit &amp;lt;hash&amp;gt;
 Good "git" signature for your.email@example.com with ED25519 key SHA256:&amp;lt;...snip...&amp;gt;&lt;/pre&gt;&lt;/div&gt;

@@ -82,7 +82,7 @@ Then you can tell Git to use it:</p>
 git config --global user.signingkey ~/.ssh/&lt;your-public-key&gt;</pre></div>
 <p>And that&#8217;s all!
 To sign a single commit:</p>
-<div class="listing-block"><pre>git commit -S -m "Your commit message</pre></div>
+<div class="listing-block"><pre>git commit -S -m 'Your commit message'</pre></div>
 <p>To sign all commits:</p>
 <div class="listing-block"><pre>git config --global commit.gpgsign true</pre></div>
 <p>To also sign all tags:</p>
@@ -100,7 +100,7 @@ for quick local verification of signatures</p>
 listing trusted email and public key pairs in this format:</p>
 <div class="listing-block"><pre>your.email@example.com ssh-ed25519 AAAAC3NzaC1...</pre></div>
 <p>Then tell Git to use it:</p>
-<div class="listing-block"><pre>git config --global gpg.ssh.allowedSignersFile "~/.config/git/allowed_signers"</pre></div>
+<div class="listing-block"><pre>git config --global gpg.ssh.allowedSignersFile '~/.config/git/allowed_signers'</pre></div>
 <p>You can now verify if your commit was signed properly:</p>
 <div class="listing-block"><pre>$ git verify-commit &lt;hash&gt;
 Good "git" signature for your.email@example.com with ED25519 key SHA256:&lt;...snip...&gt;</pre></div>
@@ -137,6 +137,14 @@ Date:   Fri May 30 21:22:36 2025 +0200
                             </div>
                     </div>
                     <div class="next-article">
+                            <div class="prev-article-header">
+                                NEXT »
+                            </div>
+                            <div class="prev-article-content">
+                                <a href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles">
+                                    Convert dvdsub into srt subtitles
+                                </a>
+                            </div>
                     </div>
                 </div>
         </footer>

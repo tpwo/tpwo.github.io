@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Convert dvdsub into srt subtitles &middot; tpwo.github.io</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
+        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
+    </head>
+    <body>
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
+    <p>A personal blog</p>
+    <nav>
+        <a href="https://tpwo.github.io/blog">ARCHIVES</a>
+        <a href="https://tpwo.github.io/categories">CATEGORIES</a>
+        <a href="https://tpwo.github.io/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Convert dvdsub into srt subtitles</h1>
+            <p class="date">Written on <time datetime="2025-05-30T22:56:00+02:00">May 30, 2025</time></p>
+        </header>
+
+        <article>
+            <section id="preamble" aria-label="Preamble"><p>I wanted to extract subtitles from a bunch of <code>.mp4</code> files,
+as they were containing song names playing in the background of the movie.</p>
+<p>This was more complicated than I thought.</p>
+<p>It turns out video subtitles can come in very different formats.
+One of them is <code>dvdsub</code>, and it&#8217;s a bitmap subtitle format.</p>
+<p>To convert it into something you can grep,
+you have to go through a lot of steps including OCR.</p>
+<p>Fortunately, good people created tools to do just that.</p></section>
+<section class="doc-section level-1"><h2 id="_ffmpeg_for_the_win">ffmpeg for the win</h2><p>I loved <code>ffmpeg</code> once I discovered it many years ago.
+I really don&#8217;t like bloated constrained GUI-based apps
+to manipulate video and audio files.</p>
+<p>It can help with subtitles as well.</p>
+<p>To install on MacOS you can use homebrew:</p>
+<div class="listing-block"><pre>brew install ffmpeg</pre></div>
+<p>On Linux it should be available in your package manager.
+On Windows probably the best solution is to use
+<a href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL2</a>.</p></section>
+<section class="doc-section level-1"><h2 id="_check_your_subs">Check your subs</h2><p><code>ffmpeg</code> can help you verifying that your subs are actually in <code>dvdsub</code> format.
+Use <code>-i</code> and point to the video file:</p>
+<div class="listing-block"><pre>ffmpeg -i &lt;video-file&gt;</pre></div>
+<p>e.g. <code>ffmpeg -i video.mp4</code></p>
+<p>Output should look like this:</p>
+<div class="listing-block"><pre>&lt;...snip...&gt;
+Stream #0:0[0x1](eng): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 448x336 [SAR 1:1 DAR 4:3], 825 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2007-09-27T17:47:49.000000Z
+        handler_name    : Video Media Handler
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 74 kb/s (default)
+      Metadata:
+        creation_time   : 2007-09-27T17:47:49.000000Z
+        handler_name    : Sound Media Handler
+        vendor_id       : [0][0][0][0]
+  Stream #0:2[0x3](eng): Subtitle: dvd_subtitle (dvdsub) (mp4s / 0x7334706D), 720x480, 0 kb/s (default)
+      Metadata:
+        creation_time   : 2007-09-27T17:47:57.000000Z
+        handler_name    : Unspecified
+At least one output file must be specified</pre></div>
+<p>The part we&#8217;re interested in is
+<code>Subtitle: dvd_subtitle (dvdsub)</code>.
+This confirms that our subtitles are bitmap-based,
+and are one of the three streams in the file.</p>
+<p>Indexing is 0-based with a number after <code>Stream #</code>,
+i.e. <code>0:2</code> in case of subtitle stream.</p>
+<p>Stream index is required in the next step.</p></section>
+<section class="doc-section level-1"><h2 id="_extract_subs_into_separate_container">Extract subs into separate container</h2><p><code>ffmpeg</code> comes in handy again:</p>
+<div class="listing-block"><pre>ffmpeg -i &lt;video-file&gt; -map &lt;stream-index&gt; -c:s copy &lt;output-file&gt;.mkv</pre></div>
+<p>e.g.</p>
+<div class="listing-block"><pre>ffmpeg -i video.mp4 -map 0:2 -c:s copy output.mkv</pre></div></section>
+<section class="doc-section level-1"><h2 id="_convert_mkv_into_sub_and_idx_files">Convert <code>mkv</code> into <code>sub</code> and <code>idx</code> files</h2><p>This step requires mkvextract.
+Again, you can install it with homebrew:</p>
+<div class="listing-block"><pre>brew install mkvtoolnix</pre></div>
+<p>Then <code>mkvextract</code> should be available.
+You can use it to create <code>sub</code> and <code>idx</code> file from <code>mkv</code>:</p>
+<div class="listing-block"><pre>mkvextract tracks &lt;output-file&gt;.mkv 0:&lt;output-file&gt;.sub</pre></div>
+<p>e.g. <code>mkvextract tracks output.mkv 0:output.sub</code></p>
+<p>We do it because OCR tools support this format instead of <code>mkv</code>.</p></section>
+<section class="doc-section level-1"><h2 id="_use_ocr_to_get_srt_file">Use OCR to get <code>srt</code> file</h2><p>This step took me the most, as the tool we&#8217;re using here is pretty old,
+and I had to manually clone repo and tweak it to be able to compile it.</p>
+<section class="doc-section level-2"><h3 id="_install_vobsub2srt">Install <code>VobSub2SRT</code></h3><p>You can use my fork, so you don&#8217;t have to apply the fix by yourself.
+The "fix" was bumping the minimum required version of <code>cmake</code> which I did in
+<a href="https://github.com/tpwo/VobSub2SRT/commit/cd391e43cfc13df9fc54a58246664bb3c42b481a">this one-liner</a>.</p>
+<p>Before compilation, you have to install build dependencies:</p>
+<div class="listing-block"><pre>brew install cmake
+brew install tesseract</pre></div>
+<p>Then you can clone my repo and compile the tool:</p>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">git clone https://github.com/tpwo/VobSub2SRT
+<span class="nb">cd </span>VobSub2SRT
+
+<span class="c"># Then you can follow original README</span>
+./configure
+make
+
+<span class="c"># `vobsub2srt` should be present in `build/bin`</span></code></pre></div>
+<p>Original README suggests <code>sudo make install</code>,
+but I just grabbed the compiled binary and moved it to my PATH in <code>~/.local/bin</code>.</p>
+<p>Then you can finally convert <code>sub</code> and <code>idx</code> file into <code>srt</code> file:</p>
+<div class="listing-block"><pre># Note we don't pass file extension here
+vobsub2srt &lt;output-file&gt;</pre></div>
+<p>e.g. <code>vobsub2srt output</code></p></section></section>
+<section class="doc-section level-1"><h2 id="_script_to_run_it_all_with_one_command">Script to run it all with one command</h2><p>I had a bunch videos with embedded subtitles,
+so I created a Bash script to quickly run it with <code>for f in *</code>:</p>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nv">title</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<span class="nv">title_wo_suffix</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">title</span><span class="p">%.*</span><span class="k">}</span><span class="s2">"</span>
+
+<span class="nv">outdir</span><span class="o">=</span>music
+
+<span class="nv">stream</span><span class="o">=</span><span class="si">$(</span>ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="nv">$title</span><span class="s2">"</span> 2&gt;&amp;1 | <span class="nb">grep</span> <span class="s1">'dvdsub'</span> | <span class="nb">awk</span> <span class="nt">-F</span> <span class="s1">'[#\[]'</span> <span class="s1">'{print $2}'</span><span class="si">)</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$stream</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'No subtitles track in the video!'</span>
+    <span class="nb">exit </span>1
+<span class="k">fi
+
+</span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$outdir</span><span class="s2">"</span>
+
+ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="nv">$title</span><span class="s2">"</span> <span class="nt">-map</span> <span class="s2">"</span><span class="nv">$stream</span><span class="s2">"</span> <span class="nt">-c</span>:s copy <span class="s2">"</span><span class="nv">$outdir</span><span class="s2">"</span>/<span class="s2">"</span><span class="nv">$title_wo_suffix</span><span class="s2">"</span>.mkv
+
+mkvextract tracks <span class="s2">"</span><span class="nv">$outdir</span><span class="s2">"</span>/<span class="s2">"</span><span class="nv">$title_wo_suffix</span><span class="s2">"</span>.mkv 0:<span class="s2">"</span><span class="nv">$outdir</span><span class="s2">"</span>/<span class="s2">"</span><span class="nv">$title_wo_suffix</span><span class="s2">"</span>.sub
+
+vobsub2srt <span class="s2">"</span><span class="nv">$outdir</span><span class="s2">"</span>/<span class="s2">"</span><span class="nv">$title_wo_suffix</span><span class="s2">"</span></code></pre></div>
+<p>To run it, save it under <code>&lt;name&gt;</code>,
+do <code>chmod +x &lt;name&gt;</code>,
+and run:</p>
+<div class="listing-block"><pre>./&lt;name&gt; &lt;video-file&gt;.&lt;ext&gt;</pre></div>
+<p>e.g. <code>./extract-subs video.mp4</code>.</p>
+<p>To run it for e.g. all <code>.mp4</code> files in the current folder do:</p>
+<div class="listing-block"><pre>for f in *.mp4; do ./extract-subs.sh "$f"; done</pre></div></section>
+<section class="doc-section level-1"><h2 id="_sources_and_further_reading">Sources and further reading</h2><div class="ulist"><ul><li>Original VobSub2SRT repo (I forked a fork!):<br>
+<a class="bare" href="https://github.com/ruediger/VobSub2SRT">https://github.com/ruediger/VobSub2SRT</a></li><li>Tutorial describing alternative flow with <code>ffmes</code>. I figured VobSub2SRT is easier to run on Apple Sillcon Macbook:<br>
+<a class="bare" href="https://subarashii-no-fansub.github.io/Subbing-Tutorial/Convert-vobsub-file-into-srt/">https://subarashii-no-fansub.github.io/Subbing-Tutorial/Convert-vobsub-file-into-srt/</a></li></ul></div></section>
+        </article>
+
+        <center>
+           ✵
+        </center>
+
+        <footer>
+            <center>
+               <p><i>That's All Folks!</i></p>
+            </center>
+
+            <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
+
+                <div class="navigation">
+                    <div class="prev-article">
+                            <div class="prev-article-header">
+                                « PREV
+                            </div>
+                            <div class="prev-article-content">
+                                <a href="https://tpwo.github.io/blog/2025/05/30/use-ssh-key-to-sign-your-git-commits">
+                                    Use SSH key to sign your Git commits
+                                </a>
+                            </div>
+                    </div>
+                    <div class="next-article">
+                    </div>
+                </div>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+            <li><a href="https://github.com/tpwo/">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+
+    <p class="disclaimer">
+        Designed, built & written by Tomasz Wojdat © 2025
+    </p>
+</footer>
+            </div>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXP99N6VP');
+</script>
+
+    </body>
+</html>
