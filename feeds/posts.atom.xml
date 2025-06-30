@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2025-06-17T01:04:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Useful Git settings</title><link href="https://tpwo.github.io/blog/2025/05/31/useful-git-settings" rel="alternate"></link><published>2025-05-31T00:31:00+02:00</published><updated>2025-05-31T00:31:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2025-05-31:/blog/2025/05/31/useful-git-settings</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;In my dotfiles I always have a &lt;code&gt;.gitconfig&lt;/code&gt; file
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tpwo.github.io - posts</title><link href="https://tpwo.github.io/" rel="alternate"></link><link href="https://tpwo.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://tpwo.github.io/</id><updated>2025-06-30T14:32:00+02:00</updated><subtitle>A personal blog</subtitle><entry><title>Useful Git settings</title><link href="https://tpwo.github.io/blog/2025/05/31/useful-git-settings" rel="alternate"></link><published>2025-05-31T00:31:00+02:00</published><updated>2025-06-30T14:32:00+02:00</updated><author><name>tpwo</name></author><id>tag:tpwo.github.io,2025-05-31:/blog/2025/05/31/useful-git-settings</id><summary type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;In my dotfiles I always have a &lt;code&gt;.gitconfig&lt;/code&gt; file
 with some of the settings preconfigured.
 Without them using Git for …&lt;/p&gt;&lt;/section&gt;</summary><content type="html">&lt;section id="preamble" aria-label="Preamble"&gt;&lt;p&gt;In my dotfiles I always have a &lt;code&gt;.gitconfig&lt;/code&gt; file
 with some of the settings preconfigured.
@@ -137,6 +137,11 @@ as you have to explicitly rebase to the new version.&lt;/p&gt;
 (i.e. &lt;strong&gt;use git fetch and git rebase instead&lt;/strong&gt;).
 If you&amp;#8217;re into that,
 consider using this option.&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section class="doc-section level-1"&gt;&lt;h2 id="_git_push"&gt;&lt;code&gt;git push&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;The biggest problem with this command is people overusing &lt;code&gt;--force&lt;/code&gt;. There is a
+safer replacement for it.&lt;/p&gt;
+&lt;p&gt;You can use &lt;code&gt;--force-with-lease&lt;/code&gt; instead of &lt;code&gt;--force&lt;/code&gt; to only overwrite changes
+you&amp;#8217;re expecting. Either the ones you have locally, or ones you fetched before.
+If there will be any new commit on a remote, force push with lease fails.&lt;/p&gt;&lt;/section&gt;
 &lt;section class="doc-section level-1"&gt;&lt;h2 id="_git_merge"&gt;&lt;code&gt;git merge&lt;/code&gt;&lt;/h2&gt;&lt;section class="doc-section level-2"&gt;&lt;h3 id="_merge_conflictstyle"&gt;&lt;code&gt;merge.conflictstyle&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;I think I don&amp;#8217;t know a person who likes to solve merge conflicts.
 But I noticed that many people are more scared about them
 then they probably should be.&lt;/p&gt;

@@ -27,6 +27,7 @@
             <h1>Useful Git settings</h1>
             <p class="date">
                 Written on <time datetime="2025-05-31T00:31:00+02:00">May 31, 2025</time>
+                    (updated <time datetime="2025-06-30T14:32:00+02:00">Jun 30, 2025</time>)
             </p>
         </header>
 
@@ -167,6 +168,11 @@ as you have to explicitly rebase to the new version.</p>
 (i.e. <strong>use git fetch and git rebase instead</strong>).
 If you&#8217;re into that,
 consider using this option.</p></section></section>
+<section class="doc-section level-1"><h2 id="_git_push"><code>git push</code></h2><p>The biggest problem with this command is people overusing <code>--force</code>. There is a
+safer replacement for it.</p>
+<p>You can use <code>--force-with-lease</code> instead of <code>--force</code> to only overwrite changes
+you&#8217;re expecting. Either the ones you have locally, or ones you fetched before.
+If there will be any new commit on a remote, force push with lease fails.</p></section>
 <section class="doc-section level-1"><h2 id="_git_merge"><code>git merge</code></h2><section class="doc-section level-2"><h3 id="_merge_conflictstyle"><code>merge.conflictstyle</code></h3><p>I think I don&#8217;t know a person who likes to solve merge conflicts.
 But I noticed that many people are more scared about them
 then they probably should be.</p>
