@@ -27,7 +27,7 @@
             <h1>Setting up Macbook</h1>
             <p class="date">
                 Written on <time datetime="2024-09-27T07:19:00+02:00">Sep 27, 2024</time>
-                    (updated <time datetime="2025-07-11T12:40:00+02:00">Jul 11, 2025</time>)
+                    (updated <time datetime="2025-11-10T13:44:00+01:00">Nov 10, 2025</time>)
             </p>
         </header>
 
@@ -121,7 +121,26 @@ I think that the default one less than fastest setting
 is quite good.
 But I tried with the fastest,
 and I also like it,
-although it&#8217;s definitely faster than on Windows.</p></section></section>
+although it&#8217;s definitely faster than on Windows.</p></section>
+<section class="doc-section level-2"><h3 id="_disable_macos_accent_picker">Disable macOS accent picker</h3><p>By default when pressing and holding certain keys in macOS,
+system displays a window allowing you to choose an accent
+for a given letter (e.g. for <code>a</code>, <code>e</code> or <code>o</code>).</p>
+<p>This also completely blocks key repeat you may know from Windows.
+Note that it isn&#8217;t always active,
+e.g. it doesn&#8217;t block repating space,
+and doesn&#8217;t block anything in apps like iTerm which apparently use
+some lower-level way of interacting with text input.</p>
+<p>I noticed this behavior in VS Code when key repeating didn&#8217;t work
+when using Vim bindings plugin.
+Initially I thought that it was something off with VS Code
+or its plugin themselves rather than with the whole OS.</p>
+<p>Running this command disables it system-wide.</p>
+<div class="listing-block"><pre>defaults write -g ApplePressAndHoldEnabled -bool false</pre></div>
+<p>It&#8217;s also possible to set it per application, but I haven&#8217;t tested it.
+I guess the hardest part then is to get the correct app name.
+E.g. here AI suggested these two names to set it for VS Code:</p>
+<div class="listing-block"><pre>defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false</pre></div></section></section>
 <section class="doc-section level-1"><h2 id="_install_homebrew">Install homebrew</h2><p>MacOS doesn&#8217;t come with a package manager in a classic Unix way.
 There is an appstore app, but it&#8217;s more like a smartphone solution,
 than something like apt registries.</p>
