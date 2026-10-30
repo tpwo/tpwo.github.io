@@ -334,9 +334,12 @@ mark {
 }
 
 .post-content .admonition-block {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    align-items: start;
     margin: 1.25rem 0;
-    padding: 1rem 1.25rem 1rem 3.25rem;
+    padding: 1rem 1.25rem;
     border-left: 4px solid var(--admonition-accent, var(--border));
     border-radius: 0.25rem;
     background: var(--admonition-background, var(--code-background));
@@ -353,14 +356,22 @@ mark {
 }
 
 .post-content .admonition-block::before {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 0.2em;
     width: 1.5rem;
     height: 1.5rem;
     background: var(--admonition-accent, var(--muted));
     content: "";
     mask: var(--admonition-icon) center / contain no-repeat;
+}
+
+.post-content .admonition-block > :not(h6) {
+    grid-column: 2;
+}
+
+.post-content .admonition-block > p:first-of-type {
+    margin-top: 0;
 }
 
 .post-content .admonition-block.note {
