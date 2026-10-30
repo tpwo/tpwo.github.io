@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title>Useful Git settings &middot; tpwo.github.io</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
-        <script src="https://tpwo.github.io/theme/js/theme.js"></script>
-        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
-        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
-    </head>
-    <body>
-            <div class="container">
-
-<header class="blog-header">
-    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
-    <p>A personal blog</p>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="In my dotfiles I always have a .gitconfig file with some of the settings preconfigured. Without them using Git for …">
+    <title>Useful Git settings &middot; tpwo.github.io</title>
+    <link rel="icon" href="https://tpwo.github.io/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300" rel="stylesheet">
+    <script src="https://tpwo.github.io/theme/js/theme.js"></script>
+    <link rel="stylesheet" href="https://tpwo.github.io/theme/css/site.css">
+    <link rel="alternate" type="application/atom+xml" title="tpwo.github.io Atom Feed" href="https://tpwo.github.io/feeds/all.atom.xml">
+</head>
+<body>
+    <div class="site-shell">
+<header class="site-header">
+    <div class="site-heading">
+        <h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1>
+        <p>A personal blog</p>
+    </div>
     <div class="header-controls">
-        <nav aria-label="Main navigation">
-            <a href="https://tpwo.github.io/blog">ARCHIVES</a>
-            <a href="https://tpwo.github.io/categories">CATEGORIES</a>
-            <a href="https://tpwo.github.io/tags">TAGS</a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="https://tpwo.github.io/blog">Archives</a>
+            <a href="https://tpwo.github.io/categories">Categories</a>
+            <a href="https://tpwo.github.io/tags">Tags</a>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
             <svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -31,20 +36,17 @@
             </svg>
         </button>
     </div>
-</header>
+</header>        <main id="main-content">
+<article class="post">
+    <header class="post-header">
+        <h1>Useful Git settings</h1>
+        <p class="post-date">
+            Written on <time datetime="2025-05-31T00:31:00+02:00">May 31, 2025</time>
+            (updated <time datetime="2025-06-30T14:32:00+02:00">Jun 30, 2025</time>)
+        </p>
+    </header>
 
-    <div class="post">
-
-        <header>
-            <h1>Useful Git settings</h1>
-            <p class="date">
-                Written on <time datetime="2025-05-31T00:31:00+02:00">May 31, 2025</time>
-                    (updated <time datetime="2025-06-30T14:32:00+02:00">Jun 30, 2025</time>)
-            </p>
-        </header>
-
-        <article>
-            <section id="preamble" aria-label="Preamble"><p>In my dotfiles I always have a <code>.gitconfig</code> file
+    <div class="post-content"><section id="preamble" aria-label="Preamble"><p>In my dotfiles I always have a <code>.gitconfig</code> file
 with some of the settings preconfigured.
 Without them using Git for me would be much more cumbersome.
 Here&#8217;s a list of them along with some comments and sources.</p></section>
@@ -248,53 +250,33 @@ so I added an alias which reflects it.</p>
 <div class="listing-block"><pre>git config --global alias.k '!gitk &amp;'</pre></div></section>
 <section class="doc-section level-2"><h3 id="_git_ka"><code>git ka</code></h3><p>Another <code>gitk</code> alias to run the program with <code>--all</code> flag
 which then shows all branches.</p>
-<div class="listing-block"><pre>git config --global alias.ka '!gitk --all &amp;'</pre></div></section></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I recommend a <a href="https://youtu.be/TtiBhktB4Qg">video from Scott Hanselman</a> if you want to learn more about this topic <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote"><code>pre-commit</code> with its <a href="https://github.com/pre-commit/pre-commit-hooks/tree/429455474be018c8f085ae7d312432ab4154d5a2?tab=readme-ov-file#mixed-line-ending"><code>mixed-line-ending</code> hook</a> set to <code>lf</code> is a great tool for that <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><code>pre-commit</code> mentioned above is a great way to do this. Also make sure to set up it to check it with each new commit or these <code>CRLF</code> files might start reappearing, as we live in a society <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_4" role="doc-endnote">Refer to <a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">MS docs</a> on how to enable SSH agent <a class="footnote-backref" href="#_footnoteref_4" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_5" role="doc-endnote">When writing this post, I did some research, and it seems that this might be due to <code>libgit2</code> incomparability with <code>manyFiles</code>. More details <a href="https://stackoverflow.com/a/77290211/14458327">on Stack Overflow</a> <a class="footnote-backref" href="#_footnoteref_5" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_6" role="doc-endnote">There is quite a good summary of the topic <a href="https://stackoverflow.com/a/40842589">again on SO</a> <a class="footnote-backref" href="#_footnoteref_6" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_7" role="doc-endnote">Introduced in 2007 with Git 1.5.0 <a class="footnote-backref" href="#_footnoteref_7" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_8" role="doc-endnote">A pretty nice explanation of that is <a href="https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3">in this blog post</a> <a class="footnote-backref" href="#_footnoteref_8" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_9" role="doc-endnote">Again, <a href="https://stackoverflow.com/a/71254097/14458327">SO for the rescue</a> <a class="footnote-backref" href="#_footnoteref_9" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_10" role="doc-endnote">Here&#8217;s his video about it: <a class="bare" href="https://youtu.be/BkUW2NgfZao">https://youtu.be/BkUW2NgfZao</a> <a class="footnote-backref" href="#_footnoteref_10" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
-        </article>
+<div class="listing-block"><pre>git config --global alias.ka '!gitk --all &amp;'</pre></div></section></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I recommend a <a href="https://youtu.be/TtiBhktB4Qg">video from Scott Hanselman</a> if you want to learn more about this topic <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote"><code>pre-commit</code> with its <a href="https://github.com/pre-commit/pre-commit-hooks/tree/429455474be018c8f085ae7d312432ab4154d5a2?tab=readme-ov-file#mixed-line-ending"><code>mixed-line-ending</code> hook</a> set to <code>lf</code> is a great tool for that <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><code>pre-commit</code> mentioned above is a great way to do this. Also make sure to set up it to check it with each new commit or these <code>CRLF</code> files might start reappearing, as we live in a society <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_4" role="doc-endnote">Refer to <a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">MS docs</a> on how to enable SSH agent <a class="footnote-backref" href="#_footnoteref_4" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_5" role="doc-endnote">When writing this post, I did some research, and it seems that this might be due to <code>libgit2</code> incomparability with <code>manyFiles</code>. More details <a href="https://stackoverflow.com/a/77290211/14458327">on Stack Overflow</a> <a class="footnote-backref" href="#_footnoteref_5" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_6" role="doc-endnote">There is quite a good summary of the topic <a href="https://stackoverflow.com/a/40842589">again on SO</a> <a class="footnote-backref" href="#_footnoteref_6" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_7" role="doc-endnote">Introduced in 2007 with Git 1.5.0 <a class="footnote-backref" href="#_footnoteref_7" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_8" role="doc-endnote">A pretty nice explanation of that is <a href="https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3">in this blog post</a> <a class="footnote-backref" href="#_footnoteref_8" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_9" role="doc-endnote">Again, <a href="https://stackoverflow.com/a/71254097/14458327">SO for the rescue</a> <a class="footnote-backref" href="#_footnoteref_9" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_10" role="doc-endnote">Here&#8217;s his video about it: <a class="bare" href="https://youtu.be/BkUW2NgfZao">https://youtu.be/BkUW2NgfZao</a> <a class="footnote-backref" href="#_footnoteref_10" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section></div>
 
-        <center>
-           ✵
-        </center>
-
-        <footer>
-            <center>
-               <p><i>That's All Folks!</i></p>
-            </center>
-
-            <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
-
-                <div class="navigation">
-                    <div class="prev-article">
-                            <div class="prev-article-header">
-                                « PREV
-                            </div>
-                            <div class="prev-article-content">
-                                <a href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles">
-                                    Convert dvdsub into srt subtitles
-                                </a>
-                            </div>
-                    </div>
-                    <div class="next-article">
-                    </div>
-                </div>
-        </footer>
-
-
-    </div>
-
-
-<footer class="blog-footer">
-
-    <ul class="nav">
-            <li><a href="https://github.com/tpwo/">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
-    </ul>
-
-    <p class="disclaimer">
-        Designed, built & written by Tomasz Wojdat © 2026
-    </p>
-</footer>
+    <footer class="post-footer">
+        <p class="post-category">Filed in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
+        <ul class="post-tags" aria-label="Tags">
+            <li><a href="https://tpwo.github.io/tags/tech">tech</a></li>
+            <li><a href="https://tpwo.github.io/tags/git">git</a></li>
+        </ul>
+        <nav class="article-navigation" aria-label="More articles">
+            <div class="previous-article">
+                <span>Previous</span>
+                <a href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles">Convert dvdsub into srt subtitles</a>
             </div>
-    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+            <div class="next-article">
+            </div>
+        </nav>
+    </footer>
+</article>
+        </main>
+<footer class="site-footer">
+    <ul class="footer-links">
+        <li><a href="https://github.com/tpwo/">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+    <p class="site-credit">Designed, built & written by Tomasz Wojdat © 2026</p>
+</footer>    </div>
+<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -304,5 +286,5 @@ which then shows all branches.</p>
   gtag('config', 'G-YTXP99N6VP');
 </script>
 
-    </body>
+</body>
 </html>

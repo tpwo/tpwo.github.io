@@ -393,7 +393,7 @@ Then you can tell Git to use it:&lt;/p&gt;
 git config --global user.signingkey ~/.ssh/&amp;lt;your-public-key&amp;gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And that&amp;#8217;s all!
 To sign a single commit:&lt;/p&gt;
-&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;while doing research you might also encounter sign-off
+&lt;aside class="admonition-block note" role="note"&gt;&lt;h6 class="block-title label-only"&gt;&lt;span class="title-label"&gt;Note: &lt;/span&gt;&lt;/h6&gt;&lt;p&gt;While doing research you might also encounter sign-off
 which is a different thing in Git, and is not backed by by any encryption&lt;a class="footnote-ref" id="_footnoteref_3" href="#_footnote_3" title="View footnote 3" role="doc-noteref"&gt;[3]&lt;/a&gt;.&lt;/p&gt;&lt;/aside&gt;
 &lt;div class="listing-block"&gt;&lt;pre&gt;git commit -S -m 'Your commit message'&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To always sign your commits:&lt;/p&gt;

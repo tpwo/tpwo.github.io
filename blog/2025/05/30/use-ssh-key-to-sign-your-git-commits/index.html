@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title>Use SSH key to sign your Git commits &middot; tpwo.github.io</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
-        <script src="https://tpwo.github.io/theme/js/theme.js"></script>
-        <link rel="stylesheet" href="https://tpwo.github.io/theme/css/cid.css">
-        <link href="https://tpwo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="tpwo.github.io Atom Feed" />
-    </head>
-    <body>
-            <div class="container">
-
-<header class="blog-header">
-    <h1><a href="https://tpwo.github.io">tpwo.github.io</a></h1>
-    <p>A personal blog</p>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How to sign commits without using GPG">
+    <title>Use SSH key to sign your Git commits &middot; tpwo.github.io</title>
+    <link rel="icon" href="https://tpwo.github.io/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300" rel="stylesheet">
+    <script src="https://tpwo.github.io/theme/js/theme.js"></script>
+    <link rel="stylesheet" href="https://tpwo.github.io/theme/css/site.css">
+    <link rel="alternate" type="application/atom+xml" title="tpwo.github.io Atom Feed" href="https://tpwo.github.io/feeds/all.atom.xml">
+</head>
+<body>
+    <div class="site-shell">
+<header class="site-header">
+    <div class="site-heading">
+        <h1><a href="https://tpwo.github.io/">tpwo.github.io</a></h1>
+        <p>A personal blog</p>
+    </div>
     <div class="header-controls">
-        <nav aria-label="Main navigation">
-            <a href="https://tpwo.github.io/blog">ARCHIVES</a>
-            <a href="https://tpwo.github.io/categories">CATEGORIES</a>
-            <a href="https://tpwo.github.io/tags">TAGS</a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="https://tpwo.github.io/blog">Archives</a>
+            <a href="https://tpwo.github.io/categories">Categories</a>
+            <a href="https://tpwo.github.io/tags">Tags</a>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
             <svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -31,20 +36,17 @@
             </svg>
         </button>
     </div>
-</header>
+</header>        <main id="main-content">
+<article class="post">
+    <header class="post-header">
+        <h1>Use SSH key to sign your Git commits</h1>
+        <p class="post-date">
+            Written on <time datetime="2025-05-30T21:33:00+02:00">May 30, 2025</time>
+            (updated <time datetime="2025-06-16T21:52:00+02:00">Jun 16, 2025</time>)
+        </p>
+    </header>
 
-    <div class="post">
-
-        <header>
-            <h1>Use SSH key to sign your Git commits</h1>
-            <p class="date">
-                Written on <time datetime="2025-05-30T21:33:00+02:00">May 30, 2025</time>
-                    (updated <time datetime="2025-06-16T21:52:00+02:00">Jun 16, 2025</time>)
-            </p>
-        </header>
-
-        <article>
-            <section class="doc-section level-1"><h2 id="_but_why">But why?</h2><p>You might wonder why should you sign your commits.
+    <div class="post-content"><section class="doc-section level-1"><h2 id="_but_why">But why?</h2><p>You might wonder why should you sign your commits.
 This is a valid question, and some people just don&#8217;t care about it.
 If you don&#8217;t have a ready opinion<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a>, I&#8217;ll try to convince you.</p>
 <section class="doc-section level-2"><h3 id="_choose_your_warrior_committer">Choose your <s>warrior</s> committer</h3><aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>Yes, I know that author and committer are two different things in Git,
@@ -105,7 +107,7 @@ Then you can tell Git to use it:</p>
 git config --global user.signingkey ~/.ssh/&lt;your-public-key&gt;</pre></div>
 <p>And that&#8217;s all!
 To sign a single commit:</p>
-<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>while doing research you might also encounter sign-off
+<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>While doing research you might also encounter sign-off
 which is a different thing in Git, and is not backed by by any encryption<a class="footnote-ref" id="_footnoteref_3" href="#_footnote_3" title="View footnote 3" role="doc-noteref">[3]</a>.</p></aside>
 <div class="listing-block"><pre>git commit -S -m 'Your commit message'</pre></div>
 <p>To always sign your commits:</p>
@@ -138,61 +140,35 @@ Date:   Fri May 30 21:22:36 2025 +0200
 
     Hello there</pre></div></section>
 <section class="doc-section level-1"><h2 id="_further_reading">Further reading</h2><div class="ulist"><ul><li>How to do it on Windows:<br>
-<a class="bare" href="https://www.meziantou.net/signing-commits-in-git-using-ssh-keys-on-windows.htm">https://www.meziantou.net/signing-commits-in-git-using-ssh-keys-on-windows.htm</a></li></ul></div></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I don&#8217;t want to go into details, but e.g. <a href="https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html">this blog post</a> does it very well <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote">If you don&#8217;t have your SSH key set up, <a href="https://www.git-tower.com/blog/setting-up-ssh-for-commit-signing">this blog post</a> will be helpful. They go into much more details along with tips how to load SSH keys into keychain on MacOS etc. <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><a href="https://youtu.be/6hu3cbBhHqQ">This video</a> shows different ways to sign a Git commit. Also, author states that he doesn&#8217;t sign his commits, so you clearly see that opinions vary on this topic. <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section>
-        </article>
+<a class="bare" href="https://www.meziantou.net/signing-commits-in-git-using-ssh-keys-on-windows.htm">https://www.meziantou.net/signing-commits-in-git-using-ssh-keys-on-windows.htm</a></li></ul></div></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I don&#8217;t want to go into details, but e.g. <a href="https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html">this blog post</a> does it very well <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote">If you don&#8217;t have your SSH key set up, <a href="https://www.git-tower.com/blog/setting-up-ssh-for-commit-signing">this blog post</a> will be helpful. They go into much more details along with tips how to load SSH keys into keychain on MacOS etc. <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_3" role="doc-endnote"><a href="https://youtu.be/6hu3cbBhHqQ">This video</a> shows different ways to sign a Git commit. Also, author states that he doesn&#8217;t sign his commits, so you clearly see that opinions vary on this topic. <a class="footnote-backref" href="#_footnoteref_3" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section></div>
 
-        <center>
-           ✵
-        </center>
-
-        <footer>
-            <center>
-               <p><i>That's All Folks!</i></p>
-            </center>
-
-            <p>This entry is posted in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
-
-                <div class="navigation">
-                    <div class="prev-article">
-                            <div class="prev-article-header">
-                                « PREV
-                            </div>
-                            <div class="prev-article-content">
-                                <a href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows">
-                                    Clipboard sync between WSL Neovim and Windows
-                                </a>
-                            </div>
-                    </div>
-                    <div class="next-article">
-                            <div class="prev-article-header">
-                                NEXT »
-                            </div>
-                            <div class="prev-article-content">
-                                <a href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles">
-                                    Convert dvdsub into srt subtitles
-                                </a>
-                            </div>
-                    </div>
-                </div>
-        </footer>
-
-
-    </div>
-
-
-<footer class="blog-footer">
-
-    <ul class="nav">
-            <li><a href="https://github.com/tpwo/">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
-    </ul>
-
-    <p class="disclaimer">
-        Designed, built & written by Tomasz Wojdat © 2026
-    </p>
-</footer>
+    <footer class="post-footer">
+        <p class="post-category">Filed in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
+        <ul class="post-tags" aria-label="Tags">
+            <li><a href="https://tpwo.github.io/tags/tech">tech</a></li>
+            <li><a href="https://tpwo.github.io/tags/git">git</a></li>
+        </ul>
+        <nav class="article-navigation" aria-label="More articles">
+            <div class="previous-article">
+                <span>Previous</span>
+                <a href="https://tpwo.github.io/blog/2024/09/17/clipboard-sync-between-wsl-neovim-and-windows">Clipboard sync between WSL Neovim and Windows</a>
             </div>
-    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
+            <div class="next-article">
+                <span>Next</span>
+                <a href="https://tpwo.github.io/blog/2025/05/30/convert-dvdsub-into-srt-subtitles">Convert dvdsub into srt subtitles</a>
+            </div>
+        </nav>
+    </footer>
+</article>
+        </main>
+<footer class="site-footer">
+    <ul class="footer-links">
+        <li><a href="https://github.com/tpwo/">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/tomasz-wojdat/">LinkedIn</a></li>
+    </ul>
+    <p class="site-credit">Designed, built & written by Tomasz Wojdat © 2026</p>
+</footer>    </div>
+<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3e3f7a43d36e711ecc22353e16d4f23c.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXP99N6VP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -202,5 +178,5 @@ Date:   Fri May 30 21:22:36 2025 +0200
   gtag('config', 'G-YTXP99N6VP');
 </script>
 
-    </body>
+</body>
 </html>
