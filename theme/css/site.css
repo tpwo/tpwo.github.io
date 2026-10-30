@@ -2,7 +2,7 @@
     color-scheme: light;
     --background: #fff;
     --text: #030303;
-    --link: #030303;
+    --link: #1558a6;
     --muted: #555;
     --border: #dedede;
     --code: #c7254e;
@@ -14,6 +14,7 @@
     --syntax-number: #005cc5;
     --syntax-name: #a04100;
     --mark-background: #ff0;
+    --outside-background: #f2f2f2;
 }
 
 :root[data-theme="dark"] {
@@ -32,6 +33,7 @@
     --syntax-number: #79c0ff;
     --syntax-name: #ffa657;
     --mark-background: #715f00;
+    --outside-background: #101010;
     --note-accent: #8ab4f8;
     --note-background: #202c3b;
     --tip-accent: #81c995;
@@ -74,6 +76,7 @@
         --syntax-number: #79c0ff;
         --syntax-name: #ffa657;
         --mark-background: #715f00;
+        --outside-background: #101010;
         --note-accent: #8ab4f8;
         --note-background: #202c3b;
         --tip-accent: #81c995;
@@ -93,7 +96,7 @@
 
 body {
     margin: 0;
-    background: var(--background);
+    background: var(--outside-background);
     color: var(--text);
     font-family: "Merriweather", Georgia, serif;
     font-weight: 300;
@@ -239,8 +242,12 @@ mark {
 }
 
 .site-shell {
-    width: min(100% - 2rem, 56rem);
-    margin: 1rem auto;
+    width: min(100% - 2rem, 74rem);
+    margin: 2rem auto;
+    padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+    border-radius: 0.35rem;
+    background: var(--background);
+    box-shadow: 0 0 0 1px var(--border);
 }
 
 .site-header {
@@ -389,6 +396,71 @@ mark {
     line-height: 1.75;
 }
 
+.post-content p {
+    max-width: 66.667%;
+}
+
+.post-content .quote-block,
+.post-content .admonition-block,
+.post-content .listing-block,
+.post-content .image-block,
+.post-content figure,
+.post-content .figure {
+    max-width: 66.667%;
+}
+
+.post-content figure.image-block {
+    width: 66.667%;
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.post-content .quote-block blockquote {
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.post-content .admonition-block p,
+.post-content blockquote p {
+    max-width: none;
+}
+
+.footnote-context {
+    display: grid;
+    grid-template-columns: minmax(0, 25fr) minmax(12rem, 8fr);
+    gap: 0 1.5rem;
+    align-items: start;
+}
+
+.footnote-context > p {
+    grid-column: 1;
+    max-width: none;
+}
+
+.contextual-footnote {
+    grid-column: 2;
+    font-size: 0.8em;
+    line-height: 1.55;
+}
+
+.footnote-number {
+    color: var(--link);
+    font-size: 0.85em;
+    font-weight: 400;
+    margin-right: 0.15em;
+    vertical-align: super;
+}
+
+.contextual-footnote-content {
+    display: inline;
+    overflow-wrap: anywhere;
+}
+
+.contextual-footnote-content p {
+    max-width: none;
+}
+
 .post-content img,
 .post-content figure,
 .post-content .figure {
@@ -500,16 +572,34 @@ mark {
     margin-bottom: 0;
 }
 
-.post-content .highlight,
 .post-content .listing-block {
     overflow-x: auto;
 }
 
-.post-content a.footnote-ref,
-.post-content a.footnote-backref {
+.post-content pre {
+    border: 1px solid var(--border);
+}
+
+.post-content .footnote-ref {
+    color: var(--link);
     font-size: 0.8em;
     font-weight: 600;
     opacity: 0.7;
+    text-decoration: none;
+    vertical-align: super;
+}
+
+.post-content button.footnote-ref {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.contextual-footnote[hidden] {
+    display: none;
 }
 
 .post-footer {
@@ -603,7 +693,9 @@ mark {
 
 @media (max-width: 640px) {
     .site-shell {
-        margin: 0.8rem auto;
+        width: calc(100% - 1rem);
+        margin: 0.5rem auto;
+        padding: 1rem;
     }
 
     .site-header {
@@ -624,6 +716,33 @@ mark {
 
     .post {
         font-size: 1rem;
+    }
+
+    .post-content p {
+        max-width: none;
+    }
+
+    .post-content .quote-block,
+    .post-content .admonition-block,
+    .post-content .listing-block,
+    .post-content .image-block,
+    .post-content figure,
+    .post-content .figure {
+        max-width: 100%;
+    }
+
+    .post-content figure.image-block {
+        width: 100%;
+    }
+
+    .footnote-context {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.5rem;
+    }
+
+    .footnote-context > p,
+    .contextual-footnote {
+        grid-column: 1;
     }
 
     .post-header h1 {

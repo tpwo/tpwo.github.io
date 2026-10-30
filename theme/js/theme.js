@@ -25,9 +25,154 @@
         }
     }
 
+    function initializeContextualFootnotes() {
+        const content = document.querySelector(".post-content");
+        const footnotesSection = content?.querySelector("section.footnotes");
+        if (!content || !footnotesSection) {
+            return;
+        }
+
+        const mobileLayout = window.matchMedia("(max-width: 640px)");
+        const contextualNotes = [];
+        const notesById = new Map();
+        const references = Array.from(content.querySelectorAll("a.footnote-ref"));
+
+        for (const definition of footnotesSection.querySelectorAll("li.footnote")) {
+            const noteId = definition.id;
+            const reference = references.find(
+                (candidate) => candidate.getAttribute("href") === `#${noteId}`,
+            );
+            const paragraph = reference?.closest("p");
+            if (!noteId || !reference || !paragraph?.parentElement) {
+                continue;
+            }
+
+            let context = paragraph.parentElement;
+            if (!context.classList.contains("footnote-context")) {
+                context = document.createElement("div");
+                context.className = "footnote-context";
+                paragraph.before(context);
+                context.append(paragraph);
+            }
+
+            const note = document.createElement("aside");
+            note.className = "contextual-footnote";
+            note.id = noteId;
+            note.setAttribute("role", definition.getAttribute("role") || "doc-endnote");
+            note.hidden = mobileLayout.matches;
+
+            const label = reference.textContent.trim().replace(/^\[|\]$/g, "");
+            const number = document.createElement("span");
+            number.className = "footnote-number";
+            number.textContent = label;
+            note.append(number);
+
+            const body = document.createElement("div");
+            body.className = "contextual-footnote-content";
+            for (const backref of definition.querySelectorAll("a.footnote-backref")) {
+                backref.remove();
+            }
+            while (definition.firstChild) {
+                body.append(definition.firstChild);
+            }
+            definition.remove();
+            note.append(body);
+            context.append(note);
+
+            const referenceControl = document.createElement("span");
+            referenceControl.className = "footnote-ref";
+            referenceControl.id = reference.id;
+            referenceControl.textContent = label;
+            reference.replaceWith(referenceControl);
+            const contextualNote = { note, referenceControl, label };
+            contextualNotes.push(contextualNote);
+            notesById.set(noteId, contextualNote);
+        }
+
+        if (contextualNotes.length === 0) {
+            return;
+        }
+
+        function setMobileLayout(isMobile) {
+            for (const contextualNote of contextualNotes) {
+                contextualNote.note.hidden = isMobile;
+                if (isMobile) {
+                    const button = document.createElement("button");
+                    button.className = "footnote-ref";
+                    button.id = contextualNote.referenceControl.id;
+                    button.type = "button";
+                    button.textContent = contextualNote.label;
+                    button.setAttribute("aria-controls", contextualNote.note.id);
+                    button.setAttribute("aria-expanded", "false");
+                    button.setAttribute("aria-label", `Show note ${contextualNote.label}`);
+                    contextualNote.referenceControl.replaceWith(button);
+                    contextualNote.referenceControl = button;
+                } else {
+                    const reference = document.createElement("span");
+                    reference.className = "footnote-ref";
+                    reference.id = contextualNote.referenceControl.id;
+                    reference.textContent = contextualNote.label;
+                    contextualNote.referenceControl.replaceWith(reference);
+                    contextualNote.referenceControl = reference;
+                }
+            }
+        }
+
+        function closeNote(contextualNote) {
+            contextualNote.note.hidden = true;
+            contextualNote.referenceControl.setAttribute("aria-expanded", "false");
+        }
+
+        function openNote(contextualNote) {
+            contextualNote.note.hidden = false;
+            contextualNote.referenceControl.setAttribute("aria-expanded", "true");
+        }
+
+        document.addEventListener("click", (event) => {
+            if (!(event.target instanceof Element) || !mobileLayout.matches) {
+                return;
+            }
+
+            const reference = event.target.closest("button.footnote-ref");
+            const noteId = reference?.getAttribute("aria-controls");
+            const contextualNote = noteId ? notesById.get(noteId) : undefined;
+            if (contextualNote) {
+                const shouldOpen = contextualNote.note.hidden;
+                for (const otherNote of contextualNotes) {
+                    closeNote(otherNote);
+                }
+                if (shouldOpen) {
+                    openNote(contextualNote);
+                }
+                return;
+            }
+
+            if (event.target.closest(".contextual-footnote")) {
+                return;
+            }
+            for (const note of contextualNotes) {
+                if (!note.note.hidden) {
+                    closeNote(note);
+                }
+            }
+        });
+
+        mobileLayout.addEventListener("change", (event) => {
+            setMobileLayout(event.matches);
+        });
+
+        setMobileLayout(mobileLayout.matches);
+
+        if (!footnotesSection.querySelector("li.footnote")) {
+            footnotesSection.remove();
+        }
+    }
+
     updateTheme();
 
     document.addEventListener("DOMContentLoaded", () => {
+        initializeContextualFootnotes();
+
         const toggle = document.getElementById("theme-toggle");
         if (!toggle) {
             return;
