@@ -7,6 +7,12 @@
     --border: #dedede;
     --code: #c7254e;
     --code-background: #f9f2f4;
+    --syntax-comment: #59636e;
+    --syntax-keyword: #bd202e;
+    --syntax-function: #6f42c1;
+    --syntax-string: #032f62;
+    --syntax-number: #005cc5;
+    --syntax-name: #a04100;
     --mark-background: #ff0;
 }
 
@@ -19,6 +25,12 @@
     --border: #555;
     --code: #ff8ea6;
     --code-background: #2c2429;
+    --syntax-comment: #8b949e;
+    --syntax-keyword: #ff7b72;
+    --syntax-function: #d2a8ff;
+    --syntax-string: #a5d6ff;
+    --syntax-number: #79c0ff;
+    --syntax-name: #ffa657;
     --mark-background: #715f00;
     --note-accent: #8ab4f8;
     --note-background: #202c3b;
@@ -55,6 +67,12 @@
         --border: #555;
         --code: #ff8ea6;
         --code-background: #2c2429;
+        --syntax-comment: #8b949e;
+        --syntax-keyword: #ff7b72;
+        --syntax-function: #d2a8ff;
+        --syntax-string: #a5d6ff;
+        --syntax-number: #79c0ff;
+        --syntax-name: #ffa657;
         --mark-background: #715f00;
         --note-accent: #8ab4f8;
         --note-background: #202c3b;
@@ -141,6 +159,74 @@ samp {
 .post-content code {
     color: var(--code);
     background: var(--code-background);
+}
+
+.post-content .rouge code {
+    color: var(--text);
+}
+
+.post-content .rouge .c,
+.post-content .rouge .cm,
+.post-content .rouge .cp,
+.post-content .rouge .c1,
+.post-content .rouge .cs {
+    color: var(--syntax-comment);
+}
+
+.post-content .rouge .k,
+.post-content .rouge .kc,
+.post-content .rouge .kd,
+.post-content .rouge .kn,
+.post-content .rouge .kp,
+.post-content .rouge .kr,
+.post-content .rouge .kt,
+.post-content .rouge .o,
+.post-content .rouge .ow {
+    color: var(--syntax-keyword);
+}
+
+.post-content .rouge .nf,
+.post-content .rouge .fm {
+    color: var(--syntax-function);
+}
+
+.post-content .rouge .s,
+.post-content .rouge .sb,
+.post-content .rouge .sc,
+.post-content .rouge .sd,
+.post-content .rouge .s1,
+.post-content .rouge .s2,
+.post-content .rouge .se,
+.post-content .rouge .sh,
+.post-content .rouge .si,
+.post-content .rouge .sx,
+.post-content .rouge .sr,
+.post-content .rouge .ss {
+    color: var(--syntax-string);
+}
+
+.post-content .rouge .m,
+.post-content .rouge .mb,
+.post-content .rouge .mf,
+.post-content .rouge .mh,
+.post-content .rouge .mi,
+.post-content .rouge .mo {
+    color: var(--syntax-number);
+}
+
+.post-content .rouge .na,
+.post-content .rouge .nb,
+.post-content .rouge .bp,
+.post-content .rouge .nc,
+.post-content .rouge .nd,
+.post-content .rouge .ne,
+.post-content .rouge .nn,
+.post-content .rouge .nv,
+.post-content .rouge .vc,
+.post-content .rouge .vg,
+.post-content .rouge .vi,
+.post-content .rouge .nt {
+    color: var(--syntax-name);
 }
 
 mark {
