@@ -51,11 +51,11 @@ and it&#8217;s cleaner than CLI flags for pure <code>docker</code>.
 I&#8217;d use it even when you have only a single container,
 as overhead is minimal.</p></section>
 <section class="doc-section level-1"><h2 id="_implementation">Implementation</h2><p>You can see the test file skeleton here.</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="n">shutil</span>
-<span class="kn">import</span> <span class="n">subprocess</span>
-<span class="kn">import</span> <span class="n">time</span>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">import</span> <span class="n">pytest</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
 
 
 <span class="k">def</span> <span class="nf">tested_function</span><span class="p">():</span>
@@ -77,7 +77,7 @@ as overhead is minimal.</p></section>
 
 
 <span class="k">def</span> <span class="nf">test_integration</span><span class="p">(</span><span class="n">docker_container</span><span class="p">):</span>
-    <span class="n">actual</span> <span class="o">=</span> <span class="nf">tested_function</span><span class="p">()</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">tested_function</span><span class="p">()</span>
     <span class="n">expected</span> <span class="o">=</span> <span class="sh">'</span><span class="s">&lt;expected output&gt;</span><span class="sh">'</span>
     <span class="k">assert</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span></code></pre></div>
 <p>The flow is quite simple here:</p>
@@ -161,7 +161,7 @@ if any of my unit tests is failing (even if GitHub pays for my CI 😛).</p>
     </ul>
 
     <p class="disclaimer">
-        Designed, built & written by Tomasz Wojdat © 2025
+        Designed, built & written by Tomasz Wojdat © 2026
     </p>
 </footer>
             </div>
