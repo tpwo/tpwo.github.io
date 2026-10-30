@@ -102,10 +102,11 @@ body {
 a {
     color: var(--link);
     font-weight: 400;
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a:focus-visible,
@@ -159,6 +160,10 @@ samp {
 .post-content code {
     color: var(--code);
     background: var(--code-background);
+}
+
+.post-content :not(pre) > code {
+    padding: 0 0.2em;
 }
 
 .post-content .rouge code {
