@@ -36,6 +36,33 @@
     --mark-background-color: #715f00;
   }
 }
+:root[data-theme=dark] #cookiescript_injected_wrapper,
+:root[data-theme=dark] #cookiescript_injected {
+  color-scheme: dark !important;
+  background-color: var(--background-color) !important;
+}
+
+:root[data-theme=dark] #cookiescript_injected,
+:root[data-theme=dark] #cookiescript_injected * {
+  color: var(--text-color) !important;
+}
+
+:root[data-theme=dark] #cookiescript_readmore {
+  color: var(--link-color) !important;
+}
+
+:root[data-theme=dark] #cookiescript_accept,
+:root[data-theme=dark] #cookiescript_save {
+  background-color: var(--text-color) !important;
+  color: var(--background-color) !important;
+}
+
+:root[data-theme=dark] #cookiescript_reject {
+  background-color: transparent !important;
+  border-color: var(--text-color) !important;
+  color: var(--text-color) !important;
+}
+
 * {
   background: transparent;
   color: var(--text-color);
