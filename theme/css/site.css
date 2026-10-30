@@ -342,6 +342,7 @@ mark {
 }
 
 .post-summary {
+    max-width: 66.667%;
     margin-top: 0.5rem;
 }
 
@@ -576,7 +577,8 @@ mark {
     overflow-x: auto;
 }
 
-.post-content pre {
+.post-content pre,
+.post-summary pre {
     border: 1px solid var(--border);
 }
 
@@ -719,6 +721,10 @@ mark {
     }
 
     .post-content p {
+        max-width: none;
+    }
+
+    .post-summary {
         max-width: none;
     }
 
