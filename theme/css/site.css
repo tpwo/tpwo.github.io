@@ -412,6 +412,16 @@ mark {
     hyphens: auto;
 }
 
+.post-content ul,
+.post-content ol {
+    max-width: 66.667%;
+}
+
+.post-content li > ul,
+.post-content li > ol {
+    max-width: none;
+}
+
 .post-content h2 {
     margin: 1rem 0 0.4rem;
     font-size: 2.2rem;
@@ -751,6 +761,11 @@ mark {
     }
 
     .post-content p {
+        max-width: none;
+    }
+
+    .post-content ul,
+    .post-content ol {
         max-width: none;
     }
 
