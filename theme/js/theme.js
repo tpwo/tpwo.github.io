@@ -83,29 +83,15 @@
     }
 
     function initializeCodeCopy() {
-        for (const code of document.querySelectorAll(
-            ".post-content .listing-block pre code[data-lang]",
-        )) {
-            const block = code.closest(".listing-block");
-            const pre = code.closest("pre");
-            const language = code.dataset.lang;
-            if (!block || !pre || !language) {
+        for (const pre of document.querySelectorAll(".post-content .listing-block pre")) {
+            const block = pre.closest(".listing-block");
+            const code = pre.querySelector("code") || pre;
+            if (!block) {
                 continue;
             }
 
-            const toolbox = document.createElement("span");
-            toolbox.className = "source-toolbox";
-
-            const languageLabel = document.createElement("span");
-            languageLabel.className = "source-lang";
-            languageLabel.textContent = language.toUpperCase();
-            toolbox.append(languageLabel);
-
-            const separator = document.createElement("span");
-            separator.className = "source-separator";
-            separator.setAttribute("aria-hidden", "true");
-            separator.textContent = "|";
-            toolbox.append(separator);
+            const toolbar = document.createElement("span");
+            toolbar.className = "copy-toolbar";
 
             const button = document.createElement("button");
             button.className = "copy-button";
@@ -117,7 +103,7 @@
             toast.className = "copy-toast";
             toast.setAttribute("aria-live", "polite");
             toast.hidden = true;
-            toolbox.append(toast, button);
+            toolbar.append(toast, button);
 
             let feedbackTimeout;
             button.addEventListener("click", async () => {
@@ -140,9 +126,9 @@
                 }, 1500);
             });
 
-            function positionToolbox() {
-                toolbox.style.left =
-                    `${block.scrollLeft + block.clientWidth - toolbox.offsetWidth - 12}px`;
+            function positionToolbar() {
+                toolbar.style.left =
+                    `${block.scrollLeft + block.clientWidth - toolbar.offsetWidth - 12}px`;
             }
 
             function showToolboxAfterTouch() {
@@ -151,8 +137,8 @@
                 window.removeEventListener("pointercancel", showToolboxAfterTouch);
             }
 
-            block.addEventListener("scroll", positionToolbox, { passive: true });
-            window.addEventListener("resize", positionToolbox);
+            block.addEventListener("scroll", positionToolbar, { passive: true });
+            window.addEventListener("resize", positionToolbar);
             block.addEventListener("pointerdown", (event) => {
                 if (
                     event.pointerType !== "touch" ||
@@ -167,8 +153,8 @@
             });
 
             pre.classList.add("has-copy-button");
-            block.prepend(toolbox);
-            positionToolbox();
+            block.prepend(toolbar);
+            positionToolbar();
         }
     }
 

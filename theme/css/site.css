@@ -712,7 +712,7 @@ mark {
     margin-top: 0;
 }
 
-.post-content .source-toolbox {
+.post-content .copy-toolbar {
     position: absolute;
     z-index: 1;
     top: 0.6rem;
@@ -727,10 +727,6 @@ mark {
     line-height: 1;
     opacity: 1;
     visibility: visible;
-}
-
-.post-content .source-lang {
-    text-transform: uppercase;
 }
 
 .post-content .copy-button {
@@ -770,19 +766,19 @@ mark {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .post-content .source-toolbox {
+    .post-content .copy-toolbar {
         opacity: 0;
         visibility: hidden;
     }
 
-    .post-content .listing-block:hover .source-toolbox,
-    .post-content .listing-block:focus-within .source-toolbox {
+    .post-content .listing-block:hover .copy-toolbar,
+    .post-content .listing-block:focus-within .copy-toolbar {
         opacity: 1;
         visibility: visible;
     }
 }
 
-.post-content .listing-block.touching-code .source-toolbox {
+.post-content .listing-block.touching-code .copy-toolbar {
     opacity: 0;
     visibility: hidden;
 }
