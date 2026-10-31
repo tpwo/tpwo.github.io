@@ -263,11 +263,11 @@ mark {
 }
 
 .site-heading {
-    grid-column: 1 / -1;
+    grid-column: 1;
 }
 
 .site-heading h1 {
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .site-heading h1 a {
