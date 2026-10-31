@@ -92,6 +92,7 @@
         const mobileLayout = window.matchMedia("(max-width: 640px)");
         const contextualNotes = [];
         const notesById = new Map();
+        const toc = document.querySelector(".post-header #toc");
         const references = Array.from(content.querySelectorAll("a.footnote-ref"));
 
         for (const definition of footnotesSection.querySelectorAll("li.footnote")) {
@@ -175,6 +176,28 @@
             }
         }
 
+        function spaceNotesBelowToc() {
+            for (const contextualNote of contextualNotes) {
+                contextualNote.note.style.marginTop = "";
+            }
+
+            if (!toc || mobileLayout.matches) {
+                return;
+            }
+
+            const tocBounds = toc.getBoundingClientRect();
+            const gap = Number.parseFloat(getComputedStyle(root).fontSize) * 0.75;
+            for (const contextualNote of contextualNotes) {
+                const noteBounds = contextualNote.note.getBoundingClientRect();
+                const overlapsHorizontally =
+                    noteBounds.left < tocBounds.right && noteBounds.right > tocBounds.left;
+                if (overlapsHorizontally && noteBounds.top < tocBounds.bottom + gap) {
+                    contextualNote.note.style.marginTop =
+                        `${tocBounds.bottom + gap - noteBounds.top}px`;
+                }
+            }
+        }
+
         function closeNote(contextualNote) {
             contextualNote.note.hidden = true;
             contextualNote.referenceControl.setAttribute("aria-expanded", "false");
@@ -219,6 +242,9 @@
         });
 
         setMobileLayout(mobileLayout.matches);
+        spaceNotesBelowToc();
+        window.addEventListener("resize", spaceNotesBelowToc);
+        window.addEventListener("load", spaceNotesBelowToc);
 
         if (!footnotesSection.querySelector("li.footnote")) {
             footnotesSection.remove();

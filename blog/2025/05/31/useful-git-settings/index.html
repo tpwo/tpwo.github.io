@@ -46,7 +46,7 @@
         </p>
     </header>
 
-    <div class="post-content"><nav id="toc" class="toc" role="doc-toc"><h2 id="toc-title">Table of Contents</h2><ol class="toc-list level-1"><li><a href="#_core_settings">Core settings</a></li><li><a href="#_credential_settings">Credential settings</a></li><li><a href="#_git_features">Git features</a></li><li><a href="#_git_commit"><code>git commit</code></a></li><li><a href="#_git_fetch"><code>git fetch</code></a></li><li><a href="#_git_pull"><code>git pull</code></a></li><li><a href="#_git_push"><code>git push</code></a></li><li><a href="#_git_merge"><code>git merge</code></a></li><li><a href="#_git_init"><code>git init</code></a></li><li><a href="#_git_aliases">Git aliases</a></li></ol></nav><section id="preamble" aria-label="Preamble"><p>In my dotfiles I always have a <code>.gitconfig</code> file
+    <div class="post-content"><nav id="toc" class="toc" role="doc-toc"><h2 id="toc-title">Table of Contents</h2><ol class="toc-list level-1"><li><a href="#_core_settings">Core settings</a></li><li><a href="#_credential_settings">Credential settings</a></li><li><a href="#_enable_custom_git_features">Enable custom Git features</a></li><li><a href="#_commit_settings">Commit settings</a></li><li><a href="#_fetch_settings">Fetch settings</a></li><li><a href="#_pull_settings">Pull settings</a></li><li><a href="#_push_settings">Push settings</a></li><li><a href="#_merge_settings">Merge settings</a></li><li><a href="#_init_settings">Init settings</a></li><li><a href="#_my_custom_git_aliases">My custom Git aliases</a></li></ol></nav><section id="preamble" aria-label="Preamble"><p>In my dotfiles I always have a <code>.gitconfig</code> file
 with some of the settings preconfigured.
 Without them using Git for me would be much more cumbersome.
 Here&#8217;s a list of them along with some comments and sources.</p></section>
@@ -124,7 +124,7 @@ and <em>Git will remember this</em>.</p>
 as space in <code>Program Files</code> would cause some issues otherwise.
 And use the actual path of where you have Git for Windows installed,
 other default alternative is <code>AppData</code> of your Windows user.</p></section></section>
-<section class="doc-section level-1"><h2 id="_git_features">Git features</h2><section class="doc-section level-2"><h3 id="_feature_manyfiles"><code>feature.manyFiles</code></h3><p>Git introduced this feature a few years ago to improve support for bigger repos.
+<section class="doc-section level-1"><h2 id="_enable_custom_git_features">Enable custom Git features</h2><section class="doc-section level-2"><h3 id="_feature_manyfiles"><code>feature.manyFiles</code></h3><p>Git introduced this feature a few years ago to improve support for bigger repos.
 I naively enabled it after reading the change log
 and it instantly broke some tools for me,
 particularly Matlab Git integration was completely broken.
@@ -133,7 +133,7 @@ so my setting repeats the current default.<a class="footnote-ref" id="_footnoter
 <div class="listing-block"><pre>git config --global feature.manyFiles false</pre></div>
 <p>If you&#8217;re struggling with Git performance you might consider to enable it.
 Hopefully after a few years tools already support it.</p></section></section>
-<section class="doc-section level-1"><h2 id="_git_commit"><code>git commit</code></h2><section class="doc-section level-2"><h3 id="_commit_verbose"><code>commit.verbose</code></h3><p><code>git commit</code> has a <code>--verbose</code> flag
+<section class="doc-section level-1"><h2 id="_commit_settings">Commit settings</h2><section class="doc-section level-2"><h3 id="_commit_verbose"><code>commit.verbose</code></h3><p><code>git commit</code> has a <code>--verbose</code> flag
 which includes committed diff in a commit window.
 The commit windows is nothing more but an automatically opened file
 which you edit, save, and quit,
@@ -141,7 +141,7 @@ which makes git do the commit.</p>
 <p>This option always adds this flag,
 so you can see what are you committing every time.</p>
 <div class="listing-block"><pre>git config --global commit.verbose true</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_fetch"><code>git fetch</code></h2><section class="doc-section level-2"><h3 id="_fetch_prune"><code>fetch.prune</code></h3><p>You can remove any remote-tracking references
+<section class="doc-section level-1"><h2 id="_fetch_settings">Fetch settings</h2><section class="doc-section level-2"><h3 id="_fetch_prune"><code>fetch.prune</code></h3><p>You can remove any remote-tracking references
 (i.e. <code>origin/&lt;branch-name&gt;</code>)
 which were removed on the remote with <code>git fetch --prune</code>.
 I find it very convenient to be the default,
@@ -159,7 +159,7 @@ and by convention <code>origin</code> is used as the default remote name.</p>
 <code>git config --global remote.prune true</code> is allowed.
 Yes, it is, and it does pretty much the same thing
 as setting <code>fetch.prune</code> to true.<a class="footnote-ref" id="_footnoteref_6" href="#_footnote_6" title="View footnote 6" role="doc-noteref">[6]</a></p></section></section>
-<section class="doc-section level-1"><h2 id="_git_pull"><code>git pull</code></h2><section class="doc-section level-2"><h3 id="_pull_rebase"><code>pull.rebase</code></h3><p>I like
+<section class="doc-section level-1"><h2 id="_pull_settings">Pull settings</h2><section class="doc-section level-2"><h3 id="_pull_rebase"><code>pull.rebase</code></h3><p>I like
 <a href="https://youtu.be/xN1-2p06Urc">explanation from this video</a>
 why default behavior of <code>git pull</code> is a bit annoying.
 Its title is a little bit clickbaitish,
@@ -182,12 +182,12 @@ as you have to explicitly rebase to the new version.</p>
 (i.e. <strong>use git fetch and git rebase instead</strong>).
 If you&#8217;re into that,
 consider using this option.</p></section></section>
-<section class="doc-section level-1"><h2 id="_git_push"><code>git push</code></h2><p>The biggest problem with this command is people overusing <code>--force</code>. There is a
+<section class="doc-section level-1"><h2 id="_push_settings">Push settings</h2><p>The biggest problem with this command is people overusing <code>--force</code>. There is a
 safer replacement for it.</p>
 <p>You can use <code>--force-with-lease</code> instead of <code>--force</code> to only overwrite changes
 you&#8217;re expecting. Either the ones you have locally, or ones you fetched before.
 If there will be any new commit on a remote, force push with lease fails.</p></section>
-<section class="doc-section level-1"><h2 id="_git_merge"><code>git merge</code></h2><section class="doc-section level-2"><h3 id="_merge_conflictstyle"><code>merge.conflictstyle</code></h3><p>I think I don&#8217;t know a person who likes to solve merge conflicts.
+<section class="doc-section level-1"><h2 id="_merge_settings">Merge settings</h2><section class="doc-section level-2"><h3 id="_merge_conflictstyle"><code>merge.conflictstyle</code></h3><p>I think I don&#8217;t know a person who likes to solve merge conflicts.
 But I noticed that many people are more scared about them
 then they probably should be.</p>
 <p>Setting a better conflict style in Git
@@ -213,11 +213,11 @@ marking more lines as conflicting.<a class="footnote-ref" id="_footnoteref_9" hr
 <p><code>zdiff3</code> addresses these issues.
 Interestingly enough, <code>z</code> in the name comes from the word <em>zealous</em>.</p>
 <div class="listing-block"><pre>git config --global merge.conflictstyle zdiff3</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_init"><code>git init</code></h2><section class="doc-section level-2"><h3 id="_init_defaultbranch"><code>init.defaultBranch</code></h3><p>Like it or not, but <code>main</code> is the new <code>master</code> in Git,
+<section class="doc-section level-1"><h2 id="_init_settings">Init settings</h2><section class="doc-section level-2"><h3 id="_init_defaultbranch"><code>init.defaultBranch</code></h3><p>Like it or not, but <code>main</code> is the new <code>master</code> in Git,
 and it doesn&#8217;t seem to be changing any time soon.</p>
 <p>Git though still uses default <code>master</code>, so this option has to be set.</p>
 <div class="listing-block"><pre>git config --global init.defaultBranch main</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_git_aliases">Git aliases</h2><section class="doc-section level-2"><h3 id="_git_git"><code>git git</code></h3><p>I borrowed that idea from Anthony Sottile<a class="footnote-ref" id="_footnoteref_10" href="#_footnote_10" title="View footnote 10" role="doc-noteref">[10]</a>.
+<section class="doc-section level-1"><h2 id="_my_custom_git_aliases">My custom Git aliases</h2><section class="doc-section level-2"><h3 id="_git_git"><code>git git</code></h3><p>I borrowed that idea from Anthony Sottile<a class="footnote-ref" id="_footnoteref_10" href="#_footnote_10" title="View footnote 10" role="doc-noteref">[10]</a>.
 It allows you to type <code>git git &lt;command&gt;</code>
 and make the command still work.
 In fact, you might type as many <code>git</code> commands as you like,
