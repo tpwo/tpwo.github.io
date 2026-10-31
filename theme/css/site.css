@@ -4,6 +4,8 @@
     --text: #030303;
     --link: #1558a6;
     --muted: #555;
+    --toc-link: #555;
+    --toc-link-hover: #767676;
     --border: #dedede;
     --code: #333;
     --code-background: #e8e8e8;
@@ -23,6 +25,8 @@
     --text: #e8e8e8;
     --link: #8ab4f8;
     --muted: #bbb;
+    --toc-link: #bbb;
+    --toc-link-hover: #999;
     --border: #555;
     --code: #f7f7f7;
     --code-background: #333;
@@ -66,6 +70,8 @@
         --text: #e8e8e8;
         --link: #8ab4f8;
         --muted: #bbb;
+        --toc-link: #bbb;
+        --toc-link-hover: #999;
         --border: #555;
         --code: #f7f7f7;
         --code-background: #333;
@@ -429,6 +435,7 @@ mark {
 
 #toc h2 {
     margin: 0 0 0.4rem;
+    color: var(--toc-link);
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -447,7 +454,17 @@ mark {
     max-width: none;
     margin: 0;
     padding: 0 0 0 0.75rem;
+    border-left: 1px solid var(--border);
     list-style: none;
+}
+
+#toc .toc-list a {
+    color: var(--toc-link);
+}
+
+#toc .toc-list a:hover {
+    color: var(--toc-link-hover);
+    text-decoration: none;
 }
 
 #toc .toc-list[hidden] {
