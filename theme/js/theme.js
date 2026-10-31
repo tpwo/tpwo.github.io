@@ -140,8 +140,35 @@
                 }, 1500);
             });
 
+            function positionToolbox() {
+                toolbox.style.left =
+                    `${block.scrollLeft + block.clientWidth - toolbox.offsetWidth - 12}px`;
+            }
+
+            function showToolboxAfterTouch() {
+                block.classList.remove("touching-code");
+                window.removeEventListener("pointerup", showToolboxAfterTouch);
+                window.removeEventListener("pointercancel", showToolboxAfterTouch);
+            }
+
+            block.addEventListener("scroll", positionToolbox, { passive: true });
+            window.addEventListener("resize", positionToolbox);
+            block.addEventListener("pointerdown", (event) => {
+                if (
+                    event.pointerType !== "touch" ||
+                    (event.target instanceof Element && event.target.closest(".copy-button"))
+                ) {
+                    return;
+                }
+
+                block.classList.add("touching-code");
+                window.addEventListener("pointerup", showToolboxAfterTouch);
+                window.addEventListener("pointercancel", showToolboxAfterTouch);
+            });
+
             pre.classList.add("has-copy-button");
-            pre.prepend(toolbox);
+            block.prepend(toolbox);
+            positionToolbox();
         }
     }
 

@@ -42,6 +42,7 @@
         <h1>Convert dvdsub into srt subtitles</h1>
         <p class="post-date">
             Published <time datetime="2025-05-30T00:00:00+02:00">May 30, 2025</time>
+            ┃ Updated <time datetime="2026-10-31T00:00:00+01:00">Oct 31, 2026</time>
         </p>
     </header>
 
@@ -58,7 +59,7 @@ I really don&#8217;t like bloated constrained GUI-based apps
 to manipulate video and audio files.</p>
 <p>It can help with subtitles as well.</p>
 <p>To install on MacOS you can use homebrew:</p>
-<div class="listing-block"><pre>brew install ffmpeg</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">brew <span class="nb">install </span>ffmpeg</code></pre></div>
 <p>On Linux it should be available in your package manager.
 On Windows probably the best solution is to use
 <a href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL2</a>.</p></section>
@@ -91,15 +92,15 @@ and are one of the three streams in the file.</p>
 i.e. <code>0:2</code> in case of subtitle stream.</p>
 <p>Stream index is required in the next step.</p></section>
 <section class="doc-section level-1"><h2 id="_extract_subs_into_separate_container">Extract subs into separate container</h2><p><code>ffmpeg</code> comes in handy again:</p>
-<div class="listing-block"><pre>ffmpeg -i &lt;video-file&gt; -map &lt;stream-index&gt; -c:s copy &lt;output-file&gt;.mkv</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">ffmpeg <span class="nt">-i</span> &lt;video-file&gt; <span class="nt">-map</span> &lt;stream-index&gt; <span class="nt">-c</span>:s copy &lt;output-file&gt;.mkv</code></pre></div>
 <p>e.g.</p>
-<div class="listing-block"><pre>ffmpeg -i video.mp4 -map 0:2 -c:s copy output.mkv</pre></div></section>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">ffmpeg <span class="nt">-i</span> video.mp4 <span class="nt">-map</span> 0:2 <span class="nt">-c</span>:s copy output.mkv</code></pre></div></section>
 <section class="doc-section level-1"><h2 id="_convert_mkv_into_sub_and_idx_files">Convert <code>mkv</code> into <code>sub</code> and <code>idx</code> files</h2><p>This step requires mkvextract.
 Again, you can install it with homebrew:</p>
-<div class="listing-block"><pre>brew install mkvtoolnix</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">brew <span class="nb">install </span>mkvtoolnix</code></pre></div>
 <p>Then <code>mkvextract</code> should be available.
 You can use it to create <code>sub</code> and <code>idx</code> file from <code>mkv</code>:</p>
-<div class="listing-block"><pre>mkvextract tracks &lt;output-file&gt;.mkv 0:&lt;output-file&gt;.sub</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">mkvextract tracks &lt;output-file&gt;.mkv 0:&lt;output-file&gt;.sub</code></pre></div>
 <p>e.g. <code>mkvextract tracks output.mkv 0:output.sub</code></p>
 <p>We do it because OCR tools support this format instead of <code>mkv</code>.</p></section>
 <section class="doc-section level-1"><h2 id="_use_ocr_to_get_srt_file">Use OCR to get <code>srt</code> file</h2><p>This step took me the most, as the tool we&#8217;re using here is pretty old,
@@ -113,8 +114,8 @@ and run these commands below without checking the source code first 😉</p></as
 so it&#8217;s possible to install my fixed version with these two commands.
 Homebrew will take care of build dependencies
 (or at least for <code>cmake</code> and <code>tesseract</code>):</p>
-<div class="listing-block"><pre>brew tap tpwo/vobsub2srt
-brew install --HEAD tpwo/vobsub2srt/vobsub2srt</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">brew tap tpwo/vobsub2srt
+brew <span class="nb">install</span> <span class="nt">--HEAD</span> tpwo/vobsub2srt/vobsub2srt</code></pre></div>
 <p>Setting this up was new for me.
 It turns out that Homebrew requires
 <code>&lt;user&gt;/homebrew-&lt;name&gt;</code> repo to be present,
@@ -125,8 +126,8 @@ to install VobSub2SRT
 from <a href="https://github.com/tpwo/VobSub2SRT">my fork</a>.</p></section>
 <section class="doc-section level-3"><h4 id="_manual_installation">Manual installation</h4><p>If you prefer manual installation, it&#8217;s also possible.
 Before compilation, you have to install build dependencies:</p>
-<div class="listing-block"><pre>brew install cmake
-brew install tesseract</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">brew <span class="nb">install </span>cmake
+brew <span class="nb">install </span>tesseract</code></pre></div>
 <p>Then you can clone my fork and compile the tool:</p>
 <div class="listing-block"><pre class="rouge highlight"><code data-lang="bash">git clone https://github.com/tpwo/VobSub2SRT
 <span class="nb">cd </span>VobSub2SRT
@@ -139,8 +140,8 @@ make
 <p>Original README suggests <code>sudo make install</code>,
 but I just grabbed the compiled binary and moved it to my PATH in <code>~/.local/bin</code>.</p>
 <p>Then you can finally convert <code>sub</code> and <code>idx</code> file into <code>srt</code> file:</p>
-<div class="listing-block"><pre># Note we don't pass file extension here
-vobsub2srt &lt;output-file&gt;</pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="c"># Note we don't pass file extension here</span>
+vobsub2srt &lt;output-file&gt;</code></pre></div>
 <p>e.g. <code>vobsub2srt output</code></p></section></section></section>
 <section class="doc-section level-1"><h2 id="_script_to_run_it_all_with_one_command">Script to run it all with one command</h2><p>I had a bunch videos with embedded subtitles,
 so I created a Bash script to quickly run it with <code>for f in *</code>:</p>
@@ -169,7 +170,7 @@ and run:</p>
 <div class="listing-block"><pre>./&lt;name&gt; &lt;video-file&gt;.&lt;ext&gt;</pre></div>
 <p>e.g. <code>./extract-subs video.mp4</code>.</p>
 <p>To run it for e.g. all <code>.mp4</code> files in the current folder do:</p>
-<div class="listing-block"><pre>for f in *.mp4; do ./extract-subs.sh "$f"; done</pre></div></section>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="k">for </span>f <span class="k">in</span> <span class="k">*</span>.mp4<span class="p">;</span> <span class="k">do</span> ./extract-subs.sh <span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span><span class="p">;</span> <span class="k">done</span></code></pre></div></section>
 <section class="doc-section level-1"><h2 id="_sources_and_further_reading">Sources and further reading</h2><div class="ulist"><ul><li>Original VobSub2SRT repo (I forked a fork!):<br>
 <a class="bare" href="https://github.com/ruediger/VobSub2SRT">https://github.com/ruediger/VobSub2SRT</a></li><li>Tutorial describing alternative flow with <code>ffmes</code>. I figured VobSub2SRT is easier to run on Apple Sillcon Macbook:<br>
 <a class="bare" href="https://subarashii-no-fansub.github.io/Subbing-Tutorial/Convert-vobsub-file-into-srt/">https://subarashii-no-fansub.github.io/Subbing-Tutorial/Convert-vobsub-file-into-srt/</a></li></ul></div></section></div>

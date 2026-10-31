@@ -42,7 +42,7 @@
         <h1>Playing Super Mario World in 2024</h1>
         <p class="post-date">
             Published <time datetime="2024-08-12T00:00:00+02:00">Aug 12, 2024</time>
-            ┃ Updated <time datetime="2025-06-17T00:00:00+02:00">Jun 17, 2025</time>
+            ┃ Updated <time datetime="2026-10-31T00:00:00+01:00">Oct 31, 2026</time>
         </p>
     </header>
 
@@ -98,15 +98,15 @@ then for the ROM file,
 and then for the filename to save the patched ROM.</p>
 <div class="image-block"><img src="https://tpwo.github.io/images/playing-super-mario-world-in-2024/flips.png" alt="FLIPS patcher"></div>
 <p>You can notice that the patched file is twice the size of the original:</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="shell"><span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="k">*</span>
-1.0M    Super Mario World <span class="o">(</span>USA<span class="o">)</span> Widescreen Project.sfc
-512K    Super Mario World <span class="o">(</span>USA<span class="o">)</span>.sfc</code></pre></div></section>
+<div class="listing-block"><pre>$ du -sh *
+1.0M    Super Mario World (USA) Widescreen Project.sfc
+512K    Super Mario World (USA).sfc</pre></div></section>
 <section class="doc-section level-1"><h2 id="_creating_widescreen_configuration_file">Creating widescreen configuration file</h2><p><code>bsnes-hd</code> requires a <code>bso</code> configuration file
 in order to correctly run the game in a widescreen mode.
 Thankfully, you don&#8217;t have to download it,
 as the file is very short and simple,
 and you can create it with this command:</p>
-<div class="listing-block"><pre class="rouge highlight"><code data-lang="shell"><span class="nb">echo</span> <span class="s1">'w1s1W48S2i0o1p1b1B1c1'</span> <span class="o">&gt;</span> <span class="s1">'Super Mario World (USA) Widescreen Project.bso'</span></code></pre></div>
+<div class="listing-block"><pre class="rouge highlight"><code data-lang="bash"><span class="nb">echo</span> <span class="s1">'w1s1W48S2i0o1p1b1B1c1'</span> <span class="o">&gt;</span> <span class="s1">'Super Mario World (USA) Widescreen Project.bso'</span></code></pre></div>
 <p>The content of the file is taken from
 <a href="https://github.com/VitorVilela7/wide-snes/blob/master/smw-widescreen.bso">wide-snes GitHub repo</a>.
 I guess it uses special quirky syntax to tell the emulator

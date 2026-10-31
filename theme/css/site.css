@@ -704,11 +704,11 @@ mark {
 }
 
 .post-content .listing-block {
+    position: relative;
     overflow-x: auto;
 }
 
 .post-content .listing-block pre.has-copy-button {
-    position: relative;
     margin-top: 0;
 }
 
@@ -716,7 +716,6 @@ mark {
     position: absolute;
     z-index: 1;
     top: 0.6rem;
-    right: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -761,8 +760,13 @@ mark {
 
 .post-content .copy-toast {
     position: absolute;
-    right: calc(100% + 0.5rem);
+    top: 50%;
+    right: calc(100% + 0.15rem);
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.2rem;
+    background: var(--code-background);
     white-space: nowrap;
+    transform: translateY(-50%);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -776,6 +780,11 @@ mark {
         opacity: 1;
         visibility: visible;
     }
+}
+
+.post-content .listing-block.touching-code .source-toolbox {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .post-content .listing-block .conum,
