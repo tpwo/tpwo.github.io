@@ -707,6 +707,77 @@ mark {
     overflow-x: auto;
 }
 
+.post-content .listing-block pre.has-copy-button {
+    position: relative;
+    margin-top: 0;
+}
+
+.post-content .source-toolbox {
+    position: absolute;
+    z-index: 1;
+    top: 0.6rem;
+    right: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.2rem;
+    background: var(--code-background);
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+.post-content .source-lang {
+    text-transform: uppercase;
+}
+
+.post-content .copy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.post-content .copy-button:hover {
+    color: var(--text);
+}
+
+.post-content .copy-button::before {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background-color: currentColor;
+    content: "";
+    mask: url("../icons/clipboard.svg") center / contain no-repeat;
+    -webkit-mask: url("../icons/clipboard.svg") center / contain no-repeat;
+}
+
+.post-content .copy-toast {
+    position: absolute;
+    right: calc(100% + 0.5rem);
+    white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .post-content .source-toolbox {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .post-content .listing-block:hover .source-toolbox,
+    .post-content .listing-block:focus-within .source-toolbox {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 .post-content .listing-block .conum,
 .post-content .listing-block .callout-list li::before {
     display: inline-flex;

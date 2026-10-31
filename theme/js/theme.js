@@ -82,6 +82,69 @@
         setMobileLayout(mobileLayout.matches);
     }
 
+    function initializeCodeCopy() {
+        for (const code of document.querySelectorAll(
+            ".post-content .listing-block pre code[data-lang]",
+        )) {
+            const block = code.closest(".listing-block");
+            const pre = code.closest("pre");
+            const language = code.dataset.lang;
+            if (!block || !pre || !language) {
+                continue;
+            }
+
+            const toolbox = document.createElement("span");
+            toolbox.className = "source-toolbox";
+
+            const languageLabel = document.createElement("span");
+            languageLabel.className = "source-lang";
+            languageLabel.textContent = language.toUpperCase();
+            toolbox.append(languageLabel);
+
+            const separator = document.createElement("span");
+            separator.className = "source-separator";
+            separator.setAttribute("aria-hidden", "true");
+            separator.textContent = "|";
+            toolbox.append(separator);
+
+            const button = document.createElement("button");
+            button.className = "copy-button";
+            button.type = "button";
+            button.title = "Copy to clipboard";
+            button.setAttribute("aria-label", "Copy code to clipboard");
+
+            const toast = document.createElement("span");
+            toast.className = "copy-toast";
+            toast.setAttribute("aria-live", "polite");
+            toast.hidden = true;
+            toolbox.append(toast, button);
+
+            let feedbackTimeout;
+            button.addEventListener("click", async () => {
+                const source = code.cloneNode(true);
+                source.querySelectorAll(".conum").forEach((conum) => conum.remove());
+                const text = source.textContent.replace(/[ \t]+$/gm, "").trimEnd();
+
+                try {
+                    await navigator.clipboard.writeText(text);
+                    toast.textContent = "Copied!";
+                } catch (error) {
+                    console.error("Could not copy code listing to clipboard.", error);
+                    toast.textContent = "Copy failed";
+                }
+
+                toast.hidden = false;
+                window.clearTimeout(feedbackTimeout);
+                feedbackTimeout = window.setTimeout(() => {
+                    toast.hidden = true;
+                }, 1500);
+            });
+
+            pre.classList.add("has-copy-button");
+            pre.prepend(toolbox);
+        }
+    }
+
     function initializeContextualFootnotes() {
         const content = document.querySelector(".post-content");
         const footnotesSection = content?.querySelector("section.footnotes");
@@ -255,6 +318,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         initializeToc();
+        initializeCodeCopy();
         initializeContextualFootnotes();
 
         const toggle = document.getElementById("theme-toggle");
