@@ -394,10 +394,19 @@ mark {
 }
 
 .post-header {
+    position: relative;
     margin: 2rem 0;
 }
 
+.post-header #toc {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(28%, 17rem);
+}
+
 .post-header h1 {
+    max-width: 68%;
     margin-bottom: 1rem;
     font-size: 2.45rem;
     font-weight: 400;
@@ -410,6 +419,43 @@ mark {
 
 .post-content {
     line-height: 1.5rem;
+}
+
+#toc {
+    width: auto;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+#toc h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#toc .toc-toggle {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+#toc .toc-list {
+    max-width: none;
+    margin: 0;
+    padding: 0 0 0 0.75rem;
+    list-style: none;
+}
+
+#toc .toc-list[hidden] {
+    display: none;
+}
+
+#toc .toc-list .toc-list {
+    display: none;
 }
 
 .post-content p {
@@ -793,6 +839,24 @@ mark {
 
     .post-content figure.image-block {
         width: 100%;
+    }
+
+    .post-header {
+        position: static;
+    }
+
+    .post-header h1 {
+        max-width: none;
+    }
+
+    .post-header #toc {
+        position: static;
+        width: auto;
+        margin: 0 0 1rem;
+    }
+
+    #toc .toc-toggle {
+        cursor: pointer;
     }
 
     .footnote-context {

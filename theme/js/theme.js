@@ -25,6 +25,63 @@
         }
     }
 
+    function initializeToc() {
+        const content = document.querySelector(".post-content");
+        const toc = content?.querySelector("nav#toc");
+        const header = document.querySelector(".post-header");
+        const title = toc?.querySelector("#toc-title");
+        const list = toc?.querySelector(".toc-list.level-1");
+        if (!toc || !header || !title || !list) {
+            return;
+        }
+
+        header.append(toc);
+        const mobileLayout = window.matchMedia("(max-width: 640px)");
+        list.id = "toc-list";
+        const titleText = title.textContent.trim();
+
+        const toggle = document.createElement("button");
+        toggle.className = "toc-toggle";
+        toggle.type = "button";
+        toggle.textContent = titleText;
+        toggle.setAttribute("aria-controls", list.id);
+
+        function setMobileLayout(isMobile) {
+            if (isMobile) {
+                title.replaceChildren(toggle);
+            } else {
+                title.textContent = titleText;
+            }
+            list.hidden = isMobile;
+            if (isMobile) {
+                toggle.setAttribute("aria-expanded", "false");
+            }
+        }
+
+        toggle.addEventListener("click", () => {
+            list.hidden = !list.hidden;
+            toggle.setAttribute("aria-expanded", String(!list.hidden));
+        });
+
+        document.addEventListener("click", (event) => {
+            if (
+                mobileLayout.matches &&
+                event.target instanceof Node &&
+                !toc.contains(event.target) &&
+                !list.hidden
+            ) {
+                list.hidden = true;
+                toggle.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        mobileLayout.addEventListener("change", (event) => {
+            setMobileLayout(event.matches);
+        });
+
+        setMobileLayout(mobileLayout.matches);
+    }
+
     function initializeContextualFootnotes() {
         const content = document.querySelector(".post-content");
         const footnotesSection = content?.querySelector("section.footnotes");
@@ -171,6 +228,7 @@
     updateTheme();
 
     document.addEventListener("DOMContentLoaded", () => {
+        initializeToc();
         initializeContextualFootnotes();
 
         const toggle = document.getElementById("theme-toggle");
