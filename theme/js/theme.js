@@ -218,7 +218,7 @@
             referenceControl.id = reference.id;
             referenceControl.textContent = label;
             reference.replaceWith(referenceControl);
-            const contextualNote = { note, referenceControl, label };
+            const contextualNote = { note, paragraph, referenceControl, label };
             contextualNotes.push(contextualNote);
             notesById.set(noteId, contextualNote);
         }
@@ -252,25 +252,50 @@
             }
         }
 
-        function spaceNotesBelowToc() {
+        function getReferenceLineTop(contextualNote) {
+            const range = document.createRange();
+            range.selectNodeContents(contextualNote.paragraph);
+            range.setEndBefore(contextualNote.referenceControl);
+            const precedingRectangles = Array.from(range.getClientRects());
+            if (precedingRectangles.length > 0) {
+                return precedingRectangles.at(-1).top;
+            }
+
+            range.selectNodeContents(contextualNote.paragraph);
+            range.setStartAfter(contextualNote.referenceControl);
+            const followingRectangles = Array.from(range.getClientRects());
+            return followingRectangles[0]?.top
+                ?? contextualNote.referenceControl.getBoundingClientRect().top;
+        }
+
+        function positionContextualNotes() {
             for (const contextualNote of contextualNotes) {
                 contextualNote.note.style.marginTop = "";
             }
 
-            if (!toc || mobileLayout.matches) {
+            if (mobileLayout.matches) {
                 return;
             }
 
-            const tocBounds = toc.getBoundingClientRect();
+            const tocBounds = toc?.getBoundingClientRect();
             const gap = Number.parseFloat(getComputedStyle(root).fontSize) * 0.75;
+            let previousNoteBottom = Number.NEGATIVE_INFINITY;
             for (const contextualNote of contextualNotes) {
                 const noteBounds = contextualNote.note.getBoundingClientRect();
-                const overlapsHorizontally =
-                    noteBounds.left < tocBounds.right && noteBounds.right > tocBounds.left;
-                if (overlapsHorizontally && noteBounds.top < tocBounds.bottom + gap) {
-                    contextualNote.note.style.marginTop =
-                        `${tocBounds.bottom + gap - noteBounds.top}px`;
+                let targetTop = Math.max(
+                    noteBounds.top,
+                    getReferenceLineTop(contextualNote),
+                    previousNoteBottom,
+                );
+                const overlapsHorizontally = tocBounds
+                    && noteBounds.left < tocBounds.right
+                    && noteBounds.right > tocBounds.left;
+                if (overlapsHorizontally && targetTop < tocBounds.bottom + gap) {
+                    targetTop = tocBounds.bottom + gap;
                 }
+                contextualNote.note.style.marginTop = `${targetTop - noteBounds.top}px`;
+                previousNoteBottom =
+                    contextualNote.note.getBoundingClientRect().bottom + gap;
             }
         }
 
@@ -315,12 +340,13 @@
 
         mobileLayout.addEventListener("change", (event) => {
             setMobileLayout(event.matches);
+            positionContextualNotes();
         });
 
         setMobileLayout(mobileLayout.matches);
-        spaceNotesBelowToc();
-        window.addEventListener("resize", spaceNotesBelowToc);
-        window.addEventListener("load", spaceNotesBelowToc);
+        positionContextualNotes();
+        window.addEventListener("resize", positionContextualNotes);
+        window.addEventListener("load", positionContextualNotes);
 
         if (!footnotesSection.querySelector("li.footnote")) {
             footnotesSection.remove();

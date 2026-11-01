@@ -554,20 +554,19 @@ mark {
 }
 
 .footnote-context {
-    display: grid;
-    grid-template-columns: minmax(0, 66.667%) minmax(12rem, 1fr);
-    gap: 0 1.5rem;
-    align-items: start;
+    position: relative;
 }
 
 .footnote-context > p {
-    grid-column: 1;
-    max-width: none;
+    max-width: 66.667%;
 }
 
 .contextual-footnote {
     display: grid;
-    grid-column: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: calc(66.667% + 1.5rem);
     grid-template-columns: 1em minmax(0, 1fr);
     column-gap: 0.2em;
     font-size: 0.8em;
@@ -1002,12 +1001,18 @@ mark {
     }
 
     .footnote-context {
+        display: grid;
+        position: static;
         grid-template-columns: minmax(0, 1fr);
         gap: 0.5rem;
     }
 
-    .footnote-context > p,
+    .footnote-context > p {
+        max-width: none;
+    }
+
     .contextual-footnote {
+        position: static;
         grid-column: 1;
     }
 
