@@ -557,7 +557,7 @@ mark {
     position: relative;
 }
 
-.footnote-context > p {
+.footnote-context > :not(.contextual-footnote) {
     max-width: 66.667%;
 }
 
@@ -1007,7 +1007,7 @@ mark {
         gap: 0.5rem;
     }
 
-    .footnote-context > p {
+    .footnote-context > :not(.contextual-footnote) {
         max-width: none;
     }
 

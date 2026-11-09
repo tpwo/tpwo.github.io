@@ -176,7 +176,7 @@
             const reference = references.find(
                 (candidate) => candidate.getAttribute("href") === `#${noteId}`,
             );
-            const paragraph = reference?.closest("p");
+            const paragraph = reference?.closest(".ulist, .olist") ?? reference?.closest("p");
             if (!noteId || !reference || !paragraph?.parentElement) {
                 continue;
             }
