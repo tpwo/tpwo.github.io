@@ -42,10 +42,11 @@
         <h1>Setting up Macbook</h1>
         <p class="post-date">
             Published <time datetime="2026-11-09T00:00:00+01:00">Nov 09, 2026</time>
+            ┃ Updated <time datetime="2026-11-12T00:00:00+01:00">Nov 12, 2026</time>
         </p>
     </header>
 
-    <div class="post-content"><nav id="toc" class="toc" role="doc-toc"><h2 id="toc-title">Contents</h2><ol class="toc-list level-1"><li><a href="#_keyboard_and_mouse">Keyboard and mouse</a></li><li><a href="#_install_homebrew">Install homebrew</a></li><li><a href="#_change_default_shell">Change default shell</a></li><li><a href="#_install_bash_completions">Install bash completions</a></li><li><a href="#_install_git_completions">Install Git completions</a></li><li><a href="#_install_iterm2">Install iterm2</a></li><li><a href="#_swich_from_bsd_to_gnu_utils">Swich from BSD to GNU utils</a></li><li><a href="#_install_appcleaner">Install AppCleaner</a></li><li><a href="#_install_middleclick">Install MiddleClick</a></li><li><a href="#_install_doll">Install Doll</a></li><li><a href="#_install_sublime_text">Install Sublime Text</a></li><li><a href="#_set_a_default_text_editor">Set a default text editor</a></li><li><a href="#_figure_out_ssh_agent">Figure out SSH agent</a></li><li><a href="#_install_uv_for_python_ecosystem_integration">Install uv for Python ecosystem integration</a></li><li><a href="#_enable_sudo_auth_with_touch_id">Enable sudo auth with Touch ID</a></li><li><a href="#_other_software_worth_installing">Other software worth installing</a></li><li><a href="#_ending_notes">Ending notes</a></li></ol></nav><section id="preamble" aria-label="Preamble"><p>I was a Windows user whole my life
+    <div class="post-content"><nav id="toc" class="toc" role="doc-toc"><h2 id="toc-title">Contents</h2><ol class="toc-list level-1"><li><a href="#_keyboard_and_mouse">Keyboard and mouse</a></li><li><a href="#_package_manager">Package manager</a></li><li><a href="#_change_default_shell">Change default shell</a></li><li><a href="#_install_bash_completions">Install bash completions</a></li><li><a href="#_install_git_completions">Install Git completions</a></li><li><a href="#_install_iterm2">Install iterm2</a></li><li><a href="#_swich_from_bsd_to_gnu_utils">Swich from BSD to GNU utils</a></li><li><a href="#_install_appcleaner">Install AppCleaner</a></li><li><a href="#_install_middleclick">Install MiddleClick</a></li><li><a href="#_install_doll">Install Doll</a></li><li><a href="#_install_sublime_text">Install Sublime Text</a></li><li><a href="#_set_a_default_text_editor">Set a default text editor</a></li><li><a href="#_figure_out_ssh_agent">Figure out SSH agent</a></li><li><a href="#_install_uv_for_python_ecosystem_integration">Install uv for Python ecosystem integration</a></li><li><a href="#_enable_sudo_auth_with_touch_id">Enable sudo auth with Touch ID</a></li><li><a href="#_other_software_worth_installing">Other software worth installing</a></li><li><a href="#_ending_notes">Ending notes</a></li></ol></nav><section id="preamble" aria-label="Preamble"><p>I was a Windows user whole my life
 but a few years ago I switched to MacOS,
 and I really like this transition.</p>
 <p>I remember that beginnings were difficult,
@@ -92,72 +93,86 @@ which means it&#8217;s very easy to reach.</p>
 for at least few years.
 I&#8217;m doing the same CapsLock &#8594; Control remapping.</p>
 <div class="image-block"><img src="https://tpwo.github.io/images/setting-up-macbook/remap-capslock-to-ctrl.png" alt="Remap CapsLock to Ctrl in Settings"></div></section>
-<section class="doc-section level-2"><h3 id="_remapping_keys_on_windows_type_keyboard">Remapping keys on Windows-type keyboard</h3><section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">Warning: </span></h6><p>I tried remapping Windows keyboard but then gave up.
+<section class="doc-section level-2"><h3 id="_remapping_keys_on_windows_type_keyboard">Remapping keys on Windows-type keyboard</h3><section class="admonition-block important" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">Important: </span></h6><p>I tried remapping Windows keyboard but then gave up.
 It&#8217;s easier to use native MacOS keyboard.
 Or at least, a keyboard built to be compatible with MacOS.
-I&#8217;m leaving below as it might be helpful to someone.</p></section>
+I&#8217;m leaving below notes as it might be helpful to someone.</p></section>
 <p>I quickly learnt that Windows and Mac keyboards are way different than you may think.
 Especially when talking about action keys.</p>
 <p>The problem is that MacOS has one more action key that Windows: Command key.
 Some of the functionality I was used to do with Ctrl or Alt is now done with Command.</p>
 <p>I understand it like that:</p>
-<div class="ulist"><ul><li>Fn key is the same as Fn in Windows (most commonly laptops)</li><li>Option key behaves like Windows Alt<a class="footnote-ref" id="_footnoteref_2" href="#_footnote_2" title="View footnote 2" role="doc-noteref">[2]</a>.
-e.g. when typing Polish characters but sometimes Command key is used instead</li><li>Command key is sometimes acting as Windows Control (e.g. in Chrome, closing tab is Ctrl/Command + W)</li><li>But sometimes it acts as Windows Alt (e.g. Alt+Tab to switch Windows is Command+Tab)</li></ul></div>
-<p>The recommended solution I found is to remap Windows Alt to Command
-(so Alt+Tab etc. works like on Windows)
-and remap Windows Key to Alt</p>
-<section class="doc-section level-3"><h4 id="_unsolved_issues">Unsolved issues</h4><p>I still am figuring out how to properly solve the Polish characters typing
-when using remapped Windows keyboard.</p>
-<p>By default on Mac it&#8217;s done with Option which would be fine,
-<em>if I haven&#8217;t done</em> the remapping.
-With remapped keys,
-I can only type in Polish characters with the Windows key,
-which is on the wrong side of space.</p>
-<p>I heard about software to remap keys
-(similar to Windows AutoHotkey),
-namely Karabiner.</p>
-<p>But I&#8217;m not sure if it can solve this issue.
-I&#8217;m still looking for a ready solution,
-as I cannot believe that I&#8217;m the only person with such an issue.</p></section></section>
-<section class="doc-section level-2"><h3 id="_adjust_key_repeat_rate_and_delay_until_repeat">Adjust key repeat rate and delay until repeat</h3><p>I noticed that by default,
-macOS waits longer before it starts repeating keys,
-so I change the delay to be as short as possible.</p>
-<p>I&#8217;m still experimenting with key repeat rate.
-I think that the default one less than fastest setting
-is quite good.
-But I tried with the fastest,
-and I also like it,
-although it&#8217;s definitely faster than on Windows.</p></section>
-<section class="doc-section level-2"><h3 id="_disable_macos_accent_picker">Disable macOS accent picker</h3><p>By default when pressing and holding certain keys in macOS,
+<div class="ulist"><ul><li>Fn key is the same as Fn in Windows (most commonly laptops)</li><li>Windows Alt is either an Option key<a class="footnote-ref" id="_footnoteref_2" href="#_footnote_2" title="View footnote 2" role="doc-noteref">[2]</a>.
+(e.g. when typing special diacritic characters)
+or a Command key (Command+Tab is Alt+Tab from Windows)</li><li>But Command key also sometimes acts as a Windows Control (e.g. in Chrome, closing tab is Command+W)</li></ul></div>
+<aside class="admonition-block note" role="note"><h6 class="block-title"><span class="title-label">Note: </span>Remapping Windows keyboards</h6><p>I found a recommendation to remap Alt on Windows keyboard to Command key
+and remap Windows Key to Option key.
+This makes Alt+Tab etc. to work like on Windows, but definitely is not ideal.</p>
+<p>Namely, I never figured out how to properly approach typing of Polish characters
+when using a remapped Windows keyboard.
+By default on Mac it&#8217;s done with an Option which should be fine,
+<em>if I haven&#8217;t done</em> the remapping described above.
+After the remap I can only type in Polish characters with the Windows key,
+but there is only one of them,
+and it&#8217;s on the wrong side of space key.</p>
+<p>There are solutions to remap keys more dynamically,
+like Karabiner (similar to Windows AutoHotkey)
+but this complicates things a lot.</p>
+<p>I end up using a Mac keyboard,
+so I never had the time to find a proper solution here.</p></aside></section>
+<section class="doc-section level-2"><h3 id="_adjust_key_repeat_rate_and_delay_until_repeat">Adjust key repeat rate and delay until repeat</h3><p>Compared to Windows,
+macOS waits longer before it starts repeating keys.
+so I change the delay to be as short as possible
+to get a more familiar experience.</p>
+<p>I also like the fastest key repeat rate setting
+although it&#8217;s definitely faster than on Windows.
+You may want using a bit slower option
+but still consider making it faster than the default.</p>
+<div class="image-block"><img src="https://tpwo.github.io/images/setting-up-macbook/keyboard-repeat-rate-and-delay.png" alt="Key repeat rate and Delay until repeat in the Keyboard settings"></div></section>
+<section class="doc-section level-2"><h3 id="_disable_macos_accent_picker">Disable macOS accent picker</h3><p>By default when pressing and holding certain keys in MacOS,
 system displays a window allowing you to choose an accent
 for a given letter (e.g. for <code>a</code>, <code>e</code> or <code>o</code>).</p>
-<p>This also completely blocks key repeat you may know from Windows.
-Note that it isn&#8217;t always active,
-e.g. it doesn&#8217;t block repating space,
-and doesn&#8217;t block anything in apps like iTerm which apparently use
-some lower-level way of interacting with text input.</p>
-<p>I noticed this behavior in VS Code when key repeating didn&#8217;t work
-when using Vim bindings plugin.
-Initially I thought that it was something off with VS Code
-or its plugin themselves rather than with the whole OS.</p>
-<p>Running this command disables it system-wide.</p>
+<div class="image-block"><img src="https://tpwo.github.io/images/setting-up-macbook/accent-picker.png" alt="Key repeat rate and Delay until repeat in the Keyboard settings"></div>
+<p>This also <strong>completely blocks key repeat</strong> mentioned above.
+It&#8217;s not active in all apps but annoys me a lot,
+so I always disable it.</p>
+<aside class="admonition-block tip" role="doc-tip"><h6 class="block-title label-only"><span class="title-label">Tip: </span></h6><p>I noticed this <em>feature</em> in VS Code
+when Vim bindings plugin wasn&#8217;t working properly.
+Initially I thought that something is wrong with VS Code or my installed plugins&#8230;&#8203;</p></aside>
+<p>Running this command disables it system-wide:</p>
 <div class="listing-block"><pre>defaults write -g ApplePressAndHoldEnabled -bool false</pre></div>
-<p>It&#8217;s also possible to set it per application, but I haven&#8217;t tested it.
-I guess the hardest part then is to get the correct app name.
-E.g. here AI suggested these two names to set it for VS Code:</p>
-<div class="listing-block"><pre>defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_install_homebrew">Install homebrew</h2><p>MacOS doesn&#8217;t come with a package manager in a classic Unix way.
-There is an appstore app, but it&#8217;s more like a smartphone solution,
-than something like apt registries.</p>
-<p><code>homebrew</code> fixes that.
-I only started to use it,
-but it looks like a <code>winget</code> for MacOS.
-I guess that recipes are added by people,
-and so far I haven&#8217;t found software,
-which isn&#8217;t available there.
-With the only exception being paid software.</p>
-<section class="doc-section level-2"><h3 id="_findings">Findings</h3><p>Homebrew has at two types of installations: formulaes and casks.
+<p>It&#8217;s also possible to disable/enable it per application
+but I haven&#8217;t tested it.</p></section></section>
+<section class="doc-section level-1"><h2 id="_package_manager">Package manager</h2><p>MacOS doesn&#8217;t come with a native package manager installed.
+There is the App Store, but you won&#8217;t find everything there,
+and I find myself rarely using it.</p>
+<p>There are some options to choose from on MacOS
+but <a href="https://brew.sh/">Homebrew</a> is definitely the most popular one.</p>
+<p>It has some issues,
+and I heard some people complaining on it.
+They were mainly talking about brew breaking their tools when doing upgrades.</p>
+<p>To avoid that, don&#8217;t run <code>brew upgrade</code> without any arguments.
+It will update versions of all apps installed with it
+which may be a lot of changes.</p>
+<p>Prefer <code>brew upgrade &lt;name&gt;</code>.
+<code>brew outdated</code> shows you the list of outdated apps.
+It&#8217;s updated along with the <code>brew</code> itself when running <code>brew update</code>.</p>
+<aside class="admonition-block tip" role="doc-tip"><h6 class="block-title label-only"><span class="title-label">Tip: </span></h6><p>You can disable annoying auto-updates of brew
+which often occur when you do <code>brew install</code> or <code>brew upgrade</code>
+by setting <code>HOMEBREW_NO_AUTO_UPDATE=1</code>.</p></aside>
+<p>Recently I started installing some tools outside brew,
+especially tools with auto-update option built-in,
+e.g. <a href="https://docs.astral.sh/uv/getting-started/installation/#upgrading-uv">uv</a>
+or <a href="https://code.claude.com/docs/en/cli-reference\#:~:text=PR%22-,claude,version">claude code</a>.
+I noticed that they usually recommend the native installation
+instead of relying on a package manager.</p>
+<p>There are also some solutions like
+<a href="https://asdf-vm.com/guide/getting-started.html">asdf</a>
+which allow to keep many versions of the same tool,
+and dynamically swap them depending on the project.
+I would still advocate to use them as an addition to <code>brew</code>
+rather than its replacement.</p>
+<section class="doc-section level-2"><h3 id="_formuleas_vs_casks">Formuleas vs. casks</h3><p>Homebrew has at two types of installations: formulaes and casks.
 Formuleas are typically for open source CLI tools and libraries.
 They are installed with the standard <code>brew install &lt;recipe-name&gt;</code>.</p>
 <p>Cask is a recipe type for installing GUI apps.
@@ -378,7 +393,7 @@ Apart from it, I would also install the following:</p>
 And probably it would take me a few times,
 to add other points to it.
 But I wanted to write it having all the experiences fresh in mind,
-so I can refine it and iterate on it later.</p></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I found people recommending the following setup instead: when pressed it should serve as Esc; when you hold it, it should act as Ctrl. It sounds cool, but requires more complex setup. For sure it would make using Vim a bit more convenient (now I&#8217;m using <code>Ctrl + [</code> to exit from the insert mode). <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote">It even sometimes <a href="https://en.wikipedia.org/wiki/Apple_keyboards#/media/File:Apple_keyboard_-.jpg">was labeled</a> Alt on certain Apple keyboards in the past <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section></div>
+so I can refine it and iterate on it later.</p></section><section class="footnotes" aria-label="Footnotes" role="doc-endnotes"><hr><ol class="footnotes"><li class="footnote" id="_footnote_1" role="doc-endnote">I found people recommending the following setup instead: when pressed it should serve as Esc; when you hold it, it should act as Ctrl. It sounds cool, but requires more complex setup. For sure it would make using Vim a bit more convenient (now I&#8217;m using <code>Ctrl + [</code> to exit from the insert mode). <a class="footnote-backref" href="#_footnoteref_1" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li><li class="footnote" id="_footnote_2" role="doc-endnote">Option key <a href="https://en.wikipedia.org/wiki/Apple_keyboards#/media/File:Apple_keyboard_-.jpg">was labeled</a> as Alt on certain Apple keyboards in the past <a class="footnote-backref" href="#_footnoteref_2" role="doc-backlink" title="Jump to the first occurrence in the text">&#8617;</a></li></ol></section></div>
 
     <footer class="post-footer">
         <p class="post-category">Added in <a href="https://tpwo.github.io/categories/posts">posts</a>.</p>
