@@ -536,6 +536,14 @@ mark {
     max-width: 66.667%;
 }
 
+.post-content .image-block {
+    margin: 1.5rem 0;
+}
+
+.post-content .image-block img {
+    display: block;
+}
+
 .post-content figure.image-block {
     width: 66.667%;
     margin-right: auto;
@@ -559,6 +567,11 @@ mark {
 
 .footnote-context > :not(.contextual-footnote) {
     max-width: 66.667%;
+}
+
+.footnote-context > .ulist,
+.footnote-context > .olist {
+    max-width: none;
 }
 
 .contextual-footnote {
@@ -639,13 +652,19 @@ mark {
 }
 
 .post-content .admonition-block h6 {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    clip-path: inset(50%);
+    grid-column: 2;
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.post-content .admonition-block .title-label {
+    display: none;
+}
+
+.post-content .admonition-block > p {
+    margin: 0 0 0.75rem;
 }
 
 .post-content .admonition-block::before {

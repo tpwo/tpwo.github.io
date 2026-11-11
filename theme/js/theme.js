@@ -158,6 +158,16 @@
         }
     }
 
+    function initializeAdmonitionTitles() {
+        for (const title of document.querySelectorAll(".post-content .admonition-block h6")) {
+            const titleText = title.cloneNode(true);
+            titleText.querySelector(".title-label")?.remove();
+            if (!titleText.textContent.trim()) {
+                title.hidden = true;
+            }
+        }
+    }
+
     function initializeContextualFootnotes() {
         const content = document.querySelector(".post-content");
         const footnotesSection = content?.querySelector("section.footnotes");
@@ -358,6 +368,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         initializeToc();
         initializeCodeCopy();
+        initializeAdmonitionTitles();
         initializeContextualFootnotes();
 
         const toggle = document.getElementById("theme-toggle");
