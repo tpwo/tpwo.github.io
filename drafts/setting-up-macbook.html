@@ -46,7 +46,7 @@
         </p>
     </header>
 
-    <div class="post-content"><nav id="toc" class="toc" role="doc-toc"><h2 id="toc-title">Contents</h2><ol class="toc-list level-1"><li><a href="#_keyboard_and_mouse">Keyboard and mouse</a></li><li><a href="#_package_manager">Package manager</a></li><li><a href="#_change_default_shell">Change default shell</a></li><li><a href="#_install_bash_completions">Install bash completions</a></li><li><a href="#_install_git_completions">Install Git completions</a></li><li><a href="#_install_iterm2">Install iterm2</a></li><li><a href="#_swich_from_bsd_to_gnu_utils">Swich from BSD to GNU utils</a></li><li><a href="#_install_appcleaner">Install AppCleaner</a></li><li><a href="#_install_middleclick">Install MiddleClick</a></li><li><a href="#_install_doll">Install Doll</a></li><li><a href="#_install_sublime_text">Install Sublime Text</a></li><li><a href="#_set_a_default_text_editor">Set a default text editor</a></li><li><a href="#_figure_out_ssh_agent">Figure out SSH agent</a></li><li><a href="#_install_uv_for_python_ecosystem_integration">Install uv for Python ecosystem integration</a></li><li><a href="#_enable_sudo_auth_with_touch_id">Enable sudo auth with Touch ID</a></li><li><a href="#_other_software_worth_installing">Other software worth installing</a></li><li><a href="#_ending_notes">Ending notes</a></li></ol></nav><section id="preamble" aria-label="Preamble"><p>I was a Windows user whole my life
+    <div class="post-content"><nav id="toc" class="toc" role="doc-toc"><h2 id="toc-title">Contents</h2><ol class="toc-list level-1"><li><a href="#_keyboard_and_mouse">Keyboard and mouse</a></li><li><a href="#_package_manager">Package manager</a></li><li><a href="#_change_default_shell">Change default shell</a></li><li><a href="#_useful_apps_extensions">Useful apps &amp; extensions</a></li><li><a href="#_other_software_worth_installing">Other software worth installing</a></li><li><a href="#_ending_notes">Ending notes</a></li></ol></nav><section id="preamble" aria-label="Preamble"><p>I was a Windows user whole my life
 but a few years ago I switched to MacOS,
 and I really like this transition.</p>
 <p>I remember that beginnings were difficult,
@@ -214,7 +214,7 @@ which is located by default in <code>/opt/homebrew/bin/bash</code>
 to <code>/etc/shells</code> which requires root permissions.
 And then you can run the command:</p>
 <div class="listing-block"><pre>chsh -s /opt/homebrew/bin/bash</pre></div></section></section>
-<section class="doc-section level-1"><h2 id="_install_bash_completions">Install bash completions</h2><p>After you install Bash,
+<section class="doc-section level-1"><h2 id="_useful_apps_extensions">Useful apps &amp; extensions</h2><section class="doc-section level-2"><h3 id="_install_bash_completions">Install bash completions</h3><p>After you install Bash,
 you will quickly notice that tab completions are missing.
 Fortunately, homebrew has a recipe to install them.
 When using newer Bash v5,
@@ -233,7 +233,7 @@ to always get the correct path regardless of <code>brew</code> install location.
 I decided to use hardcoded path,
 as running <code>brew --prefix</code> takes some time to execute,
 when you add it to your <code>.bashrc</code>.</p></section>
-<section class="doc-section level-1"><h2 id="_install_git_completions">Install Git completions</h2><p>I noticed that Git installed in Mac doesn&#8217;t ship with tab completion.
+<section class="doc-section level-2"><h3 id="_install_git_completions">Install Git completions</h3><p>I noticed that Git installed in Mac doesn&#8217;t ship with tab completion.
 I read something about it,
 I noticed it, as my <code>$PS1</code> uses <code>__git_ps1</code> which wasn&#8217;t available.</p>
 <p>I found that you can download the completions file manually.</p>
@@ -246,12 +246,12 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 as it freezes the version of Git completions.
 But Git is a stable program, so I guess it&#8217;s good enough.</p></aside>
 <p>TODO: check if the above can be done in a better way easily.</p></section>
-<section class="doc-section level-1"><h2 id="_install_iterm2">Install iterm2</h2><div class="listing-block"><pre>brew install --cask iterm2</pre></div>
+<section class="doc-section level-2"><h3 id="_install_iterm2">Install iterm2</h3><div class="listing-block"><pre>brew install --cask iterm2</pre></div>
 <p>Default terminal in MacOS is similar to Windows,
 I mean: it&#8217;s not so great.
 Even before switching to Mac I heard about iterm,
 and this is the alternative I chose.</p></section>
-<section class="doc-section level-1"><h2 id="_swich_from_bsd_to_gnu_utils">Swich from BSD to GNU utils</h2><p>After importing my dotfiles,
+<section class="doc-section level-2"><h3 id="_swich_from_bsd_to_gnu_utils">Swich from BSD to GNU utils</h3><p>After importing my dotfiles,
 I quickly noticed that there are some issues with Unix tools.
 Namely <code>ls --group-directories-first</code> was a problem.
 It turns out BSD <code>ls</code> doesn&#8217;t have this flag.</p>
@@ -295,16 +295,22 @@ if you share your dotfiles between machines.</p>
   <span class="s2">"/usr/local/opt/coreutils/libexec/gnubin"</span> <span class="se">\</span>
   <span class="s2">"/usr/local/opt/findutils/libexec/gnubin"</span> <span class="se">\</span>
   :</code></pre></div></section>
-<section class="doc-section level-1"><h2 id="_install_appcleaner">Install AppCleaner</h2><div class="listing-block"><pre>brew install --cask appcleaner</pre></div>
+<section class="doc-section level-2"><h3 id="_mole"><a href="https://github.com/tw93/Mole">Mole</a></h3><div class="listing-block"><pre>brew install mole</pre></div>
 <p>Theoretically, uninstalling an app in MacOS
 is just moving it to the trash.
 I quickly found out that life isn&#8217;t so simple in practice.
 In fact, a lot of apps is not fully uninstalled,
-leaving configuration files behind.
-It&#8217;s very annoying when you&#8217;re trying to do a clean reinstall.</p>
-<p>What&#8217;s not surprising&#8201;&#8211;&#8201;there&#8217;s a solution for that provided by a 3rd party.
-It&#8217;s called AppCleaner, it&#8217;s free, and can be installed via their website or homebrew.</p></section>
-<section class="doc-section level-1"><h2 id="_install_middleclick">Install MiddleClick</h2><p>TODO: for now I&#8217;m not using it,
+leaving configuration files or cache behind.
+It&#8217;s very annoying when you&#8217;re trying to do a clean reinstall,
+and these leftovers clutter your disk space.</p>
+<p>Mole can help both with uninstalling apps cleanly,
+always showing you different places where a certain app has its files
+(allowing you to select how clean the uninstall should be),
+but it can also help you remove old leftovers
+or cache from apps like <code>docker</code>, <code>npm</code> or <code>uv</code>.
+If you&#8217;re struggling with free space on your Mac,
+I really recommend it.</p></section>
+<section class="doc-section level-2"><h3 id="_install_middleclick">Install MiddleClick</h3><p>TODO: for now I&#8217;m not using it,
 as you can follow links with command + click.
 I&#8217;m checking if it&#8217;s good enough for me.</p>
 <div class="listing-block"><pre>brew install --cask middleclick</pre></div>
@@ -317,7 +323,7 @@ but then works fine without any issues.</p>
 <p>TODO: I noticed that MiddleClick doesn&#8217;t load automatically
 after I reboot my Mac.
 I have to figure out how to change it.</p></section>
-<section class="doc-section level-1"><h2 id="_install_doll">Install Doll</h2><div class="listing-block"><pre>brew install --cask doll</pre></div>
+<section class="doc-section level-2"><h3 id="_install_doll">Install Doll</h3><div class="listing-block"><pre>brew install --cask doll</pre></div>
 <p>MacOS doesn&#8217;t have any native support for tray icons for apps.
 The only way to have a tray icon is for the app to define it.</p>
 <p>I was surprised to see that most apps don&#8217;t have them defined,
@@ -325,7 +331,7 @@ e.g. Slack or Teams.
 Coming from Windows this was a big difference,
 but fortunately I found and app called <code>Doll</code>
 which is able to handle that.</p></section>
-<section class="doc-section level-1"><h2 id="_install_sublime_text">Install Sublime Text</h2><div class="listing-block"><pre>brew install --cask sublime-text</pre></div>
+<section class="doc-section level-2"><h3 id="_install_sublime_text">Install Sublime Text</h3><div class="listing-block"><pre>brew install --cask sublime-text</pre></div>
 <p>On Windows I got used to Notepad+\+, and I wanted something with a similar feel.
 I tried CotEditor, as recommended to be MacOS-native editor,
 but I didn&#8217;t like it very much.
@@ -340,7 +346,7 @@ You have to set:</p>
 <div class="listing-block"><pre>"open_files_in_new_window": "never",</pre></div>
 <p>By looking at the default config, it seems that it&#8217;s already set,
 but for MacOS it&#8217;s overwritten to a different option.</p></section>
-<section class="doc-section level-1"><h2 id="_set_a_default_text_editor">Set a default text editor</h2><p>It turns out it&#8217;s more compilcated than you might think,
+<section class="doc-section level-2"><h3 id="_set_a_default_text_editor">Set a default text editor</h3><p>It turns out it&#8217;s more compilcated than you might think,
 especially if you want to open all text files this way
 (i.e. you don&#8217;t care about their extensions).
 I found out that installing <code>duti</code> is the simplest option for me:</p>
@@ -350,12 +356,12 @@ duti -s com.sublimetext.4 public.plain-text all
 duti -s com.sublimetext.4 public.data all</pre></div>
 <p>This way, you don&#8217;t have to override the default editor for each file extension one-by-one
 which is a blessing.</p></section>
-<section class="doc-section level-1"><h2 id="_figure_out_ssh_agent">Figure out SSH agent</h2><p>TODO: it seems that Git is more stable when using SSH.
+<section class="doc-section level-2"><h3 id="_figure_out_ssh_agent">Figure out SSH agent</h3><p>TODO: it seems that Git is more stable when using SSH.
 I see errors with HTTP when pushing big branches to forks.</p>
 <p>I have to check if MacOS has a good approach to SSH agent.
 Windows does, at it works pretty well for me,
 for I&#8217;m hopeful that it&#8217;s more or less the same with Mac.</p></section>
-<section class="doc-section level-1"><h2 id="_install_uv_for_python_ecosystem_integration">Install uv for Python ecosystem integration</h2><div class="listing-block"><pre>brew install uv</pre></div>
+<section class="doc-section level-2"><h3 id="_install_uv_for_python_ecosystem_integration">Install uv for Python ecosystem integration</h3><div class="listing-block"><pre>brew install uv</pre></div>
 <p>I noticed that <code>uv</code> can be a good choice on MacOS, as it supports installing a lot of Python versions with a single command.</p>
 <p>I noticed that you can symlink installed Python versions,
 so they are correctly detected by tools like <code>tox</code>.</p>
@@ -363,7 +369,7 @@ so they are correctly detected by tools like <code>tox</code>.</p>
 <p>If you want to change the default version of Python,
 also symlink <code>python3</code> binary.</p>
 <p>All of that works granted you have <code>~/.local/bin</code> added to your PATH.</p></section>
-<section class="doc-section level-1"><h2 id="_enable_sudo_auth_with_touch_id">Enable sudo auth with Touch ID</h2><p>Touch ID is great,
+<section class="doc-section level-2"><h3 id="_enable_sudo_auth_with_touch_id">Enable sudo auth with Touch ID</h3><p>Touch ID is great,
 as it uses your fingerprint to quickly authorize certain actions.
 It turns out, <code>sudo</code> can also make use of it.
 The basic configuration is very simple:
@@ -382,7 +388,7 @@ to make it work also in <code>tmux</code>:</p>
 <div class="listing-block"><pre>auth  optional  /opt/homebrew/lib/pam/pam_reattach.so  ignore_ssh</pre></div>
 <p>As you can see, you have to provider the full path to <code>pam_reattach.so</code>.
 <code>ignore_ssh</code> option is used to help mitiage some edge cases, and I took it from
-<a href="https://tmux.men/en/tmux-touchid">this tutorial</a>.</p></section>
+<a href="https://tmux.men/en/tmux-touchid">this tutorial</a>.</p></section></section>
 <section class="doc-section level-1"><h2 id="_other_software_worth_installing">Other software worth installing</h2><p>Above, I covered a lot of software in more details
 along with how to install it.
 Apart from it, I would also install the following:</p>
