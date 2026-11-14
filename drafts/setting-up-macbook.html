@@ -42,7 +42,7 @@
         <h1>Setting up Macbook</h1>
         <p class="post-date">
             Published <time datetime="2026-11-09T00:00:00+01:00">Nov 09, 2026</time>
-            ┃ Updated <time datetime="2026-11-12T00:00:00+01:00">Nov 12, 2026</time>
+            ┃ Updated <time datetime="2026-11-15T00:00:00+01:00">Nov 15, 2026</time>
         </p>
     </header>
 
@@ -172,20 +172,18 @@ which allow to keep many versions of the same tool,
 and dynamically swap them depending on the project.
 I would still advocate to use them as an addition to <code>brew</code>
 rather than its replacement.</p>
-<section class="doc-section level-2"><h3 id="_formuleas_vs_casks">Formuleas vs. casks</h3><p>Homebrew has at two types of installations: formulaes and casks.
-Formuleas are typically for open source CLI tools and libraries.
-They are installed with the standard <code>brew install &lt;recipe-name&gt;</code>.</p>
-<p>Cask is a recipe type for installing GUI apps.
+<section class="doc-section level-2"><h3 id="_formulas_vs_casks">Formulas vs. casks</h3><p>Homebrew has at two types of installations: formulas and casks.
+Formulas are typically for open source CLI tools and libraries.
+They are installed with the standard <code>brew install &lt;formula&gt;</code>.</p>
+<p>Cask is a recipe type for installing pre-packaged binaries usually for GUI apps.
+There are casks both for open-source (e.g. GIMP)
+and closed-source applications (e.g. Spotify, Adobe Acrobat).
 Usually it involves downloading the app packaged in <code>dmg</code> or <code>zip</code> format.
-Both open and closed source software is distributed this way.
-Casks are installed via providing additional flag:
-<code>brew install --cask &lt;recipe-name&gt;</code>.
+Casks are installed by providing an additional <code>--cask</code> flag:
+<code>brew install --cask &lt;cask-name&gt;</code>.
 Usually you have to provide your password to install the cask app,
-as the installation requires moving the app into the <code>Applications</code> folder.</p>
-<p>You can include <code>--no-quarantine</code> flag
-to avoid additional prompt before
-first time running of the cask app.</p></section>
-<section class="doc-section level-2"><h3 id="_updates">Updates</h3><p>Homebrew offers updates, and only formulaes are updated by default.
+as the installation requires moving the app into the <code>Applications</code> folder.</p></section>
+<section class="doc-section level-2"><h3 id="_updates">Updates</h3><p>Homebrew offers updates, and only formulas are updated by default.
 This is because a lot of cask apps offer their own auto-update mechanism.
 Each cask recipe has a flag which tells Homebrew if this is the case.
 You can force the update of these apps, but in practice
@@ -193,7 +191,7 @@ it works like removing and installing the app from scratch,
 so you might lose some configuration etc.</p></section>
 <section class="doc-section level-2"><h3 id="_add_brew_to_path">Add <code>brew</code> to PATH</h3><p>By default, Homebrew is installed in <code>/opt/homebrew</code>.
 <code>brew</code> binary is located at <code>/opt/homebrew/bin</code> folder,
-and all other formulaes are there.
+and all other formulas are there.
 You need to add it to PATH.</p></section></section>
 <section class="doc-section level-1"><h2 id="_change_default_shell">Change default shell</h2><p>MacOS switched from Bash to zsh a few years ago.
 I use Bash on my every other system,
